@@ -67,7 +67,7 @@
     <string name="new_user">Need an account?</string>
     <string name="sign_up">https://courses.edx.org/register</string>
     <string name="by_signing_up">By signing in to this app, you agree to the </string>
-    <string name="licensing_agreement">edX End User Licensing Agreement</string>
+    <string name="licensing_agreement">edX Terms of Service and Honor Code</string>
     <string name="login_title">Sign in to edX</string>
 
     <!-- Navigation Drawer Labels -->
@@ -99,7 +99,7 @@
     <string name="confirm_dialog_message_help">Enter the e-mail address for your account, and we\'ll send you instructions to
          reset your password.</string>
     <string name="wifi_dialog_message_help">Allow your device to download videos over your cellular connection when 
-        Wi-Fi is not available. Data charges may apply.</string>
+        \nWi-Fi is not available. Data charges may apply.</string>
     <string name="delete_dialog_title_help">Confirm Delete</string>
     <string name="delete_single_video_dialog">Are you sure you want to\n delete this video?</string>
     <string name="delete_multiple_video_dialog">Are you sure you want to\n delete these videos?</string>
@@ -297,4 +297,6 @@
     <!-- data charges may apply dialog text -->
     <string name="open_external_url_title">Data charges may apply</string>
     <string name="open_external_url_desc">This link will open in your mobile browser, and you may incur additional data charges.</string>
+
+    <string name="offline_handouts_text">You are in offline mode. To view handouts, connect to the internet.</string>
 </resources>

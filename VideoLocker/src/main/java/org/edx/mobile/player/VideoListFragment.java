@@ -39,7 +39,6 @@ import org.edx.mobile.util.BrowserUtil;
 import org.edx.mobile.util.MediaConsentUtils;
 import org.edx.mobile.util.MemoryUtil;
 import org.edx.mobile.util.NetworkUtil;
-import org.edx.mobile.util.UiUtil;
 import org.edx.mobile.view.VideoListActivity;
 import org.edx.mobile.view.adapters.MyAllVideoAdapter;
 import org.edx.mobile.view.adapters.OfflineVideoAdapter;
@@ -64,7 +63,7 @@ public class VideoListFragment extends Fragment {
     protected IDatabase db;
     protected IStorage storage;
     private static final int MSG_UPDATE_PROGRESS = 1022;
-    private DeleteVideoDialogFragment newFragment;
+    private DeleteVideoDialogFragment confirmDeleteFragment, downloadSizeExceedDialog;
     private String openInBrowserUrl;
     private String chapterName;
     private LectureModel lecture;
@@ -581,9 +580,7 @@ public class VideoListFragment extends Fragment {
             }
 
             hideOpenInBrowserPanel();
-            if (myVideosFlag) {
-                //addDataToMyVideoAdapter();
-            } else {
+            if (!myVideosFlag) {
                 handleDeleteView();
                 addDataToOfflineAdapter();
             }
@@ -601,22 +598,18 @@ public class VideoListFragment extends Fragment {
     }
 
     public void onOnline() {
+        AppConstants.offline_flag = false;
         if (!isLandscape) {
-            AppConstants.offline_flag = false;
             if (offlineBar != null) {
                 offlineBar.setVisibility(View.GONE);
             }
-            if (myVideosFlag) {
-                //addDataToMyVideoAdapter();
-                // hideOpenInBrowserPanel();
-            } else {
+            if (!myVideosFlag) {
                 AppConstants.videoListDeleteMode = false;
                 addDataToOnlineAdapter();
                 showOpenInBrowserPanel();
                 hideDeletePanel(getView());
-                if(newFragment!=null){
-                    newFragment.dismiss();
-                }
+                hideConfirmDeleteDialog();
+                handler.sendEmptyMessage(MSG_UPDATE_PROGRESS);
             }
 
         }
@@ -765,6 +758,7 @@ public class VideoListFragment extends Fragment {
         super.onStop();
         isActivityStarted = false;
         AppConstants.videoListDeleteMode = false;
+        hideConfirmDeleteDialog();
         if(myVideosFlag){
             adapter.unselectAll();
         }
@@ -824,19 +818,7 @@ public class VideoListFragment extends Fragment {
     };
 
     public void markPlaying() {
-        try {
-            final DownloadEntry v = videoModel;
-            if (v != null) {
-                if (v.watched == DownloadEntry.WatchedState.UNWATCHED) {
-                    videoModel.watched = DownloadEntry.WatchedState.PARTIALLY_WATCHED;
-                    // mark this as partially watches, as playing has started
-                    db.updateVideoWatchedState(v.videoId, DownloadEntry.WatchedState.PARTIALLY_WATCHED,
-                            setWatchedStateCallback);
-                }
-            }
-        } catch (Exception ex) {
-            logger.error(ex);
-        }
+        storage.markVideoPlaying(videoModel, watchedStateCallback);
     }
 
     /**
@@ -889,7 +871,7 @@ public class VideoListFragment extends Fragment {
                 videoModel.watched = DownloadEntry.WatchedState.WATCHED;
                 // mark this as partially watches, as playing has started
                 db.updateVideoWatchedState(v.videoId, DownloadEntry.WatchedState.WATCHED,
-                        setWatchedStateCallback);
+                        watchedStateCallback);
             }
         } catch (Exception ex) {
             logger.error(ex);
@@ -987,25 +969,22 @@ public class VideoListFragment extends Fragment {
                     segIO.trackSingleVideoDownload(downloadEntry.videoId, downloadEntry.eid,
                             downloadEntry.lmsUrl);
                 }
+
+                if (storage.addDownload(downloadEntry) != -1) {
+                    ((VideoListActivity) getActivity())
+                            .showInfoMessage(getString(R.string.msg_started_one_video_download));
+                } else {
+                    ((VideoListActivity) getActivity())
+                            .showInfoMessage(getString(R.string.msg_video_not_downloaded));
+                }
+                ((VideoListActivity) getActivity()).updateProgress();
+
+                //If the video is already downloaded, dont reload the adapter
                 if (reloadListFlag) {
                     adapter.notifyDataSetChanged();
-
-                    if (storage.addDownload(downloadEntry) != -1) {
-                        ((VideoListActivity) getActivity())
-                                .showInfoMessage(getString(R.string.msg_started_one_video_download));
-                    } else {
-                        ((VideoListActivity) getActivity())
-                                .showInfoMessage(getString(R.string.msg_video_not_downloaded));
-                    }
-                    ((VideoListActivity) getActivity()).updateProgress();
-
-                    //If the video is already downloaded, dont reload the adapter
-                    if (reloadListFlag) {
-                        adapter.notifyDataSetChanged();
-                    }
-                    TranscriptManager transManager = new TranscriptManager(getActivity());
-                    transManager.downloadTranscriptsForVideo(downloadEntry.transcript);
                 }
+                TranscriptManager transManager = new TranscriptManager(getActivity());
+                transManager.downloadTranscriptsForVideo(downloadEntry.transcript);
             }
         }catch(Exception e){
             logger.error(e);
@@ -1018,7 +997,7 @@ public class VideoListFragment extends Fragment {
         dialogMap.put("message_1", getString(R.string.download_exceed_message));
         dialogMap.put("yes_button", getString(R.string.label_yes));
         dialogMap.put("no_button",  getString(R.string.label_no));
-        newFragment = DeleteVideoDialogFragment.newInstance(dialogMap,
+        downloadSizeExceedDialog = DeleteVideoDialogFragment.newInstance(dialogMap,
                 new IDialogCallback() {
             @Override
             public void onPositiveClicked() {
@@ -1028,12 +1007,12 @@ public class VideoListFragment extends Fragment {
             @Override
             public void onNegativeClicked() {
                 notifyAdapter();
-                newFragment.dismiss();
+                downloadSizeExceedDialog.dismiss();
             }
         });
-        newFragment.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
-        newFragment.show(getFragmentManager(), "dialog");
-        newFragment.setCancelable(false);
+        downloadSizeExceedDialog.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+        downloadSizeExceedDialog.show(getFragmentManager(), "dialog");
+        downloadSizeExceedDialog.setCancelable(false);
     }
 
     protected void showConfirmDeleteDialog(int itemCount) {
@@ -1048,7 +1027,7 @@ public class VideoListFragment extends Fragment {
             dialogMap.put("message_1",
                     getString(R.string.delete_multiple_video_dialog));
         }
-        newFragment = DeleteVideoDialogFragment.newInstance(dialogMap,
+        confirmDeleteFragment = DeleteVideoDialogFragment.newInstance(dialogMap,
                 new IDialogCallback() {
 
             @Override
@@ -1058,12 +1037,22 @@ public class VideoListFragment extends Fragment {
 
             @Override
             public void onNegativeClicked() {
-                newFragment.dismiss();
+                confirmDeleteFragment.dismiss();
             }
         });
-        newFragment.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
-        newFragment.show(getFragmentManager(), "dialog");
-        newFragment.setCancelable(false);
+        confirmDeleteFragment.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+        confirmDeleteFragment.show(getFragmentManager(), "dialog");
+        confirmDeleteFragment.setCancelable(false);
+    }
+
+    protected void hideConfirmDeleteDialog() {
+        try{
+            if(confirmDeleteFragment!=null){
+                confirmDeleteFragment.dismiss();
+            }
+        }catch(Exception e){
+            logger.error(e);
+        }
     }
 
 
@@ -1293,7 +1282,7 @@ public class VideoListFragment extends Fragment {
 
     }
 
-    private DataCallback<Integer> setWatchedStateCallback = new DataCallback<Integer>() {
+    private DataCallback<Integer> watchedStateCallback = new DataCallback<Integer>() {
         @Override
         public void onResult(Integer result) {
             logger.debug("Watched State Updated");

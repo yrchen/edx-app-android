@@ -13,6 +13,7 @@ import org.edx.mobile.R;
 import org.edx.mobile.base.BaseFragmentActivity;
 import org.edx.mobile.http.Api;
 import org.edx.mobile.module.analytics.ISegment;
+import org.edx.mobile.module.prefs.PrefManager;
 import org.edx.mobile.util.AppConstants;
 import org.edx.mobile.util.Config;
 import org.edx.mobile.view.custom.EButton;
@@ -20,12 +21,28 @@ import org.edx.mobile.view.custom.ETextView;
 
 public class LaunchActivity extends BaseFragmentActivity {
 
+    public static final String OVERRIDE_ANIMATION_FLAG = "override_animation_flag";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Register for Login Receiver before checking for logged in user
+        enableLoginCallback();
+
+        //We need to stop the Launch Activity from launching if the user has logged in
+        PrefManager pm =new PrefManager(LaunchActivity.this, PrefManager.Pref.LOGIN);
+        if (pm.getCurrentUserProfile() != null) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_launch);
-        overridePendingTransition(R.anim.slide_in_from_right,
-                R.anim.slide_out_to_left);
+
+        //Activity override animation has to be handled if the Launch Activity
+        //is called after user logs out and closes the Sign-in screen.
+        if(getIntent().getBooleanExtra(OVERRIDE_ANIMATION_FLAG,false)){
+            overridePendingTransition(R.anim.no_transition,R.anim.slide_out_to_bottom);
+        }
 
         //The onTick method need not be run in the LaunchActivity
         runOnTick = false;
@@ -44,6 +61,11 @@ public class LaunchActivity extends BaseFragmentActivity {
             sign_up_button.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    try {
+                        segIO.trackUserSignUpForAccount();
+                    }catch(Exception e){
+                        logger.error(e);
+                    }
                     Router.getInstance().showRegistration(LaunchActivity.this);
                 }
             });
@@ -57,8 +79,6 @@ public class LaunchActivity extends BaseFragmentActivity {
         } catch(Exception e) {
             logger.error(e);
         }
-
-        enableLoginCallback();
 
         fetchRegistrationDescription();
     }
