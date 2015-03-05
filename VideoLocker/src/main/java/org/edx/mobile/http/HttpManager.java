@@ -52,7 +52,8 @@ public class HttpManager {
         DefaultHttpClient client = new DefaultHttpClient();
         client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION,
                 HttpVersion.HTTP_1_1);
-        
+        SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
         HttpGet get = new HttpGet(urlWithAppendedParams);
         AndroidHttpClient.modifyRequestToAcceptGzipResponse(get);
 
@@ -101,6 +102,7 @@ public class HttpManager {
         client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION,
                 HttpVersion.HTTP_1_1);
         SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
         HttpPost post = new HttpPost(url);
         AndroidHttpClient.modifyRequestToAcceptGzipResponse(post);
 
@@ -198,6 +200,7 @@ public class HttpManager {
         HttpClient client = new DefaultHttpClient();
         client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION,
                 HttpVersion.HTTP_1_1);
+        SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
         HttpPost post = null;
         if (isPatchRequest) {
@@ -295,6 +298,7 @@ public class HttpManager {
         HttpClient client = new DefaultHttpClient();
         client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION,
                 HttpVersion.HTTP_1_1);
+        SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
         HttpGet get = new HttpGet(url);
 
