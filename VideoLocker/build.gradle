@@ -1,4 +1,4 @@
-import org.edx.builder.TaskHelper
+import org.openedu.builder.TaskHelper
 
 buildscript {
     repositories {
@@ -168,7 +168,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.edx.mobile"
+        applicationId "tw.openedu.www"
         // minimum version is Android 4.0
         minSdkVersion 14
         targetSdkVersion 21
@@ -180,7 +180,7 @@ android {
         renderscriptSupportModeEnabled true
 
         // test configuration
-        testApplicationId 'org.edx.mobile.test'
+        testApplicationId 'tw.openedu.www.test'
         
         if (project.gradle.startParameter.taskNames.contains("screenshotTests")) {
             testInstrumentationRunner "com.facebook.testing.screenshot.ScreenshotTestRunner"

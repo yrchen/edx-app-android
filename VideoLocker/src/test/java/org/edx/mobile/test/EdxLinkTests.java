@@ -1,9 +1,9 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
 import android.net.Uri;
 
-import org.edx.mobile.util.links.EdxCourseInfoLink;
-import org.edx.mobile.util.links.EdxEnrollLink;
+import tw.openedu.www.util.links.EdxCourseInfoLink;
+import tw.openedu.www.util.links.EdxEnrollLink;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

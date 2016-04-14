@@ -1,4 +1,4 @@
-package org.edx.mobile.view;
+package org.openedu.www.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,10 +12,13 @@ import android.widget.ProgressBar;
 
 import com.joanzapata.iconify.IconDrawable;
 
-import org.edx.mobile.R;
-import org.edx.mobile.http.OkHttpUtil;
-import org.edx.mobile.model.api.EnrolledCoursesResponse;
-import org.edx.mobile.model.course.CourseComponent;
+import tw.openedu.www.R;
+import tw.openedu.www.http.OkHttpUtil;
+import tw.openedu.www.model.api.EnrolledCoursesResponse;
+import tw.openedu.www.model.course.CourseComponent;
+import tw.openedu.www.view.CourseBaseActivity;
+import tw.openedu.www.view.Router;
+
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.robolectric.Robolectric;

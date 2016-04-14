@@ -1,4 +1,4 @@
-package org.edx.mobile.view;
+package org.openedu.www.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,8 +22,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import org.edx.mobile.R;
-import org.edx.mobile.base.BaseFragmentActivity;
+import tw.openedu.www.R;
+import tw.openedu.www.base.BaseFragmentActivity;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;

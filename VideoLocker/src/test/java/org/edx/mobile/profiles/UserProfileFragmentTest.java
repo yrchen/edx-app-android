@@ -1,13 +1,17 @@
-package org.edx.mobile.profiles;
+package org.openedu.www.profiles;
 
 import android.databinding.DataBindingUtil;
 import android.widget.TextView;
 
 import org.assertj.core.api.Assertions;
-import org.edx.mobile.R;
-import org.edx.mobile.databinding.FragmentUserProfileBinding;
-import org.edx.mobile.util.images.ErrorUtils;
-import org.edx.mobile.view.PresenterFragmentTest;
+import tw.openedu.www.R;
+import org.openedu.www.databinding.FragmentUserProfileBinding;
+
+import tw.openedu.www.profiles.UserProfileFragment;
+import tw.openedu.www.profiles.UserProfilePresenter;
+import tw.openedu.www.profiles.UserProfileViewModel;
+import tw.openedu.www.util.images.ErrorUtils;
+import org.openedu.www.view.PresenterFragmentTest;
 import org.junit.Before;
 import org.junit.Test;
 

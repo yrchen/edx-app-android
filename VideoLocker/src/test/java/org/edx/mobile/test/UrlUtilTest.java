@@ -1,9 +1,9 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import org.edx.mobile.util.UrlUtil;
+import tw.openedu.www.util.UrlUtil;
 
 public class UrlUtilTest extends BaseTestCase {
 

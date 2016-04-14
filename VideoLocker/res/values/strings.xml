@@ -5,43 +5,43 @@
     <!-- Certificates -->
 
     <!-- Label congratulation user on finishing course -->
-    <string name="course_details_congratulations">Congratulations!</string>
+    <string name="course_details_congratulations">"恭喜您！"</string>
     <!-- Message for user who has successfully completed a certificate course -->
-    <string name="course_details_earned_cert">You’ve passed the course.</string>
+    <string name="course_details_earned_cert">"您已經獲得一份證書"</string>
     <!-- Button that opens a full view of an earned certificate -->
-    <string name="course_details_view_cert_button">View Certificate</string>
+    <string name="course_details_view_cert_button">"檢視證書"</string>
 
     <!-- Course Discovery -->
 
     <!-- Enroll Now button text -->
-    <string name="course_detail_enroll_now_button">Enroll now</string>
+    <string name="course_detail_enroll_now_button">"立刻註冊"</string>
     <!-- Enroll Now button text-->
-    <string name="enroll_now_button_text">Enroll now</string>
+    <string name="enroll_now_button_text">"立刻註冊"</string>
     <!-- View Course button text text-->
-    <string name="view_course_button_text">View course</string>
+    <string name="view_course_button_text">"檢視課程"</string>
     <!-- Floating overlay text shown to user when they succeed at enrolling in a course -->
-    <string name="you_are_now_enrolled">You are now enrolled in this course.</string>
+    <string name="you_are_now_enrolled">"您已註冊此課程"</string>
     <!-- Error shown user attempts to enroll in a course they are already enrolled in -->
-    <string name="already_enrolled">You are already enrolled in this course.</string>
+    <string name="already_enrolled">"您已經註冊此課程"</string>
     <!-- Error message shown when dashboard cannot be shown from course detail view -->
-    <string name="cannot_show_dashboard">Unable to show dashboard.</string>
+    <string name="cannot_show_dashboard">"無法顯示課程儀表板"</string>
 
 
 
     <!-- Course Sharing -->
 
     <!-- Description of button that will open the share course menu -->
-    <string name="share_course_button">Share your course</string>
+    <string name="share_course_button">"分享您的課程"</string>
     <!-- Share menu title -->
-    <string name="share_course_popup_header">Share this course via&#8230;</string>
+    <string name="share_course_popup_header">"分享課程於"</string>
     <!-- Share course -->
     <string name="share_course_message">I’m taking a course on {platform_name}! Check it out:</string>
 
     <!-- Settings Page -->
     <!-- Label for wifi only switch -->
-    <string name="settings_wifi_top">Wi-Fi only download</string>
+    <string name="settings_wifi_top">"僅供Wi-Fi下載"</string>
     <!-- Label explaining what wifi only means in detail -->
-    <string name="settings_wifi_bottom">Only download content when Wi-Fi is turned on</string>
+    <string name="settings_wifi_bottom">"唯有Wi-Fi開啟時才下載內容"</string>
 
     <!-- Certificate Page -->
     <!-- Description of button that will open the certificate sharing menu -->

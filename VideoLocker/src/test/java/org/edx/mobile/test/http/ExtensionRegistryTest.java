@@ -1,6 +1,6 @@
-package org.edx.mobile.test.http;
+package org.openedu.www.test.http;
 
-import org.edx.mobile.view.ExtensionRegistry;
+import tw.openedu.www.view.ExtensionRegistry;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

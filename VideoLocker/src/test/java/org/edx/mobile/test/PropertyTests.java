@@ -1,6 +1,6 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
-import org.edx.mobile.BuildConfig;
+import tw.openedu.www.BuildConfig;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,8 +1,8 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
 import android.support.annotation.NonNull;
 
-import org.edx.mobile.view.Presenter;
+import tw.openedu.www.view.Presenter;
 import org.junit.After;
 
 import static org.mockito.Mockito.mock;
