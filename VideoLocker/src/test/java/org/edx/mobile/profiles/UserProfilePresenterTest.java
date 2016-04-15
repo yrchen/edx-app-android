@@ -1,13 +1,14 @@
-package org.edx.mobile.profiles;
+package org.openedu.www.profiles;
 
-import org.edx.mobile.module.analytics.ISegment;
-import org.edx.mobile.module.prefs.UserPrefs;
-import org.edx.mobile.profiles.UserProfileImageViewModel;
-import org.edx.mobile.profiles.UserProfileInteractor;
-import org.edx.mobile.profiles.UserProfilePresenter;
-import org.edx.mobile.profiles.UserProfileViewModel;
-import org.edx.mobile.test.PresenterTest;
-import org.edx.mobile.util.observer.CachingObservable;
+import tw.openedu.www.module.analytics.ISegment;
+import tw.openedu.www.module.prefs.UserPrefs;
+import org.openedu.www.test.PresenterTest;
+
+import tw.openedu.www.profiles.UserProfileImageViewModel;
+import tw.openedu.www.profiles.UserProfileInteractor;
+import tw.openedu.www.profiles.UserProfilePresenter;
+import tw.openedu.www.profiles.UserProfileViewModel;
+import tw.openedu.www.util.observer.CachingObservable;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

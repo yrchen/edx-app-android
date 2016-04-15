@@ -1,10 +1,10 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
 import android.support.annotation.NonNull;
 
-import org.edx.mobile.CustomRobolectricTestRunner;
-import org.edx.mobile.util.observer.AsyncCallableUtils;
-import org.edx.mobile.util.observer.MainThreadObservable;
+import org.openedu.www.CustomRobolectricTestRunner;
+import tw.openedu.www.util.observer.AsyncCallableUtils;
+import tw.openedu.www.util.observer.MainThreadObservable;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;

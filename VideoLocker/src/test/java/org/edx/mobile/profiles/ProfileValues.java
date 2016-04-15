@@ -1,4 +1,4 @@
-package org.edx.mobile.profiles;
+package org.openedu.www.profiles;
 
 public enum ProfileValues {
     ;

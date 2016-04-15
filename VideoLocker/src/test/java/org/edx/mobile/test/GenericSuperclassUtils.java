@@ -1,4 +1,4 @@
-package org.edx.mobile.test;
+package org.openedu.www.test;
 
 import android.support.annotation.NonNull;
 

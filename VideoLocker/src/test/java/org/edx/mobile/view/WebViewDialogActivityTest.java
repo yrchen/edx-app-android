@@ -1,4 +1,4 @@
-package org.edx.mobile.view;
+package org.openedu.www.view;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -6,8 +6,8 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import org.assertj.android.api.Assertions;
-import org.edx.mobile.R;
-import org.edx.mobile.view.dialog.WebViewDialogActivity;
+import tw.openedu.www.R;
+import tw.openedu.www.view.dialog.WebViewDialogActivity;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;

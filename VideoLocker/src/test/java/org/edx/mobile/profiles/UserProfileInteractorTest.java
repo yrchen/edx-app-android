@@ -1,19 +1,23 @@
-package org.edx.mobile.profiles;
+package org.openedu.www.profiles;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import org.edx.mobile.event.AccountUpdatedEvent;
-import org.edx.mobile.event.ProfilePhotoUpdatedEvent;
-import org.edx.mobile.http.RetroHttpException;
-import org.edx.mobile.model.api.ProfileModel;
-import org.edx.mobile.module.prefs.UserPrefs;
-import org.edx.mobile.test.BaseTest;
-import org.edx.mobile.user.Account;
-import org.edx.mobile.user.LanguageProficiency;
-import org.edx.mobile.user.ProfileImage;
-import org.edx.mobile.user.UserAPI;
-import org.edx.mobile.util.observer.Observer;
+import tw.openedu.www.event.AccountUpdatedEvent;
+import tw.openedu.www.event.ProfilePhotoUpdatedEvent;
+import tw.openedu.www.http.RetroHttpException;
+import tw.openedu.www.model.api.ProfileModel;
+import tw.openedu.www.module.prefs.UserPrefs;
+import org.openedu.www.test.BaseTest;
+
+import tw.openedu.www.profiles.UserProfileImageViewModel;
+import tw.openedu.www.profiles.UserProfileInteractor;
+import tw.openedu.www.profiles.UserProfileViewModel;
+import tw.openedu.www.user.Account;
+import tw.openedu.www.user.LanguageProficiency;
+import tw.openedu.www.user.ProfileImage;
+import tw.openedu.www.user.UserAPI;
+import tw.openedu.www.util.observer.Observer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

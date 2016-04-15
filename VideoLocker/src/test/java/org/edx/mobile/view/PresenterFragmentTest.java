@@ -1,10 +1,13 @@
-package org.edx.mobile.view;
+package org.openedu.www.view;
 
 import android.support.annotation.NonNull;
 
-import org.edx.mobile.base.BaseAppActivity;
-import org.edx.mobile.test.BaseTestCase;
-import org.edx.mobile.test.GenericSuperclassUtils;
+import tw.openedu.www.base.BaseAppActivity;
+import tw.openedu.www.view.Presenter;
+import tw.openedu.www.view.PresenterFragment;
+
+import org.openedu.www.test.BaseTestCase;
+import org.openedu.www.test.GenericSuperclassUtils;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import static org.mockito.Mockito.mock;

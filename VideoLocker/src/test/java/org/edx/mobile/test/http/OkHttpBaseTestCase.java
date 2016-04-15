@@ -1,10 +1,10 @@
-package org.edx.mobile.test.http;
+package org.openedu.www.test.http;
 
 import android.text.TextUtils;
 
 import com.google.gson.JsonObject;
 
-import org.edx.mobile.test.BaseTestCase;
+import org.openedu.www.test.BaseTestCase;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Ignore;

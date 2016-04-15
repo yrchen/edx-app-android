@@ -1,13 +1,14 @@
-package org.edx.mobile.view;
+package org.openedu.www.view;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.edx.mobile.R;
-import org.edx.mobile.base.BaseVideosDownloadStateActivity;
-import org.edx.mobile.model.db.DownloadEntry;
-import org.edx.mobile.module.db.IDatabase;
-import org.edx.mobile.util.AppConstants;
+import tw.openedu.www.R;
+import tw.openedu.www.base.BaseVideosDownloadStateActivity;
+import tw.openedu.www.model.db.DownloadEntry;
+import tw.openedu.www.module.db.IDatabase;
+import tw.openedu.www.view.DownloadListActivity;
+
 import org.junit.Test;
 import org.robolectric.Robolectric;
 import org.robolectric.Shadows;
