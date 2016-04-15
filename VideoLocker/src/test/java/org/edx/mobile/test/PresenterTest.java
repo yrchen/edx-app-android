@@ -2,7 +2,7 @@ package org.openedu.www.test;
 
 import android.support.annotation.NonNull;
 
-import tw.openedu.www.view.Presenter;
+import tw.openedu.mobile.view.Presenter;
 import org.junit.After;
 
 import static org.mockito.Mockito.mock;

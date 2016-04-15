@@ -11,12 +11,12 @@ import android.widget.TextView;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import com.joanzapata.iconify.widget.IconImageView;
 
-import tw.openedu.www.R;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.view.CourseDashboardActivity;
-import tw.openedu.www.view.CourseDashboardFragment;
-import tw.openedu.www.view.CourseOutlineActivity;
-import tw.openedu.www.view.Router;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.view.CourseDashboardActivity;
+import tw.openedu.mobile.view.CourseDashboardFragment;
+import tw.openedu.mobile.view.CourseOutlineActivity;
+import tw.openedu.mobile.view.Router;
 
 import org.junit.Test;
 import org.robolectric.Robolectric;

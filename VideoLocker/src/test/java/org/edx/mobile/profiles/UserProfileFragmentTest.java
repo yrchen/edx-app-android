@@ -4,13 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.widget.TextView;
 
 import org.assertj.core.api.Assertions;
-import tw.openedu.www.R;
+import tw.openedu.mobile.R;
 import org.openedu.www.databinding.FragmentUserProfileBinding;
 
-import tw.openedu.www.profiles.UserProfileFragment;
-import tw.openedu.www.profiles.UserProfilePresenter;
-import tw.openedu.www.profiles.UserProfileViewModel;
-import tw.openedu.www.util.images.ErrorUtils;
+import tw.openedu.mobile.profiles.UserProfileFragment;
+import tw.openedu.mobile.profiles.UserProfilePresenter;
+import tw.openedu.mobile.profiles.UserProfileViewModel;
+import tw.openedu.mobile.util.images.ErrorUtils;
 import org.openedu.www.view.PresenterFragmentTest;
 import org.junit.Before;
 import org.junit.Test;

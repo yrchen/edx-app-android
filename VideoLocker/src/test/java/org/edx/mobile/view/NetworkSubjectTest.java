@@ -1,8 +1,8 @@
 package org.openedu.www.view;
 
-import tw.openedu.www.base.BaseFragmentActivity;
-import tw.openedu.www.interfaces.NetworkObserver;
-import tw.openedu.www.interfaces.NetworkSubject;
+import tw.openedu.mobile.base.BaseFragmentActivity;
+import tw.openedu.mobile.interfaces.NetworkObserver;
+import tw.openedu.mobile.interfaces.NetworkSubject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

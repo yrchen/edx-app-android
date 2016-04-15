@@ -3,7 +3,7 @@ package org.openedu.www.test;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import tw.openedu.www.util.UrlUtil;
+import tw.openedu.mobile.util.UrlUtil;
 
 public class UrlUtilTest extends BaseTestCase {
 

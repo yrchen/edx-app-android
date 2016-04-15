@@ -1,21 +1,21 @@
 package org.openedu.www.test.http;
 
-import tw.openedu.www.http.OkHttpUtil;
-import tw.openedu.www.model.Filter;
-import tw.openedu.www.model.api.AnnouncementsModel;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.model.api.HandoutModel;
-import tw.openedu.www.model.api.ResetPasswordResponse;
-import tw.openedu.www.model.api.SectionEntry;
-import tw.openedu.www.model.api.SyncLastAccessedSubsectionResponse;
-import tw.openedu.www.model.api.VideoResponseModel;
-import tw.openedu.www.model.course.BlockPath;
-import tw.openedu.www.model.course.BlockType;
-import tw.openedu.www.model.course.CourseComponent;
-import tw.openedu.www.model.course.HasDownloadEntry;
-import tw.openedu.www.model.course.IBlock;
-import tw.openedu.www.model.course.VideoBlockModel;
-import tw.openedu.www.module.registration.model.RegistrationDescription;
+import tw.openedu.mobile.http.OkHttpUtil;
+import tw.openedu.mobile.model.Filter;
+import tw.openedu.mobile.model.api.AnnouncementsModel;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.model.api.HandoutModel;
+import tw.openedu.mobile.model.api.ResetPasswordResponse;
+import tw.openedu.mobile.model.api.SectionEntry;
+import tw.openedu.mobile.model.api.SyncLastAccessedSubsectionResponse;
+import tw.openedu.mobile.model.api.VideoResponseModel;
+import tw.openedu.mobile.model.course.BlockPath;
+import tw.openedu.mobile.model.course.BlockType;
+import tw.openedu.mobile.model.course.CourseComponent;
+import tw.openedu.mobile.model.course.HasDownloadEntry;
+import tw.openedu.mobile.model.course.IBlock;
+import tw.openedu.mobile.model.course.VideoBlockModel;
+import tw.openedu.mobile.module.registration.model.RegistrationDescription;
 import org.junit.Ignore;
 import org.junit.Test;
 

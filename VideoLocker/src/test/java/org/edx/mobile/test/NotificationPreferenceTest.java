@@ -1,9 +1,9 @@
 package org.openedu.www.test;
 
 
-import tw.openedu.www.model.api.CourseEntry;
-import tw.openedu.www.module.notification.EdxLocalParseChannel;
-import tw.openedu.www.module.notification.NotificationPreference;
+import tw.openedu.mobile.model.api.CourseEntry;
+import tw.openedu.mobile.module.notification.EdxLocalParseChannel;
+import tw.openedu.mobile.module.notification.NotificationPreference;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

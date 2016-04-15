@@ -1,6 +1,6 @@
 package org.openedu.www.test;
 
-import tw.openedu.www.util.DateUtil;
+import tw.openedu.mobile.util.DateUtil;
 import org.junit.Test;
 
 import java.text.ParseException;

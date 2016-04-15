@@ -1,6 +1,6 @@
 package org.openedu.www.test.http;
 
-import tw.openedu.www.model.api.ProfileModel;
+import tw.openedu.mobile.model.api.ProfileModel;
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;
 

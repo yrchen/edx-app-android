@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 import com.google.inject.Injector;
 
-import tw.openedu.www.core.IEdxEnvironment;
+import tw.openedu.mobile.core.IEdxEnvironment;
 import org.openedu.www.test.http.HttpBaseTestCase;
 import org.junit.Before;
 import org.junit.Ignore;

@@ -2,20 +2,20 @@ package org.openedu.www.test.http;
 
 import com.google.inject.Injector;
 
-import tw.openedu.www.http.IApi;
-import tw.openedu.www.http.RestApiManager;
-import tw.openedu.www.model.api.AnnouncementsModel;
-import tw.openedu.www.model.api.AuthResponse;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.model.api.HandoutModel;
-import tw.openedu.www.model.api.ProfileModel;
-import tw.openedu.www.model.api.ResetPasswordResponse;
-import tw.openedu.www.model.api.SectionEntry;
-import tw.openedu.www.model.api.SyncLastAccessedSubsectionResponse;
-import tw.openedu.www.model.api.VideoResponseModel;
-import tw.openedu.www.module.registration.model.RegistrationDescription;
-import tw.openedu.www.services.ServiceManager;
-import tw.openedu.www.util.Config;
+import tw.openedu.mobile.http.IApi;
+import tw.openedu.mobile.http.RestApiManager;
+import tw.openedu.mobile.model.api.AnnouncementsModel;
+import tw.openedu.mobile.model.api.AuthResponse;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.model.api.HandoutModel;
+import tw.openedu.mobile.model.api.ProfileModel;
+import tw.openedu.mobile.model.api.ResetPasswordResponse;
+import tw.openedu.mobile.model.api.SectionEntry;
+import tw.openedu.mobile.model.api.SyncLastAccessedSubsectionResponse;
+import tw.openedu.mobile.model.api.VideoResponseModel;
+import tw.openedu.mobile.module.registration.model.RegistrationDescription;
+import tw.openedu.mobile.services.ServiceManager;
+import tw.openedu.mobile.util.Config;
 import org.junit.Ignore;
 
 import java.util.ArrayList;

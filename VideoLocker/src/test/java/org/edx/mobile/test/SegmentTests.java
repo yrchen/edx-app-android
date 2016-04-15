@@ -4,9 +4,9 @@ import com.segment.analytics.Options;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 
-import tw.openedu.www.module.analytics.ISegment;
-import tw.openedu.www.module.analytics.ISegmentImpl;
-import tw.openedu.www.module.analytics.ISegmentTracker;
+import tw.openedu.mobile.module.analytics.ISegment;
+import tw.openedu.mobile.module.analytics.ISegmentImpl;
+import tw.openedu.mobile.module.analytics.ISegmentTracker;
 import org.junit.Test;
 import org.mockito.Mockito;
 

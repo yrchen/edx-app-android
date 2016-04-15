@@ -2,9 +2,9 @@ package org.openedu.www.view;
 
 import android.support.annotation.NonNull;
 
-import tw.openedu.www.base.BaseAppActivity;
-import tw.openedu.www.view.Presenter;
-import tw.openedu.www.view.PresenterFragment;
+import tw.openedu.mobile.base.BaseAppActivity;
+import tw.openedu.mobile.view.Presenter;
+import tw.openedu.mobile.view.PresenterFragment;
 
 import org.openedu.www.test.BaseTestCase;
 import org.openedu.www.test.GenericSuperclassUtils;

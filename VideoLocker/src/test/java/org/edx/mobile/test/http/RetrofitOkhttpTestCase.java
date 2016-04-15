@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.jakewharton.retrofit.Ok3Client;
 
-import tw.openedu.www.http.GzipRequestInterceptor;
-import tw.openedu.www.http.OauthHeaderRequestInterceptor;
-import tw.openedu.www.http.OfflineRequestInterceptor;
+import tw.openedu.mobile.http.GzipRequestInterceptor;
+import tw.openedu.mobile.http.OauthHeaderRequestInterceptor;
+import tw.openedu.mobile.http.OfflineRequestInterceptor;
 import org.openedu.www.test.BaseTestCase;
 import org.junit.Ignore;
 import org.robolectric.RuntimeEnvironment;

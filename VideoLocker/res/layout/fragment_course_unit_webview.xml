@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <tw.openedu.www.view.custom.EdxAssessmentWebView
+    <tw.openedu.mobile.view.custom.EdxAssessmentWebView
         android:id="@+id/course_unit_webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

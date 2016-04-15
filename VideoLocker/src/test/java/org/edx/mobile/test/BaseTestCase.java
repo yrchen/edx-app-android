@@ -10,9 +10,9 @@ import com.google.inject.Module;
 import com.google.inject.util.Modules;
 
 import org.openedu.www.CustomRobolectricTestRunner;
-import tw.openedu.www.core.EdxDefaultModule;
-import tw.openedu.www.logger.Logger;
-import tw.openedu.www.util.Config;
+import tw.openedu.mobile.core.EdxDefaultModule;
+import tw.openedu.mobile.logger.Logger;
+import tw.openedu.mobile.util.Config;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;

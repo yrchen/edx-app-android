@@ -1,12 +1,12 @@
 package org.openedu.www.test.module;
 
-import tw.openedu.www.model.VideoModel;
-import tw.openedu.www.model.db.DownloadEntry;
-import tw.openedu.www.model.db.DownloadEntry.DownloadedState;
-import tw.openedu.www.model.db.DownloadEntry.WatchedState;
-import tw.openedu.www.module.db.DataCallback;
-import tw.openedu.www.module.db.IDatabase;
-import tw.openedu.www.module.db.impl.DatabaseFactory;
+import tw.openedu.mobile.model.VideoModel;
+import tw.openedu.mobile.model.db.DownloadEntry;
+import tw.openedu.mobile.model.db.DownloadEntry.DownloadedState;
+import tw.openedu.mobile.model.db.DownloadEntry.WatchedState;
+import tw.openedu.mobile.module.db.DataCallback;
+import tw.openedu.mobile.module.db.IDatabase;
+import tw.openedu.mobile.module.db.impl.DatabaseFactory;
 import org.openedu.www.test.BaseTestCase;
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;

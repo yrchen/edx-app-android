@@ -12,12 +12,12 @@ import android.widget.ProgressBar;
 
 import com.joanzapata.iconify.IconDrawable;
 
-import tw.openedu.www.R;
-import tw.openedu.www.http.OkHttpUtil;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.model.course.CourseComponent;
-import tw.openedu.www.view.CourseBaseActivity;
-import tw.openedu.www.view.Router;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.http.OkHttpUtil;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.model.course.CourseComponent;
+import tw.openedu.mobile.view.CourseBaseActivity;
+import tw.openedu.mobile.view.Router;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;

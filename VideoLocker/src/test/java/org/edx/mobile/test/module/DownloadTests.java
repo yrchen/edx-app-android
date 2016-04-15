@@ -1,9 +1,9 @@
 package org.openedu.www.test.module;
 
-import tw.openedu.www.model.download.NativeDownloadModel;
-import tw.openedu.www.module.download.DownloadFactory;
-import tw.openedu.www.module.download.IDownloadManager;
-import tw.openedu.www.module.prefs.UserPrefs;
+import tw.openedu.mobile.model.download.NativeDownloadModel;
+import tw.openedu.mobile.module.download.DownloadFactory;
+import tw.openedu.mobile.module.download.IDownloadManager;
+import tw.openedu.mobile.module.prefs.UserPrefs;
 import org.openedu.www.test.BaseTestCase;
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;

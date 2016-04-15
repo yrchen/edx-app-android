@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/edx_grayscale_neutral_black_t">
 
-    <tw.openedu.www.view.custom.CropImageView
+    <tw.openedu.mobile.view.custom.CropImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

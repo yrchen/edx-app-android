@@ -3,13 +3,13 @@ package org.openedu.www.view;
 import android.view.View;
 import android.webkit.WebView;
 
-import tw.openedu.www.R;
-import tw.openedu.www.http.OkHttpUtil;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.model.course.BlockType;
-import tw.openedu.www.model.course.CourseComponent;
-import tw.openedu.www.model.course.HtmlBlockModel;
-import tw.openedu.www.view.CourseUnitWebViewFragment;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.http.OkHttpUtil;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.model.course.BlockType;
+import tw.openedu.mobile.model.course.CourseComponent;
+import tw.openedu.mobile.model.course.HtmlBlockModel;
+import tw.openedu.mobile.view.CourseUnitWebViewFragment;
 
 import org.junit.Test;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;

@@ -1,10 +1,10 @@
 package org.openedu.www.test;
 
-import tw.openedu.www.model.Filter;
-import tw.openedu.www.model.course.BlockModel;
-import tw.openedu.www.model.course.BlockType;
-import tw.openedu.www.model.course.CourseComponent;
-import tw.openedu.www.model.course.VideoBlockModel;
+import tw.openedu.mobile.model.Filter;
+import tw.openedu.mobile.model.course.BlockModel;
+import tw.openedu.mobile.model.course.BlockType;
+import tw.openedu.mobile.model.course.CourseComponent;
+import tw.openedu.mobile.model.course.VideoBlockModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

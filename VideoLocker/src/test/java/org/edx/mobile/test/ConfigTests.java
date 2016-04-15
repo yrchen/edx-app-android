@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import tw.openedu.www.util.Config;
+import tw.openedu.mobile.util.Config;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

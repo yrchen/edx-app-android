@@ -3,8 +3,8 @@ package org.openedu.www.test;
 import android.support.annotation.NonNull;
 
 import org.openedu.www.CustomRobolectricTestRunner;
-import tw.openedu.www.util.observer.AsyncCallableUtils;
-import tw.openedu.www.util.observer.MainThreadObservable;
+import tw.openedu.mobile.util.observer.AsyncCallableUtils;
+import tw.openedu.mobile.util.observer.MainThreadObservable;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;

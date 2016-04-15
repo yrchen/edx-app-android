@@ -3,7 +3,7 @@ package org.openedu.www.test;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
-import tw.openedu.www.base.MainApplication;
+import tw.openedu.mobile.base.MainApplication;
 
 /**
  * The {@link MainApplication} class is overridden for testing in

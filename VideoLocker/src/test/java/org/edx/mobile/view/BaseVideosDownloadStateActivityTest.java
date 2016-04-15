@@ -3,11 +3,11 @@ package org.openedu.www.view;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import tw.openedu.www.R;
-import tw.openedu.www.base.BaseVideosDownloadStateActivity;
-import tw.openedu.www.model.db.DownloadEntry;
-import tw.openedu.www.module.db.IDatabase;
-import tw.openedu.www.view.DownloadListActivity;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.base.BaseVideosDownloadStateActivity;
+import tw.openedu.mobile.model.db.DownloadEntry;
+import tw.openedu.mobile.module.db.IDatabase;
+import tw.openedu.mobile.view.DownloadListActivity;
 
 import org.junit.Test;
 import org.robolectric.Robolectric;

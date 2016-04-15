@@ -12,12 +12,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import tw.openedu.www.R;
-import tw.openedu.www.http.OkHttpUtil;
-import tw.openedu.www.model.api.EnrolledCoursesResponse;
-import tw.openedu.www.model.course.CourseComponent;
-import tw.openedu.www.model.course.VideoBlockModel;
-import tw.openedu.www.view.CourseUnitVideoFragment;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.http.OkHttpUtil;
+import tw.openedu.mobile.model.api.EnrolledCoursesResponse;
+import tw.openedu.mobile.model.course.CourseComponent;
+import tw.openedu.mobile.model.course.VideoBlockModel;
+import tw.openedu.mobile.view.CourseUnitVideoFragment;
 
 import org.junit.Test;
 import org.robolectric.Robolectric;

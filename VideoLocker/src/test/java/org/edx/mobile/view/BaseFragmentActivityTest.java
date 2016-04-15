@@ -22,8 +22,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import tw.openedu.www.R;
-import tw.openedu.www.base.BaseFragmentActivity;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.base.BaseFragmentActivity;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;

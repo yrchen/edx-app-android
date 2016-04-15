@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tw.openedu.www"
+    package="tw.openedu.mobile"
     android:installLocation="auto" >
 
     <!-- Required by app for server communication and video download -->
@@ -33,8 +33,8 @@
 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <permission android:protectionLevel="signature"
-        android:name="tw.openedu.www.permission.C2D_MESSAGE" />
-    <uses-permission android:name="tw.openedu.www.permission.C2D_MESSAGE" />
+        android:name="tw.openedu.mobile.permission.C2D_MESSAGE" />
+    <uses-permission android:name="tw.openedu.mobile.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
@@ -42,10 +42,10 @@
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name="tw.openedu.www.base.RuntimeApplication" >
+        android:name="tw.openedu.mobile.base.RuntimeApplication" >
 
         <activity
-            android:name="tw.openedu.www.view.SplashActivity"
+            android:name="tw.openedu.mobile.view.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoDisplay">
@@ -57,13 +57,13 @@
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.LaunchActivity"
+            android:name="tw.openedu.mobile.view.LaunchActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         
         <activity
-            android:name="tw.openedu.www.view.LoginActivity"
+            android:name="tw.openedu.mobile.view.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -73,51 +73,51 @@
         </activity>
         
         <activity
-            android:name="tw.openedu.www.view.MyCoursesListActivity"
+            android:name="tw.openedu.mobile.view.MyCoursesListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.CourseDashboardActivity"
+            android:name="tw.openedu.mobile.view.CourseDashboardActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
         </activity>
         <activity
-            android:name="tw.openedu.www.view.CourseOutlineActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity
-            android:name="tw.openedu.www.view.CourseDiscussionTopicsActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity android:name="tw.openedu.www.view.CourseDiscussionPostsActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity android:name="tw.openedu.www.view.CourseDiscussionCommentsActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity android:name="tw.openedu.www.view.CourseDiscussionResponsesActivity"
+            android:name="tw.openedu.mobile.view.CourseOutlineActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.CourseUnitNavigationActivity"
+            android:name="tw.openedu.mobile.view.CourseDiscussionTopicsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name="tw.openedu.mobile.view.CourseDiscussionPostsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name="tw.openedu.mobile.view.CourseDiscussionCommentsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity android:name="tw.openedu.mobile.view.CourseDiscussionResponsesActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity
+            android:name="tw.openedu.mobile.view.CourseUnitNavigationActivity"
             android:label="@string/app_name"
             android:screenOrientation="user"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -125,119 +125,119 @@
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.CourseLectureListActivity"
+            android:name="tw.openedu.mobile.view.CourseLectureListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
         </activity>
          
         <activity
-            android:name="tw.openedu.www.view.MyVideosTabActivity"
+            android:name="tw.openedu.mobile.view.MyVideosTabActivity"
             android:label="@string/label_my_videos"
             android:screenOrientation="portrait"
             >
         </activity>
         
         <activity
-            android:name="tw.openedu.www.view.DownloadListActivity"
+            android:name="tw.openedu.mobile.view.DownloadListActivity"
             android:label="@string/title_download"
             android:screenOrientation="portrait"
             >
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.WebViewFindCoursesActivity"
+            android:name="tw.openedu.mobile.view.WebViewFindCoursesActivity"
             android:label="@string/find_courses_title"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.NativeFindCoursesActivity"
+            android:name="tw.openedu.mobile.view.NativeFindCoursesActivity"
             android:label="@string/find_courses_title"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.CourseInfoActivity"
+            android:name="tw.openedu.mobile.view.CourseInfoActivity"
             android:label="@string/find_courses_title"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="tw.openedu.www.view.CourseDetailActivity"
+            android:name="tw.openedu.mobile.view.CourseDetailActivity"
             android:label="@string/find_courses_title"
             android:screenOrientation="portrait">
         </activity>
         
         <activity
-            android:name="tw.openedu.www.view.VideoListActivity"
+            android:name="tw.openedu.mobile.view.VideoListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.CourseHandoutActivity"
+            android:name="tw.openedu.mobile.view.CourseHandoutActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.CourseAnnouncementsActivity"
+            android:name="tw.openedu.mobile.view.CourseAnnouncementsActivity"
             android:label="@string/announcement_title"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.DiscussionAddCommentActivity"
+            android:name="tw.openedu.mobile.view.DiscussionAddCommentActivity"
             android:label="@string/discussion_add_comment_title"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.DiscussionAddResponseActivity"
+            android:name="tw.openedu.mobile.view.DiscussionAddResponseActivity"
             android:label="@string/discussion_add_response_title"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.DiscussionAddPostActivity"
+            android:name="tw.openedu.mobile.view.DiscussionAddPostActivity"
             android:label="@string/discussion_post_create_new_post"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.CertificateActivity"
+            android:name="tw.openedu.mobile.view.CertificateActivity"
             android:label="@string/tab_label_certificate"
             android:screenOrientation="portrait" />
         <activity
-            android:name="tw.openedu.www.view.SettingsActivity"
+            android:name="tw.openedu.mobile.view.SettingsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="tw.openedu.www.view.RegisterActivity"
+            android:name="tw.openedu.mobile.view.RegisterActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name="tw.openedu.www.profiles.UserProfileActivity"
+        <activity android:name="tw.openedu.mobile.profiles.UserProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoShadow"
             android:label=""/>
 
-        <activity android:name="tw.openedu.www.view.EditUserProfileActivity"
+        <activity android:name="tw.openedu.mobile.view.EditUserProfileActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="tw.openedu.www.view.FormFieldActivity"
+        <activity android:name="tw.openedu.mobile.view.FormFieldActivity"
             android:screenOrientation="portrait"
             android:label=""
             android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name="tw.openedu.www.view.CropImageActivity"
+        <activity android:name="tw.openedu.mobile.view.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:label=""/>
 
-        <activity android:name="tw.openedu.www.view.dialog.WebViewDialogActivity"
+        <activity android:name="tw.openedu.mobile.view.dialog.WebViewDialogActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:label=""/>
 
-        <receiver android:name="tw.openedu.www.module.download.DownloadCompleteReceiver">
+        <receiver android:name="tw.openedu.mobile.module.download.DownloadCompleteReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -246,14 +246,14 @@
          
         <!-- Setup for Code Coverage -->
         <instrumentation
-            android:name="tw.openedu.www.instrumentation.EdxInstrumentation"
-            android:targetPackage="tw.openedu.www" >
+            android:name="tw.openedu.mobile.instrumentation.EdxInstrumentation"
+            android:targetPackage="tw.openedu.mobile" >
         </instrumentation>
 	
         <!-- adb shell am broadcast -a org.edx.mobile.END_EMMA -->
-        <receiver android:name="tw.openedu.www.instrumentation.EndEmmaBroadcast" >
+        <receiver android:name="tw.openedu.mobile.instrumentation.EndEmmaBroadcast" >
             <intent-filter>
-                <action android:name="tw.openedu.www.END_EMMA" />
+                <action android:name="tw.openedu.mobile.END_EMMA" />
             </intent-filter>
         </receiver>
 		 
@@ -264,10 +264,10 @@
         <!-- Setup Facebook -->
         <activity android:name="com.facebook.LoginActivity" />
 
-        <service android:name="tw.openedu.www.services.DownloadSpeedService" />
+        <service android:name="tw.openedu.mobile.services.DownloadSpeedService" />
 
         <receiver
-            android:name="tw.openedu.www.receivers.NetworkConnectivityReceiver"
+            android:name="tw.openedu.mobile.receivers.NetworkConnectivityReceiver"
             android:label="NetworkChangeReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -279,13 +279,13 @@
         <!--  https://www.parse.com/apps/quickstart#parse_push/android/existing  -->
         <service android:name="com.parse.PushService" />
         <!-- we have to add a level of indirection to avoid crash as parse maybe disabled by setting -->
-        <receiver android:name="tw.openedu.www.module.notification.EdxParseBroadcastReceiver">
+        <receiver android:name="tw.openedu.mobile.module.notification.EdxParseBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-        <receiver android:name="tw.openedu.www.module.notification.EdxParsePushBroadcastReceiver"
+        <receiver android:name="tw.openedu.mobile.module.notification.EdxParsePushBroadcastReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -298,7 +298,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="tw.openedu.www" />
+                <category android:name="tw.openedu.mobile" />
             </intent-filter>
         </receiver>
     </application>

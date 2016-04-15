@@ -3,7 +3,7 @@ package org.openedu.www.test;
 import android.content.Intent;
 import android.net.Uri;
 
-import tw.openedu.www.util.BrowserUtil;
+import tw.openedu.mobile.util.BrowserUtil;
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;
 

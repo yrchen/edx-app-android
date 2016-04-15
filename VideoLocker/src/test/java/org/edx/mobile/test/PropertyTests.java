@@ -1,6 +1,6 @@
 package org.openedu.www.test;
 
-import tw.openedu.www.BuildConfig;
+import tw.openedu.mobile.BuildConfig;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

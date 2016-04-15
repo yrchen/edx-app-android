@@ -6,8 +6,8 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import org.assertj.android.api.Assertions;
-import tw.openedu.www.R;
-import tw.openedu.www.view.dialog.WebViewDialogActivity;
+import tw.openedu.mobile.R;
+import tw.openedu.mobile.view.dialog.WebViewDialogActivity;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
