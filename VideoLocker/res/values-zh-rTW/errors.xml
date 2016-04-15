@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <!--Network error messages-->
+  <!--Error shown when  user attempts an action but needs an internet connection-->
+  <string name="network_not_connected">您尚未連線至網際網路。</string>
+  <!--Concise error shown when user attempts an action but needs an internet connection-->
+  <string name="network_not_connected_short">網路無法連線</string>
+  <!--Alert dialog title shown when a network request fails-->
+  <string name="reset_no_network_title">連線錯誤</string>
+  <!--Alert dialog content shown when a network request fails because the user has no internet connection-->
+  <string name="reset_no_network_message">您尚未連線至網際網路，請確認您的網路連線。</string>
+  <!--Title of prompt indicating issue loading a video-->
+  <string name="network_error_header">影片載入異常</string>
+  <!--Content of prompt indicating issue loading a video-->
+  <string name="network_error_message">請檢查您的網路連線。</string>
+  <!--Login error messages-->
+  <!--Error shown during login when user attempts login without entering a username or e-mail-->
+  <string name="error_enter_email">請輸入您的使用者名稱或電子郵件地址並且再試一次。</string>
+  <!--Error shown during login when user enters an invalid email address-->
+  <string name="error_invalid_email">請確認您的電子郵件地址格式正確並且再試一次。</string>
+  <!--Error shown during login when user attempts login without entering a password-->
+  <string name="error_enter_password">請輸入您的密碼並且再試一次。</string>
+  <!--Title of alert shown during login when user attempts login via Facebook without having linked their account-->
+  <string name="error_account_not_linked_title_fb">臉書帳號尚未連結至{platform_name}帳號</string>
+  <!--Content of alert shown during login when user attempts login via Facebook without having linked their account-->
+  <string name="error_account_not_linked_desc_fb">請確保您的臉書帳號已連結至{platform_name}帳號</string>
+  <!--Title of alert shown during login when user attempts login via Google without having linked their account-->
+  <string name="error_account_not_linked_title_google">Google帳號尚未連結至{platform_name}帳號</string>
+  <!--Content of alert shown during login when user attempts login via Google without having linked their account-->
+  <string name="error_account_not_linked_desc_google">請確保您的Google帳號已連結至{platform_name}帳號</string>
+  <!--Download error messages-->
+  <!--Label shown on video list item whose download failed-->
+  <string name="error_download_failed">下載錯誤 </string>
+  <!--Confirmation message shown when attempting to download a large quantity of video data-->
+  <string name="file_size_exceeded">欲下載的檔案大於裝置可儲存的空間</string>
+  <!--Confirmation message shown when attempting to download a large quantity of video data-->
+  <string name="download_exceed_message">您所選擇的影片檔案大於1GB。
+您確定要下載這些影片嗎?</string>
+  <!--Message shown when user attempts to download a video over cellular data,
+    but has chosen to only allow video downloads over wifi-->
+  <string name="wifi_off_message">您現在的下載設定僅允許透過Wi-Fi下載檔案。
+\n請連接至Wi-Fi網路或更改下載設定。</string>
+  <!--Offline Access-->
+  <!--Label shown when user attempts to view a course section that hasn't been synced-->
+  <string name="section_offline_header">本章節無法以離線模式查看</string>
+  <!--Label shown when user attempts to view a course section that hasn't been synced-->
+  <string name="section_offline_message">如果您已經下載其他章節的內容，
+\n請到那章節觀看內容。</string>
+  <!--Alert dialog title shown when user attempts to view a video that hasn't been synced-->
+  <string name="video_offline_header">此影片無法以離線模式觀看</string>
+  <!--Alert dialog content shown when user attempts to view a video that hasn't been synced-->
+  <string name="video_offline_message">請選擇已下載至您的裝置之影片。</string>
+  <!--Registration Error Messages-->
+  <!--Error prompt shown during registration to indicate an empty field. Argument is a field name-->
+  <string name="error_enter_field">請輸入您的%1$s</string>
+  <!--Error prompt shown during registration to indicate a field missing a selection. Argument is a field name-->
+  <string name="error_select_field">請選擇您的%1$s.</string>
+  <!--Error prompt shown during registration when a field entry is too short. Arguments are 1) a field name, 2) a number-->
+  <string name="error_min_length">%1$s至少需要%2$d字元。</string>
+  <!--Error prompt shown during registration when a field entry is too long. Arguments are 1) a field name, 2) a number-->
+  <string name="error_max_length">%1$s不能超過%2$d字元。</string>
+</resources>

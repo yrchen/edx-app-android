@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Certificates 
+ Label congratulation user on finishing course -->
+<string name="course_details_congratulations">"恭喜您！"</string>
+
+<!-- Message for user who has successfully completed a certificate course -->
+<string name="course_details_earned_cert">"您已經獲得一份證書"</string>
+
+<!-- Button that opens a full view of an earned certificate -->
+<string name="course_details_view_cert_button">"檢視證書"</string>
+
+<!-- Course Discovery 
+ Enroll Now button text -->
+<string name="course_detail_enroll_now_button">"立刻註冊"</string>
+
+<!-- Enroll Now button text -->
+<string name="enroll_now_button_text">"立刻註冊"</string>
+
+<!-- View Course button text text -->
+<string name="view_course_button_text">"檢視課程"</string>
+
+<!-- Floating overlay text shown to user when they succeed at enrolling in a course -->
+<string name="you_are_now_enrolled">"您已註冊此課程"</string>
+
+<!-- Error shown user attempts to enroll in a course they are already enrolled in -->
+<string name="already_enrolled">"您已經註冊此課程"</string>
+
+<!-- Error message shown when dashboard cannot be shown from course detail view -->
+<string name="cannot_show_dashboard">"無法顯示課程儀表板"</string>
+
+<!-- Course Sharing 
+ Description of button that will open the share course menu -->
+<string name="share_course_button">"分享您的課程"</string>
+
+<!-- Share menu title -->
+<string name="share_course_popup_header">"分享課程於"</string>
+
+<!-- Settings Page 
+ Label for wifi only switch -->
+<string name="settings_wifi_top">"僅供Wi-Fi下載"</string>
+
+<!-- Label explaining what wifi only means in detail -->
+<string name="settings_wifi_bottom">"唯有Wi-Fi開啟時才下載內容"</string>
+
+<!-- Certificate Page 
+ Description of button that will open the certificate sharing menu -->
+<string name="share_certificate_button">"分享您的證書"</string>
+
+<!-- Tab of tab for certicate for finished course -->
+<string name="tab_label_certificate">"證書"</string>
+
+<!-- Header for popup list of share targets -->
+<string name="share_certificate_popup_header">"分享您的證書"</string>
+
+<!-- Data Usage Dialog 
+ Alert dialog error message shown when using a feature with a required Internet connection -->
+<string name="need_data">"此功能需要啟動網路連線。"</string>
+
+<!-- Login Activity Place Holders 
+ Hint text for login field -->
+<string name="email_username">"使用者名稱或電子郵件地址"</string>
+
+<!-- Hint text for email address field in reset password dialog -->
+<string name="email">"電子郵件地址"</string>
+
+<!-- Hint text for password field -->
+<string name="password">"密碼"</string>
+
+<!-- Button text allowing user to reset their password -->
+<string name="forgot_password">"忘記密碼？"</string>
+
+<!-- Button initiating login process after user enters credentials like username and password -->
+<string name="login">"登入"</string>
+
+<!-- Accessible content description of sign in button on Log in screen -->
+<string name="login_btn">"登入按鈕"</string>
+
+<!-- Message shown while waiting for action -->
+<string name="progressText">"請稍候..."</string>
+
+<!-- Message shown while user waits for response to a sign in request -->
+<string name="signing_in">"登入中..."</string>
+
+<!-- Message for shown after tapping Sign In -->
+<string name="error_message">"錯誤訊息"</string>
+
+<!-- Generic error during log in -->
+<string name="error_heading">"登入時發生以下錯誤"</string>
+
+<!-- Error during log in. -->
+<string name="login_failed">"請確認您的使用者名稱或電子郵件地址及密碼是正確的，並且再試一次。"</string>
+
+<!-- Error logging in without activating account. -->
+<string name="login_failed_no_grant">"此帳戶尚未啟用，請檢查您的電子郵件信箱啟用帳號。"</string>
+
+<!-- Button text allowing a user to go to the register screen -->
+<string name="new_user">"需要一個帳戶？"</string>
+<string name="by_signing_up">"登入此應用程式，您同意"</string>
+<string name="licensing_agreement">"{platform_name}服務條款及榮譽守則"</string>
+<string name="login_title">"登入{platform_name}"</string>
+
+<!-- Accessible content description of close button on Sign in and Sign up screen -->
+<string name="close">"關閉"</string>
+
+<!-- Accessible content description prefix of dropdowns on Sign up screen, like, country and gender dropdowns -->
+<string name="dropdown_list_prefix">"下拉式選單"</string>
+
+<!-- Navigation Drawer Labels 
+ Button to open drawer -->
+<string name="label_open_drawer">"開啟導覽"</string>
+
+<!-- Button to open drawer -->
+<string name="label_close_drawer">"關閉導覽"</string>
+
+<!-- Button text to show user Settings screen -->
+<string name="action_settings">"設定"</string>
+
+<!-- Title of user's course list screen -->
+<string name="label_my_courses">"我的課程"</string>
+
+<!-- Title of user's downloaded videos list screen -->
+<string name="label_my_videos">"我的影片"</string>
+
+<!-- Title of Find Courses screen -->
+<string name="label_find_courses">"搜尋課程"</string>
+
+<!-- Button allowing users to send an email for feedback -->
+<string name="label_submit_feedback">"提交回饋"</string>
+
+<!-- Toggle switch on state label -->
+<string name="toggle_turn_on">"開"</string>
+
+<!-- Toggle switch off state label -->
+<string name="toggle_turn_off">"關"</string>
+
+<!-- Logout button label -->
+<string name="logout">"登出"</string>
+
+<!-- Settings screen title -->
+<string name="settings_txt">"設定"</string>
+
+<!-- Settings screen version -->
+<string name="label_version">"版本"</string>
+
+<!-- Button text to show user Settings screen -->
+<string name="label_settings">"我的設定"</string>
+
+<!-- Help Dialog Place Holder messages 
+ Reset password alert dialog title -->
+<string name="confirm_dialog_title_help">"重設密碼"</string>
+
+<!-- Reset password alert dialog message -->
+<string name="success_dialog_title_help">"重設密碼之電子郵件"</string>
+
+<!-- Reset password alert dialog title -->
+<string name="title_reset_password_failed">"重設密碼錯誤"</string>
+
+<!-- Label for switch controlling whether users permit downloading using cellular data or only wifi -->
+<string name="wifi_dialog_title_help">"允許行動下載"</string>
+
+<!-- Password reset sent succesfully alert -->
+<string name="success_dialog_message_help">"我們已發送一封重設密碼說明至您的電子郵件信箱。 
+如果您在幾分鐘後尚未看見，請至您的垃圾郵箱確認。"</string>
+
+<!-- Password reset dialog prompt -->
+<string name="confirm_dialog_message_help">"請輸入您帳戶的電子郵件地址，我們將會發送給您重設密碼說明。"</string>
+
+<!-- Label explaining toggle for cellular data access -->
+<string name="wifi_dialog_message_help">"允許您的裝置在沒有Wi-Fi時，透過行動網路連接下載，您可能會被收取連線費用。"</string>
+
+<!-- Confirmation text for delete video dialog -->
+<string name="delete_dialog_title_help">"確認刪除"</string>
+<plurals name="delete_video_dialog_msg">
+<item quantity="other">"您確定要刪除這些影片嗎？"</item>
+</plurals>
+
+<!-- Alert dialog button label -->
+<string name="delete_successful_dialog_title_help">"刪除"</string>
+
+<!-- Alert dialog title for users with zero rated data -->
+<string name="leaving_app_data_title">"離開{platform_name}行動應用程式"</string>
+
+<!-- Alert dialog content for users with zero rated data -->
+<string name="leaving_app_data_message">"如果您離開此行動應用程式，您將不能再查看免費的{platform_name}課程內容。連線可能會被收取數據費用。"</string>
+
+<!-- Reset Dialog Fragment Place Holder messages -->
+<string name="reset_dialog_title">"重設標題"</string>
+
+<!-- Title of agreement users must accept to use the app -->
+<string name="end_user_title">"使用者授權合約"</string>
+
+<!-- My Courses 
+ Row of course on dashboard screen -->
+<string name="courseware_title">"課程"</string>
+
+<!-- Row of course on dashboard screen 
+ NOTE: TODO - not final one -->
+<string name="courseware_subtitle">"存取影片以及作業"</string>
+
+<!-- Row of Discussion on dashboard screen -->
+<string name="discussion_title">"討論"</string>
+
+<!-- Row of Discussion on dashboard screen 
+ NOTE: TODO - not final one -->
+<string name="discussion_subtitle">"參與討論"</string>
+
+<!-- Row of Handouts on dashboard screen -->
+<string name="handouts_title">"講義"</string>
+
+<!-- Row of Handouts on dashboard screen 
+ NOTE: TODO - not final one -->
+<string name="handouts_subtitle">"搜尋重要課程資訊"</string>
+
+<!-- Row of announcement on dashboard screen -->
+<string name="announcement_title">"公告"</string>
+
+<!-- Row of announcement on dashboard screen 
+ NOTE: TODO - not final one -->
+<string name="announcement_subtitle">"隨時追蹤最新消息"</string>
+
+<!-- Accessible content description of school code label a course -->
+<string name="school_code">"學校編號"</string>
+
+<!-- Accessible content description of course code label for a course -->
+<string name="course_code">"課程編號"</string>
+
+<!-- Accessible content description of course name label field -->
+<string name="course_name">"課程名稱"</string>
+
+<!-- Label indicating new course content has been downloaded -->
+<string name="new_course_content">"新課程內容"</string>
+
+<!-- Label for date when course starts -->
+<string name="label_starting">"開始於：{date}"</string>
+
+<!-- Label for course that has ended -->
+<string name="label_ended">"已結束於：{date}"</string>
+
+<!-- Label for date when course is ending -->
+<string name="label_ending">"結束於：{date}"</string>
+
+<!-- Title for the course filter menu popup -->
+<string name="course_view_modes">"課程檢視模式"</string>
+
+<!-- Label for the course filter menu popup option for filtering by videos only -->
+<string name="course_view_mode_videos_only">"僅有影片"</string>
+
+<!-- Label for the course filter menu popup option for displaying the full course -->
+<string name="course_view_mode_full_course">"完整課程"</string>
+
+<!-- Label for the menu popup for viewing the course on the web -->
+<string name="course_view_on_web">"在網頁上檢視"</string>
+
+<!-- Label for the menu popup for changing mode to Videos Only/Full Course -->
+<string name="course_change_mode">"模式選擇"</string>
+
+<!-- Course Details 
+ Accessible content description of label for course content -->
+<string name="course_content">"課程內容"</string>
+
+<!-- Accessible content description of label for course name -->
+<string name="chapter_name">"課程名稱"</string>
+
+<!-- Tab title for courseware section -->
+<string name="tab_label_courseware">"教材"</string>
+
+<!-- Tab title for course announcements section -->
+<string name="tab_label_announcement">"公告"</string>
+
+<!-- Tab title for course handouts section -->
+<string name="tab_label_handouts">"講義"</string>
+
+<!-- Tab title for course info section -->
+<string name="tab_label_course_info">"課程資訊"</string>
+
+<!-- Button for last accessed course section. Will be followed by course name -->
+<string name="last_accessed">"上次存取 -"</string>
+
+<!-- Label shown when no courseware content is available -->
+<string name="no_chapter_text">"目前尚無教材可檢視。"</string>
+
+<!-- Label shown when user is enrolled in no courses -->
+<string name="no_courses_to_display">"您尚未註冊任何課程"</string>
+
+<!-- Label shown when no announcements are available for a course -->
+<string name="no_announcements_to_display">"此課程尚未發布任何公告"</string>
+
+<!-- Label shown when no handouts are available for a course -->
+<string name="no_handouts_to_display">"此課程尚未發布任何講義。"</string>
+
+<!-- Label shown when there is no course information available for a course -->
+<string name="no_information_to_display">"此課程尚未任何額外資訊"</string>
+
+<!-- Discussion Topics 
+ Label for the discussion topics page -->
+<string name="discussion_topics_title">"討論中的題目"</string>
+
+<!-- Hint displayed in search view for discussion posts -->
+<string name="topics_search">"搜尋所有文章"</string>
+
+<!-- Discussion Posts Fragment
+Title for discussion post search results -->
+<string name="discussion_posts_search_title">"搜尋結果"</string>
+
+<!-- Label for creating a new post -->
+<string name="discussion_post_create_new_post">"建立新的文章"</string>
+
+<!-- Discussion posts filter options
+Discussion posts filter for all posts -->
+<string name="discussion_posts_filter_all_posts">"全部的文章"</string>
+
+<!-- Discussion posts filter for unread posts -->
+<string name="discussion_posts_filter_unread_posts">"未讀"</string>
+
+<!-- Discussion posts filter for unanswered posts -->
+<string name="discussion_posts_filter_unanswered_posts">"尚未回答的"</string>
+
+<!-- Discussion posts sort options
+Discussion posts sort by recent activity -->
+<string name="discussion_posts_sort_recent_activity">"最近的動態"</string>
+
+<!-- Discussion posts sort by most activity -->
+<string name="discussion_posts_sort_most_activity">"最常的動態"</string>
+
+<!-- Discussion posts sort by most votes -->
+<string name="discussion_posts_sort_most_votes">"投票數最多的"</string>
+
+<!-- Label for discussion post authored by the community TA -->
+<string name="discussion_priviledged_author_label_ta">"社群助教"</string>
+
+<!-- Label for discussion post authored by the staff -->
+<string name="discussion_priviledged_author_label_staff">"員工"</string>
+
+<!-- The date and author of an answer to a discussion question e.g. "Marked as answer 2 days ago by Khalid TA" -->
+<string name="answer_author_attribution">"於{time}被{author}標記為答案 {author_label}"</string>
+
+<!-- The date and author of an endorsed response to a discussion thread e.g. "Endorsed 2 days ago by Khalid TA" -->
+<string name="endorser_attribution">"於{time}被{author}所贊成 {author_label}"</string>
+
+<!-- Label for the visibility of a discussion post that is only visible to cohort -->
+<string name="discussion_post_visibility_cohort">"此文章僅能被{cohort}檢視"</string>
+
+<!-- Label for the visibility of a discussion post that is visible to everyone -->
+<string name="discussion_post_visibility_everyone">"此文章可被任何人檢視"</string>
+
+<!-- Discussion Responses
+Label for question type discussions that are answered -->
+<string name="course_discussion_answered_title">"已回答的問題"</string>
+
+<!-- Label for question type discussions that are unanswered -->
+<string name="course_discussion_unanswered_title">"尚未回答的問題"</string>
+
+<!-- Label for indicating that a response is an answer -->
+<string name="discussion_responses_answer">"答案"</string>
+
+<!-- Label for indicating that a response is endorsed -->
+<string name="discussion_responses_endorsed">"贊成"</string>
+
+<!-- Label for time span when its less than a second after posting a response/comment -->
+<string name="just_now">"就是現在"</string>
+
+<!-- Label for letting the user know his/her response was successfully added -->
+<string name="discussion_response_posted">"您的回應已新增"</string>
+
+<!-- Label for letting the user know his/her comment was successfully added -->
+<string name="discussion_comment_posted">"您的意見已新增"</string>
+
+<!-- Label to indicate discussion response is not marked as inappropriate -->
+<string name="discussion_responses_report_label">"回報"</string>
+
+<!-- Label for discussion response that has been marked as inappropriate -->
+<string name="discussion_responses_reported_label">"取消回報"</string>
+
+<!-- Label for a discussion thread that the user is not following -->
+<string name="discussion_responses_action_bar_follow_text">"追蹤"</string>
+
+<!-- Label for a discussion thread that the user is following -->
+<string name="discussion_responses_action_bar_unfollow_text">"取消追蹤"</string>
+
+<!-- Title in adding a new comment -->
+<string name="discussion_add_comment_title">"新增意見"</string>
+
+<!-- Title when adding a new comment is disabled -->
+<string name="discussion_add_comment_disabled_title">"此回應的意見已關閉"</string>
+
+<!-- Title in showing list of comments -->
+<string name="discussion_comments">"意見"</string>
+
+<!-- Add comment button title in adding a new comment -->
+<string name="discussion_add_comment_button_label">"新增意見"</string>
+
+<!-- Add comment button description for accessibility in adding a new comment -->
+<string name="discussion_add_comment_button_description">"新增意見按鈕"</string>
+
+<!-- Title in adding a new response -->
+<string name="discussion_add_response_title">"新增回應"</string>
+
+<!-- Title when adding a new response is disabled -->
+<string name="discussion_add_response_disabled_title">"此文章的回應已關閉"</string>
+
+<!-- Title in showing list of responses -->
+<string name="discussion_responses">"回應"</string>
+
+<!-- Add response button title in adding a new response -->
+<string name="discussion_add_response_button_label">"新增回應"</string>
+
+<!-- Add response button description for accessibility in adding a new response -->
+<string name="discussion_add_response_button_description">"新增回應按鈕"</string>
+
+<!-- Title placeholder in adding a new post -->
+<string name="discussion_post_title">"標題"</string>
+
+<!-- Label for selected topic when creating a post -->
+<string name="discussion_add_post_topic_selection">"標題：{topic}"</string>
+
+<!-- Add post button title in adding a new discussion -->
+<string name="discussion_add_post_button_label">"發表討論"</string>
+
+<!-- Add post button description for accessibility in adding a new discussion -->
+<string name="discussion_add_post_button_description">"發表討論按鈕"</string>
+
+<!-- Add post button title in adding a new post -->
+<string name="discussion_add_question_button_label">"發表問題"</string>
+
+<!-- Add post button content description for accessibility in adding a new post -->
+<string name="discussion_add_question_button_description">"發表問題按鈕"</string>
+
+<!-- Question text in adding a new post -->
+<string name="discussion_question">"問題"</string>
+
+<!-- Assessment 
+ Label showing next sub-section on assessment navigation bar -->
+<string name="assessment_next_unit">"下一個單元"</string>
+
+<!-- Label showing next unit in a sub-section on assessment navigation bar -->
+<string name="assessment_next">"下一個"</string>
+
+<!-- Label showing previous sub-section on assessment navigation bar -->
+<string name="assessment_previous_unit">"前一個單元"</string>
+
+<!-- Label showing previous unit in a sub-section on assessment navigation bar -->
+<string name="assessment_previous">"前一個"</string>
+
+<!-- Label for mode switch menu item -->
+<string name="assessment_video_only">"僅有影片"</string>
+
+<!-- Label for mode switch menu item -->
+<string name="assessment_full_course">"完整課程"</string>
+
+<!-- Label showing assessment only available on website -->
+<string name="assessment_not_available">"這個互動組件尚不支援於行動裝置上使用"</string>
+
+<!-- Label showing assessment only available on website -->
+<string name="assessment_explore_on_web">"在網頁上檢視課程中的其他部分"</string>
+
+<!-- Button to show wiew on web for assessment -->
+<string name="assessment_view_on_web">"在網頁上檢視"</string>
+
+<!-- Label for homework for assessment -->
+<string name="assessment_homework">"回家作業"</string>
+
+<!-- Label to show empty assessment -->
+<string name="assessment_empty">"此章節中沒有任何的學習素材"</string>
+
+<!-- Label to show a course will be starting soon -->
+<string name="assessment_soon">"即將開始"</string>
+
+<!-- Label to notify user to rotate device for viewing a video in full screen -->
+<string name="assessment_rotate_for_fullscreen">"旋轉您的裝置以便進入全螢幕模式"</string>
+
+<!-- Label showing only youtube is available -->
+<string name="assessment_only_on_youtube">"此影片只能在YouTube上檢視"</string>
+
+<!-- Label for button to open on youtube -->
+<string name="assessment_open_on_youtube">"在YouTube上檢視影片"</string>
+
+<!-- Video List 
+ Label shown to indicate video currently downloading -->
+<string name="started_downloading">"下載中"</string>
+
+<!-- Title of video download screen -->
+<string name="title_download">"所有下載項目"</string>
+
+<!-- MyVideos 
+ Title of all videos section -->
+<string name="my_all_videos">"所有影片"</string>
+
+<!-- Title of recent videos section -->
+<string name="my_recent_videos">"近期影片"</string>
+
+<!-- Label indicating user has no Internet connection -->
+<string name="offline_text">"離線模式"</string>
+
+<!-- Label shown in videos section when user has no videos downloaded -->
+<string name="no_videos_to_display">"您尚未下載任何影片。"</string>
+
+<!-- My Downloads 
+ Message indicating videos downloaded -->
+<plurals name="text_download_msg">
+<item quantity="other">"已下載的影片"</item>
+</plurals>
+
+<!-- Button action label to view an item -->
+<string name="view_button_text">"檢視"</string>
+
+<!-- Error text when downloading an item fails -->
+<string name="download_failed_text">"下載錯誤"</string>
+
+<!-- Alert dialog title to confirm download of a large quantity of data -->
+<string name="download_exceed_title">"大量下載"</string>
+
+<!-- Alert dialog text at end of video -->
+<string name="title_lecture_complete">"您已經觀看完影片。"</string>
+
+<!-- Alert dialog prompt at end of video. -->
+<string name="msg_lecture_complete">"您想觀看下一部影片嗎？"</string>
+
+<!-- Message shown video download in process -->
+<string name="video_download_in_progress">"影片下載進行中"</string>
+
+<!-- Message shown a single video download begins -->
+<string name="msg_started_one_video_download">"下載影片中"</string>
+
+<!-- When a video download is about to start and we don't know it's file size yet -->
+<string name="download_pending">"正在準備下載..."</string>
+
+<!-- Error shown when video download fails -->
+<string name="msg_video_not_downloaded">"無法下載影片"</string>
+
+<!-- Error shown when video download fails -->
+<string name="msg_video_not_available">"此影片目前無法撥放。
+請稍候再試。"</string>
+
+<!-- Error shown when video has flag to indicate it is not available for mobile app -->
+<string name="video_only_on_web_label">"此影片目前只能在網頁上檢視，點選以開啟網頁"</string>
+
+<!-- Message to indicate the it is not available for mobile app -->
+<string name="video_only_on_web_short">"此影片尚未支援行動檢視"</string>
+
+<!-- Alert dialog title when login fails -->
+<string name="login_error">"登入錯誤"</string>
+
+<!-- Alert dialog title when login fails due to lack of Internet -->
+<string name="no_connectivity">"連線錯誤"</string>
+
+<!-- Wifi New Message 
+ Toggle to allow downloads using cellular data -->
+<string name="allow">"允許"</string>
+
+<!-- Toggle to disallow downloads using cellular data -->
+<string name="do_not_allow">"不允許"</string>
+
+<!-- Player Settings 
+ Label for closed captions in video player -->
+<string name="lbl_closed_caption">"隱藏字幕"</string>
+
+<!-- Label for speed in video player -->
+<string name="lbl_video_speed">"影片速度"</string>
+
+<!-- Label for no closed captions selected -->
+<string name="lbl_cc_cancel">"無"</string>
+
+<!-- Accessibility Label for Video Player -->
+<string name="video_player">"影片播放器"</string>
+
+<!-- Accessibility Label for View on Web button on Video Player top bar -->
+<string name="video_player_view_on_web">"在網頁上檢視"</string>
+
+<!-- Accessibility Label for Share button on Video Player top bar -->
+<string name="video_player_share">"分享"</string>
+
+<!-- Accessibility Label for Play button of Video Player -->
+<string name="video_player_play">"播放"</string>
+
+<!-- Accessibility Label for Pause button of Video Player -->
+<string name="video_player_next">"下一部"</string>
+
+<!-- Accessibility Label for Previous button of Video Player -->
+<string name="video_player_previous">"前一部"</string>
+
+<!-- Accessibility Label for Pause button of Video Player -->
+<string name="video_player_pause">"暫停"</string>
+
+<!-- Accessibility Label for Rewind button on Video Player bottom bar -->
+<string name="video_player_rewind">"重來"</string>
+
+<!-- Accessibility Label for Settings button on Video Player bottom bar -->
+<string name="video_player_settings">"設定"</string>
+
+<!-- Accessibility Label for Entering Fullscreen button on Video Player bottom bar -->
+<string name="video_player_enter_fullscreen">"進入全螢幕"</string>
+
+<!-- Accessibility Label for Exiting Fullscreen button on Video Player bottom bar -->
+<string name="video_player_exit_fullscreen">"離開全螢幕"</string>
+
+<!-- Button label to bring up course finder -->
+<string name="find_course_text">"尋找新的挑戰？"</string>
+
+<!-- Button label to bring up course finder -->
+<string name="find_course_btn_text">"搜尋提供行動版網頁的課程"</string>
+
+<!-- Button label to bring up course finder -->
+<string name="signin_with_text">"或登入以"</string>
+
+<!-- Message between sign in button and social login buttons -->
+<string name="or_sign_in_with">"或是改以下列方式登入"</string>
+
+<!-- Facebook login method -->
+<string name="facebook_text">"Facebook"</string>
+
+<!-- Google login method -->
+<string name="google_text">"Google"</string>
+
+<!-- Message on course list -->
+<string name="course_not_listed_text">"尚未看到您的任何課程嗎？"</string>
+
+<!-- Message on course page for course that hasn't started -->
+<string name="course_content_available_text">"此課程尚未開始，請回到%s觀看您的課程。"</string>
+
+<!-- Button text, allowing user to open the platform's website in a web browser -->
+<string name="open_destination_btn_text">"在瀏覽器上開啟"</string>
+
+<!-- Title of find course screen -->
+<string name="find_courses_title">"搜尋課程"</string>
+
+<!-- Message shown when attempting to find courses with no Internet connection -->
+<string name="find_courses_offline_text">"您的狀態是在離線中.
+ 想要搜尋課程，請連接到網路。"</string>
+
+<!-- Prompt allowing user to choose email program -->
+<string name="email_chooser_header">"寄email使用..."</string>
+
+<!-- Error shown when user attempts to send email, but has no email app -->
+<string name="email_client_not_present">"未安裝e-mail客戶端"</string>
+
+<!-- Landing Activity text 
+ Prompt leading user to sign in screen -->
+<string name="already_have_an_account">"已經有帳號了嗎？登入"</string>
+
+<!-- Prompt leading user to create account screen -->
+<string name="sign_up_and_learn">"註冊並且開始學習"</string>
+
+<!-- In Sign up screen -->
+<string name="sign_up_with">"註冊"</string>
+
+<!-- In Sign up screen -->
+<string name="or_sign_up_with_email">"或是透過電子郵件註冊"</string>
+
+<!-- Registration Screen 
+ Create account agreement. Followed by list of agreement names like "End User License Agreement" -->
+<string name="by_creating_account">"為了創建{platform_name}帳號，您同意"</string>
+
+<!-- Button text allowing user to show hidden optional registration fields -->
+<string name="show_optional_text">"顯示選擇性的欄位"</string>
+
+<!-- Button text allowing user to hide visible optional registration fields -->
+<string name="hide_optional_text">"隱藏選擇性的欄位"</string>
+
+<!-- Button text allowing user create an account -->
+<string name="create_account_text">"創建我的帳戶"</string>
+
+<!-- Accessible content description of create account button on Registration screen -->
+<string name="create_account_btn">"建立帳號按鈕"</string>
+
+<!-- Text shown while waiting for registration request -->
+<string name="creating_account_text">"創建帳戶中..."</string>
+
+<!-- Registration screen title -->
+<string name="register_title">"註冊{platform_name}帳號"</string>
+
+<!-- Text for successful registration with social token -->
+<string name="sign_up_with_facebook_ok">"您已成功透過Facebook帳號登入"</string>
+<string name="sign_up_with_google_ok">"您已成功透過Google帳號登入"</string>
+<string name="sign_up_with_social_ok">"在您開始於{platform_name}上開始學習前，我們還需要一些額外的資訊"</string>
+
+<!-- Continue registration after social login -->
+<string name="complete_registration">"完成您的註冊"</string>
+
+<!-- Message shown when enrolling in a course fails -->
+<string name="enrollment_failure">"我們現在無法將您註冊到此課程中。"</string>
+
+<!-- Alert dialog button allowing user to repeat their attempted action -->
+<string name="try_again">"請再試一次"</string>
+
+<!-- Error shown when registering an account fails -->
+<string name="sign_up_error">"無法創建您的帳號，請再試一次。"</string>
+
+<!-- data charges may apply dialog text 
+ Alert dialog title shown for users whose in app data is zero rated, when they follow a link outside the app -->
+<string name="open_external_url_title">"網路連線可能被收取費用"</string>
+
+<!-- Alert dialog content shown for users whose in app data is zero rated, when they follow a link outside the app -->
+<string name="open_external_url_desc">"此連結將會在您的行動瀏覽器上開啟，可能會產生額外的網路連線費用。"</string>
+
+<!-- Message shown when user tries to view course handouts, but none are loaded and the user is offline -->
+<string name="offline_handouts_text">"您正在離線模式中。想要觀看講義，請連線到網際網路。"</string>
+<string name="android">"Android"</string>
+
+<!-- Email subject line when user attempts to submit feedback about the app -->
+<string name="email_subject">"客戶回饋"</string>
+
+<!-- Submit Feedback app version text -->
+<string name="app_version">"行動應用程式版本："</string>
+
+<!-- Submit Feedback android version text -->
+<string name="android_os_version">"Android 作業系統："</string>
+
+<!-- Submit Feedback android model text -->
+<string name="android_device_model">"裝置型號："</string>
+
+<!-- Submit Feedback feedback text -->
+<string name="insert_feedback">"回饋："</string>
+
+<!-- Notification related 
+ Template for notification title -->
+<string name="course_announcement_notification_action">"新公告"</string>
+
+<!-- toggle between subscribe and unsubscribe to course announcement -->
+<string name="notification_toggle">"允許通知"</string>
+
+<!-- Placeholder title for course content with no title -->
+<string name="untitled_block">"沒有標題"</string>
+<string name="forum_no_results_for_all_posts">"尚未有任何課程討論文章"</string>
+<string name="forum_no_results_for_following">"您尚未追蹤任何文章"</string>
+<string name="forum_no_results_in_category">"此分類下尚未有任何討論文章"</string>
+<string name="forum_no_results_with_filter">"試試看移除您設定的文章篩選條件"</string>
+<string name="forum_post_i_am_following">"我正追蹤的文章"</string>
+<string name="show_more_records">"更多"</string>
+<string name="forum_follow">"追蹤"</string>
+<string name="forum_unfollow">"取消追蹤"</string>
+
+<!-- User Profiles 
+ Label for toolbar icon that launches the edit profile screen for the current user -->
+<string name="profile_toolbar_edit_button">"編輯"</string>
+
+<!-- Shown when viewing your own profile and you are not sharing a full profile -->
+<string name="profile_sharing_limited_by_you">"您目前僅分享少部份的個人檔案"</string>
+
+<!-- Shown when viewing another user's profile and that user is not sharing a full profile -->
+<string name="profile_sharing_limited_by_other_user">"此人目前僅分享少部份的個人檔案"</string>
+
+<!-- Shown when viewing your own profile until you have confirmed you are over the age of consent (13 years old) -->
+<string name="profile_consent_needed_explanation">"您必須超過十三歲才能分享完整的個人檔案"</string>
+
+<!-- Shown as button below the explanation for age of consent; it launches the edit profile screen -->
+<string name="profile_consent_needed_edit_button">"帳號設定"</string>
+
+<!-- Shown as button below the explanation for incomplete profile; it launches the edit profile screen -->
+<string name="profile_incomplete_edit_button">"開始"</string>
+
+<!-- Window title for edit profile screen -->
+<string name="edit_user_profile_title">"編輯個人檔案"</string>
+
+<!-- How most profile fields are formatted when viewing the edit screen -->
+<string name="edit_user_profile_field">"{label}: {value}"</string>
+
+<!-- Default placeholder if a profile field is blank -->
+<string name="edit_user_profile_field_placeholder">"選擇"</string>
+
+<!-- Button that saves changes to a profile text field -->
+<string name="edit_user_profile_textarea_submit_button">"送出"</string>
+
+<!-- An option that will set the user profile's primary language to the language of their device's configured locale -->
+<string name="edit_user_profile_current_language">"目前的語言：{current_language}"</string>
+
+<!-- An option that will set the user profile's location to the country of their device's configured locale -->
+<string name="edit_user_profile_current_location">"目前的位置：{current_location}"</string>
+
+<!-- Button label that will open gallery or camera for choosing new profile photo -->
+<string name="edit_user_profile_change_photo">"修改"</string>
+
+<!-- Button that will open a camera for taking a new profile photo -->
+<string name="edit_user_profile_take_photo">"拍照"</string>
+
+<!-- Button that will open photo gallery for choosing a new profile photo -->
+<string name="edit_user_profile_choose_photo">"選擇照片"</string>
+
+<!-- Button that will open a camera for taking a new profile photo -->
+<string name="edit_user_profile_remove_photo">"移除照片"</string>
+
+<!-- Title when cropping newly selected profile photo -->
+<string name="edit_user_profile_photo_crop_title">"重新選取範圍並且調整大小"</string>
+
+<!-- Button that will exit the crop tool without saving the image -->
+<string name="edit_user_profile_photo_crop_cancel">"取消"</string>
+
+<!-- Button that will confirm the crop region and continue to upload the cropped photo -->
+<string name="edit_user_profile_photo_crop_save">"選擇"</string>
+</resources>
