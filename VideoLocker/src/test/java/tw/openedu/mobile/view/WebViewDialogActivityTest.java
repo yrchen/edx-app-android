@@ -1,4 +1,4 @@
-package org.openedu.www.view;
+package tw.openedu.mobile.view;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import org.assertj.android.api.Assertions;
 import tw.openedu.mobile.R;
+import tw.openedu.mobile.test.BaseTestCase;
 import tw.openedu.mobile.view.dialog.WebViewDialogActivity;
 import org.junit.Test;
 import org.robolectric.Robolectric;
@@ -14,11 +15,11 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowWebView;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
-public class WebViewDialogActivityTest extends UiTest {
+public class WebViewDialogActivityTest extends BaseTestCase {
 
     /**
      * Testing method for displaying web view dialog
