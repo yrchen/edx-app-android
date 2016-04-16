@@ -51,7 +51,7 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-    <tw.openedu.mobile.view.custom.EdxWebView
+    <tw.openedu.android.view.custom.EdxWebView
         android:id="@+id/eula_webView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

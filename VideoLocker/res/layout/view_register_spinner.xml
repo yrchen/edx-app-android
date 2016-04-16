@@ -7,7 +7,7 @@
     android:paddingTop="4dp"
     android:paddingBottom="2dp">
 
-    <tw.openedu.mobile.module.registration.view.RegistrationOptionSpinner
+    <tw.openedu.android.module.registration.view.RegistrationOptionSpinner
         android:id="@+id/input_spinner"
         style="@style/spinner"
         android:layout_height="wrap_content"

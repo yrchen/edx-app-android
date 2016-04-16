@@ -47,7 +47,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <tw.openedu.mobile.view.custom.IconImageViewXml
+            <tw.openedu.android.view.custom.IconImageViewXml
                 android:id="@+id/discussion_responses_thread_closed_icon_view"
                 android:layout_width="@dimen/edx_xxx_small"
                 android:layout_height="@dimen/edx_xxx_small"
@@ -57,7 +57,7 @@
                 app:iconColor="@color/edx_grayscale_neutral_base"
                 app:iconName="fa-lock" />
 
-            <tw.openedu.mobile.view.custom.IconImageViewXml
+            <tw.openedu.android.view.custom.IconImageViewXml
                 android:id="@+id/discussion_responses_thread_row_pinned_icon_view"
                 android:layout_width="@dimen/edx_xxx_small"
                 android:layout_height="@dimen/edx_xxx_small"

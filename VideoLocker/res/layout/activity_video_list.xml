@@ -32,7 +32,7 @@
 
         <fragment
             android:id="@+id/list_fragment"
-            android:name="tw.openedu.mobile.player.VideoListFragment"
+            android:name="tw.openedu.android.player.VideoListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/container_player"
