@@ -9,7 +9,7 @@ import android.support.v7.widget.SearchView;
 
 import tw.openedu.mobile.R;
 import tw.openedu.mobile.base.FindCoursesBaseActivity;
-import tw.openedu.mobile..logger.Logger;
+import tw.openedu.mobile.logger.Logger;
 import tw.openedu.mobile.module.analytics.ISegment;
 
 import java.io.UnsupportedEncodingException;
