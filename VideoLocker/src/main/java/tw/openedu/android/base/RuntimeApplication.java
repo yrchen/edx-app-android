@@ -1,5 +1,7 @@
 package tw.openedu.android.base;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import tw.openedu.android.view.ExtensionRegistry;
 
 import javax.inject.Inject;
@@ -17,6 +19,7 @@ public class RuntimeApplication extends MainApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         // If you have any custom extensions, add them here. For example:
         // extensionRegistry.forType(SettingsExtension.class).add(new MyCustomSettingsExtension());
     }

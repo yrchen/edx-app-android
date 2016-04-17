@@ -301,6 +301,9 @@
                 <category android:name="tw.openedu.android" />
             </intent-filter>
         </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4519c1936f721d85502c205816f8e041c845229b" />
     </application>
 
 </manifest>

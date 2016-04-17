@@ -5,6 +5,7 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://maven.fabric.io/public' }
 
     }
 
@@ -15,6 +16,7 @@ buildscript {
         classpath "com.newrelic.agent.android:agent-gradle-plugin:5.4.0"
 
         classpath 'com.facebook.testing.screenshot:plugin:0.4'
+        classpath 'io.fabric.tools:gradle:1.+'
 
     }
 }
@@ -26,6 +28,7 @@ edx {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'newrelic'
 apply plugin: 'com.facebook.testing.screenshot'
 apply from: 'jacoco.gradle'
