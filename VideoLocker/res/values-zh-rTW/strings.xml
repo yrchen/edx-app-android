@@ -37,6 +37,9 @@
 <!-- Share menu title -->
 <string name="share_course_popup_header">"分享課程於"</string>
 
+<!-- Share course -->
+<string name="share_course_message">"我剛在{platform_name}上選了一門課，你瞧瞧: "</string>
+
 <!-- Settings Page 
  Label for wifi only switch -->
 <string name="settings_wifi_top">"僅供Wi-Fi下載"</string>
@@ -47,6 +50,9 @@
 <!-- Certificate Page 
  Description of button that will open the certificate sharing menu -->
 <string name="share_certificate_button">"分享您的證書"</string>
+
+<!-- Text that pre-populates your post/email/SMS when sharing certificate -->
+<string name="share_certificate_message">"我剛在{platform_name}上取得了一張證書，你瞧瞧: {certificate_url}"</string>
 
 <!-- Tab of tab for certicate for finished course -->
 <string name="tab_label_certificate">"證書"</string>
@@ -305,7 +311,7 @@ Title for discussion post search results -->
 <string name="discussion_posts_search_title">"搜尋結果"</string>
 
 <!-- Label for creating a new post -->
-<string name="discussion_post_create_new_post">"建立新的文章"</string>
+<string name="discussion_post_create_new_post">"發表新的文章"</string>
 
 <!-- Discussion posts filter options
 Discussion posts filter for all posts -->
@@ -351,6 +357,16 @@ Label for question type discussions that are answered -->
 
 <!-- Label for question type discussions that are unanswered -->
 <string name="course_discussion_unanswered_title">"尚未回答的問題"</string>
+
+<!-- Label for number of discussion responses -->
+<plurals name="number_responses_or_comments_responses_label">
+<item quantity="other">"%s 回應"</item>
+</plurals>
+
+<!-- Label for number of discussion comments -->
+<plurals name="number_responses_or_comments_comments_label">
+<item quantity="other">"%s 意見"</item>
+</plurals>
 
 <!-- Label for indicating that a response is an answer -->
 <string name="discussion_responses_answer">"答案"</string>
@@ -448,6 +464,9 @@ Label for question type discussions that are answered -->
 
 <!-- Label for mode switch menu item -->
 <string name="assessment_full_course">"完整課程"</string>
+
+<!-- Label for empty video in video only mode -->
+<string name="assessment_empty_video_info">"此小節中沒有任何影片，要檢視其他內容，請點選上面的{mode_switcher}切換"</string>
 
 <!-- Label showing assessment only available on website -->
 <string name="assessment_not_available">"這個互動組件尚不支援於行動裝置上使用"</string>
@@ -713,6 +732,11 @@ Label for question type discussions that are answered -->
 <!-- Submit Feedback feedback text -->
 <string name="insert_feedback">"回饋："</string>
 
+<!-- Message indicating num of video deleted. {video_count} is a number of videos deleted, like "3". -->
+<plurals name="deleted_video">
+<item quantity="other">"{video_count}部影片已被刪除"</item>
+</plurals>
+
 <!-- Notification related 
  Template for notification title -->
 <string name="course_announcement_notification_action">"新公告"</string>
@@ -722,6 +746,9 @@ Label for question type discussions that are answered -->
 
 <!-- Placeholder title for course content with no title -->
 <string name="untitled_block">"沒有標題"</string>
+
+<!-- Discussion/Forum -->
+<string name="forum_no_results_for_search_query">"找不到關於 \"{search_query}\" 的結果，嘗試看看用其他關鍵字或是選擇一個討論分類開始瀏覽"</string>
 <string name="forum_no_results_for_all_posts">"尚未有任何課程討論文章"</string>
 <string name="forum_no_results_for_following">"您尚未追蹤任何文章"</string>
 <string name="forum_no_results_in_category">"此分類下尚未有任何討論文章"</string>
@@ -747,8 +774,14 @@ Label for question type discussions that are answered -->
 <!-- Shown as button below the explanation for age of consent; it launches the edit profile screen -->
 <string name="profile_consent_needed_edit_button">"帳號設定"</string>
 
+<!-- Shown when viewing your own incomplete profile -->
+<string name="profile_incomplete_explanation">"看起來您的個人檔案上不完整，讓我們來更新吧"</string>
+
 <!-- Shown as button below the explanation for incomplete profile; it launches the edit profile screen -->
 <string name="profile_incomplete_edit_button">"開始"</string>
+
+<!-- This text is shown in place of the "About Me" text if the user has not filled in their "About Me" -->
+<string name="profile_incomplete_about_me">"尚未提供 \"關於我\" 的資訊"</string>
 
 <!-- Window title for edit profile screen -->
 <string name="edit_user_profile_title">"編輯個人檔案"</string>
