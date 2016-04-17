@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">@string/platform_name</string>
+    <string name="app_display_name">@string/platform_display_name</string>
 
     <!-- Certificates -->
 

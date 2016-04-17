@@ -52,7 +52,7 @@ public class OkHttpUtil {
         interceptors.add(new JsonMergePatchInterceptor());
         interceptors.add(new UserAgentInterceptor(
                 System.getProperty("http.agent") + " " +
-                        context.getString(R.string.app_name) + "/" +
+                        context.getString(R.string.app_display_name) + "/" +
                         BuildConfig.APPLICATION_ID + "/" +
                         BuildConfig.VERSION_NAME));
         if (isOAuthBased) {

@@ -326,7 +326,7 @@ public class HttpManager {
                 HttpVersion.HTTP_1_1);
         client.getParams().setParameter(CoreProtocolPNames.USER_AGENT,
                 System.getProperty("http.agent") + " " +
-                        context.getString(R.string.app_name) + "/" +
+                        context.getString(R.string.app_display_name) + "/" +
                         BuildConfig.APPLICATION_ID + "/" +
                         BuildConfig.VERSION_NAME);
         return client;
