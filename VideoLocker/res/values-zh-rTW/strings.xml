@@ -38,7 +38,7 @@
 <string name="share_course_popup_header">"分享課程於"</string>
 
 <!-- Share course -->
-<string name="share_course_message">"我剛在{platform_name}上選了一門課，你瞧瞧: "</string>
+<string name="share_course_message">"我剛在{platform_name}上選了一門課: "</string>
 
 <!-- Settings Page 
  Label for wifi only switch -->
@@ -52,7 +52,7 @@
 <string name="share_certificate_button">"分享您的證書"</string>
 
 <!-- Text that pre-populates your post/email/SMS when sharing certificate -->
-<string name="share_certificate_message">"我剛在{platform_name}上取得了一張證書，你瞧瞧: {certificate_url}"</string>
+<string name="share_certificate_message">"我剛在{platform_name}上取得了一張證書: {certificate_url}"</string>
 
 <!-- Tab of tab for certicate for finished course -->
 <string name="tab_label_certificate">"證書"</string>
@@ -102,7 +102,7 @@
 <string name="login_failed_no_grant">"此帳戶尚未啟用，請檢查您的電子郵件信箱啟用帳號。"</string>
 
 <!-- Button text allowing a user to go to the register screen -->
-<string name="new_user">"需要一個帳戶？"</string>
+<string name="new_user">"需要一個帳號？"</string>
 <string name="by_signing_up">"登入此應用程式，您同意"</string>
 <string name="licensing_agreement">"{platform_name}服務條款及榮譽守則"</string>
 <string name="login_title">"登入{platform_name}"</string>
@@ -171,7 +171,7 @@
 如果您在幾分鐘後尚未看見，請至您的垃圾郵箱確認。"</string>
 
 <!-- Password reset dialog prompt -->
-<string name="confirm_dialog_message_help">"請輸入您帳戶的電子郵件地址，我們將會發送給您重設密碼說明。"</string>
+<string name="confirm_dialog_message_help">"請輸入您帳號的電子郵件地址，我們將會發送給您重設密碼說明。"</string>
 
 <!-- Label explaining toggle for cellular data access -->
 <string name="wifi_dialog_message_help">"允許您的裝置在沒有Wi-Fi時，透過行動網路連接下載，您可能會被收取連線費用。"</string>
@@ -257,7 +257,7 @@
 <string name="course_view_mode_full_course">"完整課程"</string>
 
 <!-- Label for the menu popup for viewing the course on the web -->
-<string name="course_view_on_web">"在網頁上檢視"</string>
+<string name="course_view_on_web">"在網頁上檢視此課程"</string>
 
 <!-- Label for the menu popup for changing mode to Videos Only/Full Course -->
 <string name="course_change_mode">"模式選擇"</string>
@@ -472,7 +472,7 @@ Label for question type discussions that are answered -->
 <string name="assessment_not_available">"這個互動組件尚不支援於行動裝置上使用"</string>
 
 <!-- Label showing assessment only available on website -->
-<string name="assessment_explore_on_web">"在網頁上檢視課程中的其他部分"</string>
+<string name="assessment_explore_on_web">"您可在網頁上檢視此影片，或是繼續瀏覽本課程中的其他內容"</string>
 
 <!-- Button to show wiew on web for assessment -->
 <string name="assessment_view_on_web">"在網頁上檢視"</string>
@@ -585,7 +585,7 @@ Label for question type discussions that are answered -->
 <string name="video_player">"影片播放器"</string>
 
 <!-- Accessibility Label for View on Web button on Video Player top bar -->
-<string name="video_player_view_on_web">"在網頁上檢視"</string>
+<string name="video_player_view_on_web">"在網頁上檢視此影片"</string>
 
 <!-- Accessibility Label for Share button on Video Player top bar -->
 <string name="video_player_share">"分享"</string>
@@ -645,8 +645,8 @@ Label for question type discussions that are answered -->
 <string name="find_courses_title">"搜尋課程"</string>
 
 <!-- Message shown when attempting to find courses with no Internet connection -->
-<string name="find_courses_offline_text">"您的狀態是在離線中.
- 想要搜尋課程，請連接到網路。"</string>
+<string name="find_courses_offline_text">"您的狀態是在離線中。
+想要搜尋課程，請連接網路。"</string>
 
 <!-- Prompt allowing user to choose email program -->
 <string name="email_chooser_header">"寄email使用..."</string>
@@ -678,13 +678,13 @@ Label for question type discussions that are answered -->
 <string name="hide_optional_text">"隱藏選擇性的欄位"</string>
 
 <!-- Button text allowing user create an account -->
-<string name="create_account_text">"創建我的帳戶"</string>
+<string name="create_account_text">"創建我的帳號"</string>
 
 <!-- Accessible content description of create account button on Registration screen -->
 <string name="create_account_btn">"建立帳號按鈕"</string>
 
 <!-- Text shown while waiting for registration request -->
-<string name="creating_account_text">"創建帳戶中..."</string>
+<string name="creating_account_text">"創建帳號中..."</string>
 
 <!-- Registration screen title -->
 <string name="register_title">"註冊{platform_name}帳號"</string>
