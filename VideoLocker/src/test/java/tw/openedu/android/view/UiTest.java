@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 import com.google.inject.Injector;
 
 import tw.openedu.android.core.IEdxEnvironment;
-import org.openedu.www.test.http.HttpBaseTestCase;
+import tw.openedu.android.test.http.HttpBaseTestCase;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.robolectric.RuntimeEnvironment;

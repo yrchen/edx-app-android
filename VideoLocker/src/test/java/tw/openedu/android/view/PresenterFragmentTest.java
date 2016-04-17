@@ -6,8 +6,8 @@ import tw.openedu.android.base.BaseAppActivity;
 import tw.openedu.android.view.Presenter;
 import tw.openedu.android.view.PresenterFragment;
 
-import org.openedu.www.test.BaseTestCase;
-import org.openedu.www.test.GenericSuperclassUtils;
+import tw.openedu.android.test.BaseTestCase;
+import tw.openedu.android.test.GenericSuperclassUtils;
 import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 
 import static org.mockito.Mockito.mock;
