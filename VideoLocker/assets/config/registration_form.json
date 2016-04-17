@@ -1275,7 +1275,7 @@
         "defaultValue": "",
         "instructions": "",
         "type": "textarea",
-        "label": "請告訴我們您什麼對我們平台感興趣"
+        "label": "請與我們分享您為什麼對我們平台感興趣"
     }, {
         "restrictions": {},
         "required": true,
