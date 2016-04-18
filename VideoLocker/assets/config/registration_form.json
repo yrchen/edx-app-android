@@ -12,7 +12,7 @@
         "defaultValue": "",
         "instructions": "",
         "type": "email",
-        "label": "電子郵件帳號"
+        "label": "電子郵件信箱"
     }, {
         "restrictions": {
             "max_length": 255
@@ -22,7 +22,7 @@
         "errorMessages": {},
         "placeholder": "",
         "defaultValue": "",
-        "instructions": "此名稱將顯示在您所獲得的證書之上",
+        "instructions": "請輸入您的全名，之後將顯示在您所獲得的證書之上",
         "type": "text",
         "label": "全名"
     }, {
@@ -35,7 +35,7 @@
         "errorMessages": {},
         "placeholder": "",
         "defaultValue": "",
-        "instructions": "此帳號名稱用來區分您的身分，而且<b>不能被修改</b>",
+        "instructions": "此帳號名稱用來區分您的身分，在本平台上必須是唯一的名稱，而且之後<b>不能修改</b>",
         "type": "text",
         "label": "使用者帳號"
     }, {
@@ -66,6 +66,9 @@
             "default": true,
             "name": "--",
             "value": ""
+        }, {
+            "name": "台灣",
+            "value": "TW"
         }, {
             "name": "Afghanistan",
             "value": "AF"
@@ -715,9 +718,6 @@
             "name": "Syrian Arab Republic",
             "value": "SY"
         }, {
-            "name": "台灣",
-            "value": "TW"
-        }, {
             "name": "Tajikistan",
             "value": "TJ"
         }, {
@@ -1237,7 +1237,7 @@
             "name": "學士學位",
             "value": "b"
         }, {
-            "name": "Associate's degree",
+            "name": "副學士學位",
             "value": "a"
         }, {
             "name": "高中畢業",

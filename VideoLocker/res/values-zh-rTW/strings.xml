@@ -42,10 +42,10 @@
 
 <!-- Settings Page 
  Label for wifi only switch -->
-<string name="settings_wifi_top">"僅供Wi-Fi下載"</string>
+<string name="settings_wifi_top">"僅透過Wi-Fi下載"</string>
 
 <!-- Label explaining what wifi only means in detail -->
-<string name="settings_wifi_bottom">"唯有Wi-Fi開啟時才下載內容"</string>
+<string name="settings_wifi_bottom">"僅在Wi-Fi開啟時才下載課程"</string>
 
 <!-- Certificate Page 
  Description of button that will open the certificate sharing menu -->
@@ -66,7 +66,7 @@
 
 <!-- Login Activity Place Holders 
  Hint text for login field -->
-<string name="email_username">"使用者名稱或電子郵件地址"</string>
+<string name="email_username">"使用者帳號或電子郵件地址"</string>
 
 <!-- Hint text for email address field in reset password dialog -->
 <string name="email">"電子郵件地址"</string>
@@ -96,7 +96,7 @@
 <string name="error_heading">"登入時發生以下錯誤"</string>
 
 <!-- Error during log in. -->
-<string name="login_failed">"請確認您的使用者名稱或電子郵件地址及密碼是正確的，並且再試一次。"</string>
+<string name="login_failed">"請確認您的使用者帳號或電子郵件地址及密碼是正確的，並且再試一次"</string>
 
 <!-- Error logging in without activating account. -->
 <string name="login_failed_no_grant">"此帳戶尚未啟用，請檢查您的電子郵件信箱啟用帳號。"</string>
@@ -133,7 +133,7 @@
 <string name="label_find_courses">"搜尋課程"</string>
 
 <!-- Button allowing users to send an email for feedback -->
-<string name="label_submit_feedback">"提交回饋"</string>
+<string name="label_submit_feedback">"意見回饋"</string>
 
 <!-- Toggle switch on state label -->
 <string name="toggle_turn_on">"開"</string>
@@ -174,7 +174,7 @@
 <string name="confirm_dialog_message_help">"請輸入您帳號的電子郵件地址，我們將會發送給您重設密碼說明。"</string>
 
 <!-- Label explaining toggle for cellular data access -->
-<string name="wifi_dialog_message_help">"允許您的裝置在沒有Wi-Fi時，透過行動網路連接下載，您可能會被收取連線費用。"</string>
+<string name="wifi_dialog_message_help">"是否允許您的裝置在沒有Wi-Fi時，透過行動網路下載？您有可能會被收取連線費用。"</string>
 
 <!-- Confirmation text for delete video dialog -->
 <string name="delete_dialog_title_help">"確認刪除"</string>
@@ -513,7 +513,7 @@ Label for question type discussions that are answered -->
 <string name="offline_text">"離線模式"</string>
 
 <!-- Label shown in videos section when user has no videos downloaded -->
-<string name="no_videos_to_display">"您尚未下載任何影片。"</string>
+<string name="no_videos_to_display">"您尚未下載任何影片"</string>
 
 <!-- My Downloads 
  Message indicating videos downloaded -->
@@ -526,6 +526,11 @@ Label for question type discussions that are answered -->
 
 <!-- Error text when downloading an item fails -->
 <string name="download_failed_text">"下載錯誤"</string>
+
+<!-- Message indicating a number of videos has begun. Argument is a number -->
+<plurals name="downloading_count_videos">
+<item quantity="other">"下載{quantity}部影片中"</item>
+</plurals>
 
 <!-- Alert dialog title to confirm download of a large quantity of data -->
 <string name="download_exceed_title">"大量下載"</string>
@@ -618,7 +623,7 @@ Label for question type discussions that are answered -->
 <string name="find_course_text">"尋找新的挑戰？"</string>
 
 <!-- Button label to bring up course finder -->
-<string name="find_course_btn_text">"搜尋提供行動版網頁的課程"</string>
+<string name="find_course_btn_text">"搜尋提供行動版的課程"</string>
 
 <!-- Button label to bring up course finder -->
 <string name="signin_with_text">"或登入以"</string>
@@ -662,7 +667,7 @@ Label for question type discussions that are answered -->
 <string name="sign_up_and_learn">"註冊並且開始學習"</string>
 
 <!-- In Sign up screen -->
-<string name="sign_up_with">"註冊"</string>
+<string name="sign_up_with">"透過下列服務註冊"</string>
 
 <!-- In Sign up screen -->
 <string name="or_sign_up_with_email">"或是透過電子郵件註冊"</string>
