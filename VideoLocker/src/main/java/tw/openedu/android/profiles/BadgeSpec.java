@@ -1,4 +1,4 @@
-package org.edx.mobile.profiles;
+package tw.openedu.android.profiles;
 
 import com.google.gson.annotations.SerializedName;
 
