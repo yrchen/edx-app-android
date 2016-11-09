@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/edx_grayscale_neutral_white"
     android:fillViewport="true"
-    tools:context="org.edx.mobile.view.CourseCombinedInfoFragment">
+    tools:context="tw.openedu.android.view.CourseCombinedInfoFragment">
 
     <LinearLayout
         android:id="@+id/announcement_layout"
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <org.edx.mobile.view.custom.EdxWebView
+        <tw.openedu.android.view.custom.EdxWebView
             android:id="@+id/announcement_webview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

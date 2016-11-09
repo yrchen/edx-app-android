@@ -163,27 +163,27 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.edx.mobile"
+        applicationId "tw.openedu.android"
         // minimum version is Android 4.0
         minSdkVersion 14
         targetSdkVersion 21
 
-        versionCode 89
-        versionName "2.5.0"
+        versionCode 82
+        versionName "2.5.1"
 
         renderscriptTargetApi 22
         renderscriptSupportModeEnabled true
 
         // test configuration
-        testApplicationId 'org.edx.mobile.test'
+        testApplicationId 'tw.openedu.android.test'
 
         if (project.gradle.startParameter.taskNames.contains("screenshotTests")) {
             Map<String, String> map = new HashMap<String, String>();
-            map.put("package", "org.edx.mobile.test.screenshot");
+            map.put("package", "tw.openedu.android.test.screenshot");
             setTestInstrumentationRunnerArguments map
         }
 
-        testInstrumentationRunner "org.edx.mobile.test.EdXTestRunner"
+        testInstrumentationRunner "tw.openedu.android.test.EdXTestRunner"
 
         testHandleProfiling true
         testFunctionalTest true

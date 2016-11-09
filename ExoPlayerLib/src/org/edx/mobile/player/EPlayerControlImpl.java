@@ -1,4 +1,4 @@
-package org.edx.mobile.player;
+package tw.openedu.android.player;
 
 /**
  * @author rohan

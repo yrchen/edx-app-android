@@ -1,6 +1,6 @@
-package org.edx.mobile.view.custom.speed;
+package tw.openedu.android.view.custom.speed;
 
-import org.edx.mobile.view.custom.BaseListAdapter;
+import tw.openedu.android.view.custom.BaseListAdapter;
 
 import android.content.Context;
 import android.view.View;

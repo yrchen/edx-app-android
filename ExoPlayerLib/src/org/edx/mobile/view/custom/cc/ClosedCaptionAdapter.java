@@ -1,7 +1,7 @@
-package org.edx.mobile.view.custom.cc;
+package tw.openedu.android.view.custom.cc;
 
-import org.edx.mobile.player.IVideo.IClosedCaption;
-import org.edx.mobile.view.custom.BaseListAdapter;
+import tw.openedu.android.player.IVideo.IClosedCaption;
+import tw.openedu.android.view.custom.BaseListAdapter;
 
 import android.content.Context;
 import android.view.View;

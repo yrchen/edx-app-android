@@ -1,4 +1,4 @@
-package org.edx.mobile.view.custom.speed;
+package tw.openedu.android.view.custom.speed;
 
 import java.util.List;
 

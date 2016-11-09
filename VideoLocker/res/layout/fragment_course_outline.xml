@@ -14,7 +14,7 @@
         android:divider="@null"
         android:dividerHeight="0dp" />
 
-    <org.edx.mobile.view.custom.IconTextViewXml
+    <tw.openedu.android.view.custom.IconTextViewXml
         android:id="@+id/no_chapter_tv"
         style="@style/content_unavailable_error_text"
         android:text="@string/no_chapter_text" />

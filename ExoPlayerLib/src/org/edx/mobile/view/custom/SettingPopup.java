@@ -1,4 +1,4 @@
-package org.edx.mobile.view.custom;
+package tw.openedu.android.view.custom;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.edx.mobile.player;
+package tw.openedu.android.player;
 
-import org.edx.mobile.player.PlayerDemoActivity.RendererBuilder;
-import org.edx.mobile.player.PlayerDemoActivity.RendererBuilderCallback;
+import tw.openedu.android.player.PlayerDemoActivity.RendererBuilder;
+import tw.openedu.android.player.PlayerDemoActivity.RendererBuilderCallback;
 
 import android.app.Activity;
 import android.media.MediaCodec;
