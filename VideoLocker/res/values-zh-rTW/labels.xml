@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <!--Divider between current time and total time. For example  "2:33/5:10"-->
+  <string name="lbl_slash">/</string>
+  <!--Name of mode when user has no internet connection causing some features to be unavailable-->
+  <string name="lbl_offline_mode">離線模式</string>
+  <!--Label describing the meaning of offline mode-->
+  <string name="lbl_offline_mode_desc">於離線模式，您僅能觀看已儲存至您的裝置之影片。</string>
+  <!--Button allowing user to open a web page corresponding to the current screen in a web browser-->
+  <string name="lbl_view_on_web">線上瀏覽</string>
+  <!--Label indicating that the only course content visible in the app is videos-->
+  <string name="lbl_showing_only_videos">僅顯示影片</string>
+  <!--Dialog Fragment Labels-->
+  <!--Alert dialog cancel button-->
+  <string name="label_cancel">取消</string>
+  <!--Alert dialog No button-->
+  <string name="label_no">否</string>
+  <!--Alert dialog download button-->
+  <string name="label_download">下載</string>
+  <!--Alert dialog yes confirmation button-->
+  <string name="label_yes">是</string>
+  <!--Alert dialog delete confirmation button-->
+  <string name="label_delete">刪除</string>
+  <!--Alert dialog edit list confirmation button-->
+  <string name="label_edit">編輯</string>
+  <!--Alert dialog okay button-->
+  <string name="label_ok">確定</string>
+  <!--Alert dialog close button-->
+  <string name="label_close">關閉</string>
+  <!--Alert dialog continue confirmation button-->
+  <string name="label_continue">繼續</string>
+</resources>
