@@ -197,6 +197,9 @@ android {
         def platformName = config.get('PLATFORM_NAME')
         resValue "string", "platform_name", platformName
 
+        def platformDisplayName = config.get('PLATFORM_DISPLAY_NAME')
+        resValue "string", "platform_display_name", platformDisplayName
+
         def fabric = config.get('FABRIC')
         if (fabric?.get('ENABLED')) {
             def fabric_key = fabric?.get('FABRIC_KEY')

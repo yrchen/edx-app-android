@@ -21,7 +21,7 @@ public class EdxWebView extends WebView {
         settings.setLoadsImagesAutomatically(true);
         settings.setUserAgentString(
                 settings.getUserAgentString() + " " +
-                        context.getString(R.string.app_name) + "/" +
+                        context.getString(R.string.app_display_name) + "/" +
                         BuildConfig.APPLICATION_ID + "/" +
                         BuildConfig.VERSION_NAME
         );
