@@ -10,11 +10,6 @@
   <!--Course Discovery-->
   <!--Enroll Now button text-->
   <string name="enroll_now_button_text">立即註冊</string>
-  <!--Effort field name-->
-  <string name="effort_field_name">課程時間：</string>
-  <!--When discovering courses, some courses have an externally hosted video that describes it.
-    In that case, a play icon is shown on top of the course image. This is the content description.-->
-  <string name="go_to_video">去看影片</string>
   <!--View Course button text text-->
   <string name="view_course_button_text">查看課程</string>
   <!--Floating overlay text shown to user when they succeed at enrolling in a course-->
@@ -58,8 +53,6 @@
   <string name="login">登入</string>
   <!--Accessible content description of sign in button on Log in screen-->
   <string name="login_btn">登入按鈕</string>
-  <!--Message shown while waiting for action-->
-  <string name="progress_text">請稍候...</string>
   <!--Message shown while user waits for response to a sign in request-->
   <string name="signing_in">登入中...</string>
   <!--Message for shown after tapping Sign In-->
@@ -76,14 +69,9 @@
   <!--Accessible content description prefix of dropdowns on Sign up screen, like, country and gender dropdowns-->
   <string name="dropdown_list_prefix">下拉式清單。</string>
   <!--Navigation Drawer Labels-->
-  <!--The accessibility description for the navigation header-->
-  <string name="navigation_header">正確登入用的 {username}, {email}</string>
-  <!--Button to open drawer-->
   <!--Button to open drawer-->
   <!--Button text to show user Settings screen-->
   <string name="action_settings">設定</string>
-  <!--Content description for edit profile button-->
-  <string name="open_profile_button">開啟個人檔案</string>
   <!--Title of user's course list screen-->
   <string name="label_my_courses">我的課程</string>
   <!--Title of user's downloaded videos list screen-->
@@ -231,8 +219,6 @@
   <!--Used for putting authorLabel into parenthesis e.g. (Community TA) or (Staff)-->
   <string name="discussion_post_author_label_attribution">({text})</string>
   <!--Label indicating the number of replies on a post e.g. 47 total-->
-  <!--Label indicating the last time a post was updated e.g. Last post: Jun 22, 2016-->
-  <string name="discussion_post_last_interaction_date">最後張貼：{date}</string>
   <!--Discussion Responses-->
   <!--Label for question type discussions that are answered-->
   <string name="course_discussion_answered_title">已回答問題</string>
@@ -340,8 +326,6 @@
   <string name="offline_text">離線模式</string>
   <!--Label shown in videos section when user has no videos downloaded-->
   <string name="no_videos_to_display">您尚未下載任何影片。</string>
-  <!--Cancel video download-->
-  <string name="cancel_download">取消下載</string>
   <!--My Downloads-->
   <!--Button action label to view an item-->
   <string name="view_button_text">檢視</string>
@@ -426,12 +410,6 @@
   <string name="sign_up_and_learn">註冊並且開始學習</string>
   <!--In Register screen-->
   <!--New Logistration Launch screen text-->
-  <!--Button leading user to create account screen-->
-  <string name="launch_register">註冊</string>
-  <!--Button leading user to Find Courses screen from the launch screen-->
-  <string name="launch_discover_courses">探索課程</string>
-  <!--Button leading user to Find Courses screen from the launch screen-->
-  <string name="launch_explore_subjects">探索主題</string>
   <!--Registration Screen-->
   <!--Create account agreement. Followed by list of agreement names like "End User License Agreement"-->
   <!--Button text allowing user to show hidden optional registration fields-->
@@ -456,8 +434,6 @@
   <string name="enrollment_failure">我們現在無法將您註冊到此課程中。</string>
   <!--Alert dialog button allowing user to repeat their attempted action-->
   <string name="try_again">再試一次</string>
-  <!--Registration error-->
-  <string name="registration_error_title">註冊錯誤</string>
   <!--data charges may apply dialog text-->
   <!--Alert dialog title shown for users whose in app data is zero rated, when they follow a link outside the app-->
   <string name="open_external_url_title">網路連線可能被收取費用</string>
@@ -494,15 +470,7 @@
   <string name="forum_follow">追蹤</string>
   <string name="forum_unfollow">取消追蹤</string>
   <!--User Profiles-->
-  <!--Window title for the user profile screen-->
-  <string name="profile_title">個人檔案</string>
   <!--The accessibility description for the username section-->
-  <!--The accessibility description for the language section-->
-  <string name="profile_language_description">語言:{language}</string>
-  <!--The accessibility description for the location section-->
-  <string name="profile_location_description">位置:{location}</string>
-  <!--The accessibility description for the "About Me" section-->
-  <string name="profile_about_me_description">關於我:{about_me}</string>
   <!--Label for toolbar icon that launches the edit profile screen for the current user-->
   <string name="profile_toolbar_edit_button">編輯</string>
   <!--Shown when viewing your own profile and you are not sharing a full profile-->
