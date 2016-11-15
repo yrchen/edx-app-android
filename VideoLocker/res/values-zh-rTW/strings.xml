@@ -27,7 +27,7 @@
   <!--Share menu title-->
   <string name="share_course_popup_header">分享此課程…</string>
   <!--Share course-->
-  <string name="share_course_message">我正在修習 {platform_name} 上的課程！快來看看：</string>
+  <string name="share_course_message">我正在修習{platform_name}上的課程！快來看看：</string>
   <!--Settings Page-->
   <!--Label for wifi only switch-->
   <string name="settings_wifi_top">僅供 Wi-Fi 下載</string>
@@ -37,7 +37,7 @@
   <!--Description of button that will open the certificate sharing menu-->
   <string name="share_certificate_button">分享您的證書</string>
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
-  <string name="share_certificate_message">我剛才在 {platform_name} 上取得證書！快來看看：{certificate_url}</string>
+  <string name="share_certificate_message">我剛才在{platform_name}上取得證書！快來看看：{certificate_url}</string>
   <!--Tab of tab for certicate for finished course-->
   <string name="tab_label_certificate">證書</string>
   <!--Header for popup list of share targets-->
@@ -69,8 +69,8 @@
   <!--Error during log in.-->
   <string name="login_failed">請確認您的使用者名稱或電子郵件地址及密碼是正確的，並且再試一次。</string>
   <string name="by_signing_up">登入此應用程式，您同意</string>
-  <string name="licensing_agreement">{platform_name} 服務條款及榮譽守則</string>
-  <string name="login_title">登入</string>
+  <string name="licensing_agreement">{platform_name}服務條款及榮譽守則</string>
+  <string name="login_title">登入{platform_name}</string>
   <!--Accessible content description of close button on Sign in and Sign up screen-->
   <string name="close">關閉</string>
   <!--Accessible content description prefix of dropdowns on Sign up screen, like, country and gender dropdowns-->
@@ -126,9 +126,9 @@
     <item quantity="other">您確定要刪除這些影片嗎？</item>
   </plurals>
   <!--Alert dialog title for users with zero rated data-->
-  <string name="leaving_app_data_title">離開 {platform_name} 應用程式</string>
+  <string name="leaving_app_data_title">離開{platform_name}應用程式</string>
   <!--Alert dialog content for users with zero rated data-->
-  <string name="leaving_app_data_message">如果您離開此應用程式，將無法再查看免費的 {platform_name} 內容。可能會收取數據費用。</string>
+  <string name="leaving_app_data_message">如果您離開此應用程式，將無法再查看免費的{platform_name}內容。可能會收取數據費用。</string>
   <!--Reset Dialog Fragment Place Holder messages-->
   <string name="reset_dialog_title">重設標題</string>
   <!--Title of agreement users must accept to use the app-->
@@ -449,7 +449,7 @@
   <!--Text for successful registration with social token-->
   <string name="sign_up_with_facebook_ok">您已成功使用 Facebook 登入。</string>
   <string name="sign_up_with_google_ok">您已成功使用 Google 登入。</string>
-  <string name="sign_up_with_social_ok">在正式開始使用 {platform_name} 學習之前，我們需要您提供一些額外資訊。</string>
+  <string name="sign_up_with_social_ok">在正式開始使用{platform_name}學習之前，我們需要您提供一些額外資訊。</string>
   <!--Continue registration after social login-->
   <string name="complete_registration">完成您的註冊</string>
   <!--Message shown when enrolling in a course fails-->
@@ -553,5 +553,5 @@
   <!--Button that will initiate sharing one of a user's accomplishments-->
   <string name="share_accomplishment_button">分享您的成就</string>
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
-  <string name="share_accomplishment_message">我剛才在 {platform_name} 上取得徽章！快來看看：{badge_url}</string>
+  <string name="share_accomplishment_message">我剛才在{platform_name}上取得徽章！快來看看：{badge_url}</string>
 </resources>
