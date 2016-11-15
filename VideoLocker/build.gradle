@@ -61,8 +61,9 @@ dependencies {
     compile project (':android-iconify-fontawesome')
     compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.facebook.android:facebook-android-sdk:3.23.1'
-    compile 'com.google.android.gms:play-services-plus:8.4.0'
-    compile 'com.google.android.gms:play-services-analytics:8.4.0'
+    compile 'com.google.android.gms:play-services-plus:9.4.0'
+    compile 'com.google.android.gms:play-services-analytics:9.4.0'
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
     compile 'com.google.code.gson:gson:2.4'
     compile 'de.greenrobot:eventbus:2.4.1'
     compile 'com.squareup.phrase:phrase:1.1.0'
@@ -84,10 +85,10 @@ dependencies {
     compile('com.segment.analytics.android:analytics-core:3.4.0@aar') {
         transitive = true
     }
-    compile('com.segment.analytics.android:analytics-integration-google-analytics:3.4.0@aar') {
-        exclude module: 'play-services-analytics'
-        transitive = true
-    }
+    //compile('com.segment.analytics.android:analytics-integration-google-analytics:3.4.0@aar') {
+    //   exclude module: 'play-services-analytics'
+    //    transitive = true
+    //}
 
     //Crashlytics Kit
     compile('com.crashlytics.sdk.android:crashlytics-core:2.3.8@aar') {
@@ -239,7 +240,11 @@ android {
     }
 
     productFlavors {
-        prod { }
+        prod {
+            if (project.hasProperty('APPLICATION_ID')) {
+                applicationId APPLICATION_ID
+            }
+        }
         dev {
             minSdkVersion 21 // Disables multidex to drastically speed up build: https://developer.android.com/tools/building/multidex.html#dev-build
         }
