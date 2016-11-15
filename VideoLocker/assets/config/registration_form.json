@@ -12,7 +12,7 @@
         "defaultValue": "",
         "instructions": "",
         "type": "email",
-        "label": "Email"
+        "label": "電子郵件信箱"
     }, {
         "restrictions": {
             "max_length": 255
@@ -22,9 +22,9 @@
         "errorMessages": {},
         "placeholder": "",
         "defaultValue": "",
-        "instructions": "This name appears on certificates you earn",
+        "instructions": "請輸入您的全名，之後將顯示在您所獲得的證書之上",
         "type": "text",
-        "label": "Full name"
+        "label": "全名"
     }, {
         "restrictions": {
             "min_length": 2,
@@ -35,9 +35,9 @@
         "errorMessages": {},
         "placeholder": "",
         "defaultValue": "",
-        "instructions": "This name identifies you in courses and <b>cannot be changed</b>",
+        "instructions": "此帳號名稱用來區分您的身分，在本平台上必須是唯一的名稱，而且之後<b>不能修改</b>",
         "type": "text",
-        "label": "Public username"
+        "label": "使用者帳號"
     }, {
         "restrictions": {
             "min_length": 2,
@@ -50,13 +50,13 @@
         "defaultValue": "",
         "instructions": "",
         "type": "password",
-        "label": "Password"
+        "label": "密碼"
     }, {
         "restrictions": {},
         "required": true,
         "name": "country",
         "errorMessages": {
-            "required": "Please select your Country."
+            "required": "請選擇您的國家"
         },
         "placeholder": "",
         "defaultValue": "",
@@ -66,6 +66,9 @@
             "default": true,
             "name": "--",
             "value": ""
+        }, {
+            "name": "台灣",
+            "value": "TW"
         }, {
             "name": "Afghanistan",
             "value": "AF"
@@ -715,9 +718,6 @@
             "name": "Syrian Arab Republic",
             "value": "SY"
         }, {
-            "name": "Taiwan",
-            "value": "TW"
-        }, {
             "name": "Tajikistan",
             "value": "TJ"
         }, {
@@ -814,7 +814,7 @@
             "name": "\u00c5land Islands",
             "value": "AX"
         }],
-        "label": "Country"
+        "label": "國家"
     }, {
         "restrictions": {},
         "required": false,
@@ -829,16 +829,16 @@
             "name": "--",
             "value": ""
         }, {
-            "name": "Male",
+            "name": "男",
             "value": "m"
         }, {
-            "name": "Female",
+            "name": "女",
             "value": "f"
         }, {
-            "name": "Other",
+            "name": "其他",
             "value": "o"
         }],
-        "label": "Gender"
+        "label": "性別"
     }, {
         "restrictions": {},
         "required": false,
@@ -1213,7 +1213,7 @@
             "name": "1896",
             "value": "1896"
         }],
-        "label": "Year of birth"
+        "label": "出生年"
     }, {
         "restrictions": {},
         "required": false,
@@ -1228,34 +1228,34 @@
             "name": "--",
             "value": ""
         }, {
-            "name": "Doctorate",
+            "name": "博士學位",
             "value": "p"
         }, {
-            "name": "Master's or professional degree",
+            "name": "碩士學位",
             "value": "m"
         }, {
-            "name": "Bachelor's degree",
+            "name": "學士學位",
             "value": "b"
         }, {
-            "name": "Associate's degree",
+            "name": "副學士學位",
             "value": "a"
         }, {
-            "name": "Secondary/high school",
+            "name": "高中畢業",
             "value": "hs"
         }, {
-            "name": "Junior secondary/junior high/middle school",
+            "name": "國中畢業",
             "value": "jhs"
         }, {
-            "name": "Elementary/primary school",
+            "name": "國小畢業",
             "value": "el"
         }, {
-            "name": "None",
+            "name": "無",
             "value": "none"
         }, {
-            "name": "Other",
+            "name": "其他",
             "value": "other"
         }],
-        "label": "Highest level of education completed"
+        "label": "最高教育程度"
     }, {
         "restrictions": {},
         "required": false,
@@ -1265,7 +1265,7 @@
         "defaultValue": "",
         "instructions": "",
         "type": "textarea",
-        "label": "Mailing address"
+        "label": "地址"
     }, {
         "restrictions": {},
         "required": false,
@@ -1275,7 +1275,7 @@
         "defaultValue": "",
         "instructions": "",
         "type": "textarea",
-        "label": "Tell us why you're interested in edX"
+        "label": "請與我們分享您為什麼對我們平台感興趣"
     }, {
         "restrictions": {},
         "required": true,
@@ -1285,7 +1285,7 @@
         },
         "agreement" : {
             "url" : "edxapp://show_eula",
-            "text" : "edX Terms of Service and Honor Code"
+            "text" : "中華開放教育平台服務條款及榮譽守則"
         },
         "placeholder" : "",
         "defaultValue": false,
