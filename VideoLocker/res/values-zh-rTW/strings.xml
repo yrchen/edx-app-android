@@ -445,7 +445,7 @@
   <!--Text shown while waiting for registration request-->
   <string name="creating_account_text">正在建立帳戶...</string>
   <!--Registration screen title-->
-  <string name="register_title">註冊使用 {platform_name}</string>
+  <string name="register_title">註冊使用{platform_name}</string>
   <!--Text for successful registration with social token-->
   <string name="sign_up_with_facebook_ok">您已成功使用 Facebook 登入。</string>
   <string name="sign_up_with_google_ok">您已成功使用 Google 登入。</string>
@@ -554,4 +554,44 @@
   <string name="share_accomplishment_button">分享您的成就</string>
   <!--Text that pre-populates your post/email/SMS when sharing certificate-->
   <string name="share_accomplishment_message">我剛才在{platform_name}上取得徽章！快來看看：{badge_url}</string>
+  <string name="progressText">請稍候...</string>
+  <string name="show_more_records">更多...</string>
+  <string name="sign_up_error">目前無法創建您的帳號，請稍候再嘗試。</string>
+  <string name="sign_up_with">使用下列服務註冊</string>
+  <string name="signin_with_text">正在登入</string>
+  <string name="tab_label_course_info">首頁</string>
+  <string name="tab_label_courseware">課程</string>
+  <string name="video_download_in_progress">影片下載進行中</string>
+  <string name="video_player_share">分享</string>
+  <string name="already_enrolled">您已註冊此課程。</string>
+  <string name="assessment_full_course">完整課程</string>
+  <string name="assessment_homework">作業</string>
+  <string name="assessment_next_unit">下一單元</string>
+  <string name="assessment_previous_unit">上一單元</string>
+  <string name="assessment_video_only">只提供影像</string>
+  <string name="by_creating_account">要創建{platform_name}的帳號，您同意遵守</string>
+  <string name="discussion_responses_action_bar_follow_text">追蹤</string>
+  <string name="discussion_responses_action_bar_unfollow_text">取消追蹤</string>
+  <string name="discussion_priviledged_author_label_staff">工作人員</string>
+  <string name="discussion_priviledged_author_label_ta">社群助教</string>
+  <string name="discussion_responses">回應</string>
+  <string name="delete_successful_dialog_title_help">刪除</string>
+  <string name="course_detail_enroll_now_button">現在註冊</string>
+  <string name="course_content_available_text">課程目前尚未開始，請於{start_time}後再回來看看您的影片。</string>
+  <string name="course_announcement_notification_action">最新消息</string>
+  <string name="chapter_name">章節名稱</string>
+  <string name="label_close_drawer">關閉導覽</string>
+  <string name="msg_lecture_complete">您想要看看下一部影片嗎？</string>
+  <string name="new_user">需要帳號嗎？</string>
+  <string name="open_destination_btn_text">在我的瀏覽器上開啟 {platform_destination}</string>
+  <string name="or_sign_up_with_email">或是以電子郵件註冊</string>
+  <string name="title_lecture_complete">您已經看完此影片了。</string>
+  <string name="lbl_video_speed">影片速度</string>
+  <string name="no_information_to_display">目前沒有其他的課程資訊。</string>
+  <string name="tab_label_announcement">公告</string>
+  <string name="lbl_open_in_browser">在瀏覽器中開啟</string>
+  <string name="label_open_drawer">開啟導覽</string>
+  <string name="discussion_priviledged_author_attribution">由%s所發表</string>
+  <string name="offline_handouts_text">目前為離線模式，若要檢視教材，請連線到網際網路。</string>
+  <string name="login_failed_no_grant">此帳號目前尚未啟用，請檢查您的電子郵件信箱中的帳號啟用信啟用您的帳號。</string>
 </resources>
