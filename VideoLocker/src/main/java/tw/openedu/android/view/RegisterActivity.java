@@ -152,7 +152,7 @@ public class RegisterActivity extends BaseFragmentActivity
         boolean isInAppEULALink = false;
         try {
             Uri uri = Uri.parse(agreement.getLink());
-            if (uri.getScheme().equals("edxapp")
+            if (uri.getScheme().equals("openedu")
                     && uri.getHost().equals("show_eula")) {
                 isInAppEULALink = true;
             }

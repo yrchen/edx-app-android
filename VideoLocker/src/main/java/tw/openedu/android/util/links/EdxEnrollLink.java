@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 public class EdxEnrollLink {
-    public static final String SCHEME = "edxapp";
+    public static final String SCHEME = "openedu";
     public static final String AUTHORITY = "enroll";
     public static final String COURSE_ID_PARAMETER_NAME = "course_id";
     public static final String EMAIL_OPT_IN_PARAMETER_NAME = "email_opt_in";
