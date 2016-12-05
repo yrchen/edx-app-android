@@ -261,7 +261,7 @@
 
         <service android:name="tw.openedu.android.services.DownloadSpeedService" />
 
-        <!--   Parse Setup -->
+        <!--  Parse Setup -->
         <!--  https://www.parse.com/apps/quickstart#parse_push/android/existing  -->
         <service android:name="com.parse.PushService" />
         <!-- we have to add a level of indirection to avoid crash as parse maybe disabled by setting -->
@@ -273,6 +273,12 @@
                 <category android:name="tw.openedu.android" />
             </intent-filter>
         </receiver>
+
+        <!-- Fabric -->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4519c1936f721d85502c205816f8e041c845229b"
+            />
     </application>
 
 </manifest>
