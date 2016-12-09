@@ -1,7 +1,6 @@
 package tw.openedu.android.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +36,7 @@ import tw.openedu.android.logger.Logger;
 import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.module.analytics.ISegment;
 import tw.openedu.android.module.facebook.IUiLifecycleHelper;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.profiles.UserProfileActivity;
 import tw.openedu.android.user.Account;
@@ -61,7 +61,9 @@ public class NavigationFragment extends BaseFragment {
     @Inject
     Config config;
 
-    private PrefManager pref;
+    @Inject
+    LoginPrefs loginPrefs;
+
     private final Logger logger = new Logger(getClass().getName());
     private NetworkCheckDialogFragment newFragment;
 
@@ -88,9 +90,7 @@ public class NavigationFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         uiLifecycleHelper = IUiLifecycleHelper.Factory.getInstance(getActivity(), callback);
         uiLifecycleHelper.onCreate(savedInstanceState);
-        Context context = getActivity().getBaseContext();
-        pref = new PrefManager(context, PrefManager.Pref.LOGIN);
-        profile = pref.getCurrentUserProfile();
+        profile = loginPrefs.getCurrentUserProfile();
         if (config.isUserProfilesEnabled() && profile != null && profile.username != null) {
             getAccountTask = new GetAccountTask(getActivity(), profile.username);
             getAccountTask.setTaskProcessCallback(null); // Disable global loading indicator
@@ -106,7 +106,7 @@ public class NavigationFragment extends BaseFragment {
                     .into(imageView);
         } else {
             Glide.with(NavigationFragment.this)
-                    .load(R.drawable.xsie)
+                    .load(R.drawable.profile_photo_placeholder)
                     .into(imageView);
         }
     }
@@ -338,7 +338,7 @@ public class NavigationFragment extends BaseFragment {
         if (event.getUsername().equalsIgnoreCase(profile.username)) {
             if (null == event.getUri()) {
                 Glide.with(NavigationFragment.this)
-                        .load(R.drawable.xsie)
+                        .load(R.drawable.profile_photo_placeholder)
                         .into(imageView);
             } else {
                 Glide.with(NavigationFragment.this)

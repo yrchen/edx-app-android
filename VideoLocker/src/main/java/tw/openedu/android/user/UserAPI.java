@@ -7,7 +7,6 @@ import android.webkit.MimeTypeMap;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonSyntaxException;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -15,7 +14,7 @@ import tw.openedu.android.event.AccountDataLoadedEvent;
 import tw.openedu.android.event.ProfilePhotoUpdatedEvent;
 import tw.openedu.android.http.ApiConstants;
 import tw.openedu.android.http.HttpConnectivityException;
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.http.cache.CacheManager;
 import tw.openedu.android.logger.Logger;
 import tw.openedu.android.model.Page;
@@ -36,7 +35,6 @@ import de.greenrobot.event.EventBus;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.converter.ConversionException;
 import retrofit.mime.TypedFile;
 import retrofit.mime.TypedInput;
 
@@ -61,19 +59,19 @@ public class UserAPI {
         userService = restAdapter.create(UserService.class);
     }
 
-    public Account getAccount(@NonNull String username) throws RetroHttpException {
+    public Account getAccount(@NonNull String username) throws HttpException {
         final Account account = userService.getAccount(username);
         EventBus.getDefault().post(new AccountDataLoadedEvent(account));
         return account;
     }
 
-    public Account updateAccount(@NonNull String username, @NonNull String field, @Nullable Object value) throws RetroHttpException {
+    public Account updateAccount(@NonNull String username, @NonNull String field, @Nullable Object value) throws HttpException {
         final Account updatedAccount = userService.updateAccount(username, Collections.singletonMap(field, value));
         EventBus.getDefault().post(new AccountDataLoadedEvent(updatedAccount));
         return updatedAccount;
     }
 
-    public void setProfileImage(@NonNull String username, @NonNull final File file) throws RetroHttpException, IOException {
+    public void setProfileImage(@NonNull String username, @NonNull final File file) throws HttpException, IOException {
         final String mimeType = "image/jpeg";
         logger.debug("Uploading file of type " + mimeType + " from " + file.toString());
         userService.setProfileImage(
@@ -83,12 +81,12 @@ public class UserAPI {
         EventBus.getDefault().post(new ProfilePhotoUpdatedEvent(username, Uri.fromFile(file)));
     }
 
-    public void deleteProfileImage(@NonNull String username) throws RetroHttpException {
+    public void deleteProfileImage(@NonNull String username) throws HttpException {
         userService.deleteProfileImage(username);
         EventBus.getDefault().post(new ProfilePhotoUpdatedEvent(username, null));
     }
 
-    public Page<BadgeAssertion> getBadges(@NonNull String username, int page) throws RetroHttpException {
+    public Page<BadgeAssertion> getBadges(@NonNull String username, int page) throws HttpException {
         return userService.getBadges(username, page, ApiConstants.STANDARD_PAGE_SIZE);
     }
 
@@ -100,10 +98,9 @@ public class UserAPI {
 
     public
     @NonNull
-    List<EnrolledCoursesResponse> getUserEnrolledCourses(@NonNull String username, boolean tryCache) throws RetroHttpException {
+    List<EnrolledCoursesResponse> getUserEnrolledCourses(@NonNull String username, boolean tryCache) throws HttpException {
         String json = null;
 
-        // TODO: Use OkHttp's automatic caching system
         final String cacheKey = getUserEnrolledCoursesURL(username);
 
         // try to get from cache if we should
@@ -148,16 +145,11 @@ public class UserAPI {
         }
 
         // We aren't use TypeToken here because it throws NoClassDefFoundError
-        try {
-            final JsonArray ary = gson.fromJson(json, JsonArray.class);
-            final List<EnrolledCoursesResponse> ret = new ArrayList<>(ary.size());
-            for (int cnt = 0; cnt < ary.size(); ++cnt) {
-                ret.add(gson.fromJson(ary.get(cnt), EnrolledCoursesResponse.class));
-            }
-            return ret;
-        } catch (JsonSyntaxException e) {
-            throw new RetroHttpException(RetrofitError.conversionError(
-                    null, null, null, null, new ConversionException(e)));
+        final JsonArray ary = gson.fromJson(json, JsonArray.class);
+        final List<EnrolledCoursesResponse> ret = new ArrayList<>(ary.size());
+        for (int cnt = 0; cnt < ary.size(); ++cnt) {
+            ret.add(gson.fromJson(ary.get(cnt), EnrolledCoursesResponse.class));
         }
+        return ret;
     }
 }

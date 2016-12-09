@@ -28,6 +28,7 @@ import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.model.api.VideoResponseModel;
 import tw.openedu.android.model.db.DownloadEntry;
 import tw.openedu.android.module.db.DataCallback;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.task.CircularProgressTask;
 import tw.openedu.android.util.AppConstants;
@@ -78,6 +79,9 @@ public class VideoListFragment extends BaseFragment {
     protected IEdxEnvironment environment;
 
     private final Logger logger = new Logger(getClass().getName());
+
+    @Inject
+    LoginPrefs loginPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -484,8 +488,8 @@ public class VideoListFragment extends BaseFragment {
 
             DownloadEntry v = (DownloadEntry) model;
             try {
-                String prefName = PrefManager.getPrefNameForLastAccessedBy(getProfile()
-                        .username, v.eid);
+                String prefName = PrefManager.getPrefNameForLastAccessedBy(
+                        loginPrefs.getUsername(), v.eid);
                 PrefManager prefManager = new PrefManager(getActivity(), prefName);
                 VideoResponseModel vrm =  environment.getServiceManager().getVideoById(v.eid, v.videoId);
                 prefManager.putLastAccessedSubsection(vrm.getSection().getId(), false);
@@ -1300,14 +1304,4 @@ public class VideoListFragment extends BaseFragment {
             logger.error(ex);
         }
     };
-    
-    /**
-     * Returns user's profile.
-     * @return
-     */
-    protected ProfileModel getProfile() {
-        PrefManager prefManager = new PrefManager(getActivity(), PrefManager.Pref.LOGIN);
-        return prefManager.getCurrentUserProfile();
-    }
-
 }

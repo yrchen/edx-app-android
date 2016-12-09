@@ -1,10 +1,10 @@
 package tw.openedu.android.login;
 
 import tw.openedu.android.R;
-import tw.openedu.android.base.RuntimeApplication;
 import tw.openedu.android.view.LoginActivity;
 import tw.openedu.android.view.PresenterActivityTest;
 import tw.openedu.android.view.login.LoginPresenter;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class LoginActivityTest extends PresenterActivityTest<LoginActivity, Logi
 
     @Before
     public void setup() {
-        startActivity(LoginActivity.newIntent(RuntimeApplication.application));
+        startActivity(LoginActivity.newIntent());
     }
 
     @Test

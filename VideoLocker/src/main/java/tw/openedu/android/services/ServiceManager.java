@@ -1,12 +1,10 @@
 package tw.openedu.android.services;
 
 import android.net.Uri;
-import android.os.Bundle;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import tw.openedu.android.authentication.AuthResponse;
 import tw.openedu.android.base.MainApplication;
 import tw.openedu.android.http.HttpManager;
 import tw.openedu.android.http.HttpRequestDelegate;
@@ -20,9 +18,6 @@ import tw.openedu.android.model.Filter;
 import tw.openedu.android.model.api.AnnouncementsModel;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
 import tw.openedu.android.model.api.HandoutModel;
-import tw.openedu.android.model.api.ProfileModel;
-import tw.openedu.android.model.api.RegisterResponse;
-import tw.openedu.android.model.api.ResetPasswordResponse;
 import tw.openedu.android.model.api.SectionEntry;
 import tw.openedu.android.model.api.SyncLastAccessedSubsectionResponse;
 import tw.openedu.android.model.api.TranscriptModel;
@@ -30,7 +25,7 @@ import tw.openedu.android.model.api.VideoResponseModel;
 import tw.openedu.android.model.course.CourseComponent;
 import tw.openedu.android.model.course.CourseStructureJsonHandler;
 import tw.openedu.android.model.course.CourseStructureV1Model;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.registration.model.RegistrationDescription;
 import tw.openedu.android.util.Config;
 
@@ -60,6 +55,9 @@ public class ServiceManager {
     @Inject
     IApi api;
 
+    @Inject
+    LoginPrefs loginPrefs;
+
     public ServiceManager() {
         cacheManager = new CacheManager(MainApplication.instance());
     }
@@ -67,12 +65,10 @@ public class ServiceManager {
     private HttpRequestEndPoint getEndPointCourseStructure(final String courseId) {
         return new HttpRequestEndPoint() {
             public String getUrl() {
-                PrefManager pref = new PrefManager(MainApplication.instance(), PrefManager.Pref.LOGIN);
-
                 String url = Uri.parse(config.getApiHostURL() + "/api/courses/v1/blocks/?")
                         .buildUpon()
                         .appendQueryParameter("course_id", courseId)
-                        .appendQueryParameter("username", pref.getCurrentUserProfile().username)
+                        .appendQueryParameter("username", loginPrefs.getUsername())
                         .appendQueryParameter("depth", "all")
                         .appendQueryParameter("requested_fields", "graded,format,student_view_multi_device")
                         .appendQueryParameter("student_view_data", "video,discussion")
@@ -169,19 +165,6 @@ public class ServiceManager {
         return null;
     }
 
-
-    public ResetPasswordResponse resetPassword(String emailId) throws Exception {
-        return api.resetPassword(emailId);
-    }
-
-    public AuthResponse auth(String username, String password) throws Exception {
-        return api.auth(username, password);
-    }
-
-    public ProfileModel getProfile() throws Exception {
-        return api.getProfile();
-    }
-
     public List<EnrolledCoursesResponse> getEnrolledCourses() throws Exception {
         return api.getEnrolledCourses();
     }
@@ -206,16 +189,6 @@ public class ServiceManager {
         return api.downloadTranscript(url);
     }
 
-    public AuthResponse loginByFacebook(String accessToken) throws Exception {
-        return api.loginByFacebook(accessToken);
-    }
-
-
-    public AuthResponse loginByGoogle(String accessToken) throws Exception {
-        return api.loginByGoogle(accessToken);
-    }
-
-
     public SyncLastAccessedSubsectionResponse syncLastAccessedSubsection(String courseId, String lastVisitedModuleId) throws Exception {
         return api.syncLastAccessedSubsection(courseId, lastVisitedModuleId);
     }
@@ -224,11 +197,6 @@ public class ServiceManager {
     public SyncLastAccessedSubsectionResponse getLastAccessedSubsection(String courseId) throws Exception {
         return api.getLastAccessedSubsection(courseId);
     }
-
-    public RegisterResponse register(Bundle parameters) throws Exception {
-        return api.register(parameters);
-    }
-
 
     public RegistrationDescription getRegistrationDescription() throws Exception {
         return api.getRegistrationDescription();

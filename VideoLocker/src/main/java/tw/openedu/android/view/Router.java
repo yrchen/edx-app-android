@@ -12,6 +12,7 @@ import android.support.v4.app.TaskStackBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import tw.openedu.android.base.MainApplication;
 import tw.openedu.android.course.CourseDetail;
 import tw.openedu.android.discussion.DiscussionComment;
 import tw.openedu.android.discussion.DiscussionThread;
@@ -20,9 +21,7 @@ import tw.openedu.android.event.LogoutEvent;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
 import tw.openedu.android.module.analytics.ISegment;
 import tw.openedu.android.module.notification.NotificationDelegate;
-import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.profiles.UserProfileActivity;
-import tw.openedu.android.util.AppConstants;
 import tw.openedu.android.util.Config;
 import tw.openedu.android.view.dialog.WebViewDialogActivity;
 import tw.openedu.android.view.my_videos.MyVideosActivity;
@@ -72,27 +71,26 @@ public class Router {
     }
 
     public void showLaunchScreen(Context context) {
-        Intent launchIntent = new Intent(context, LaunchActivity.class);
+        final Intent launchIntent = new Intent(context,
+                config.isNewLogistrationEnabled()
+                        ? DiscoveryLaunchActivity.class
+                        : LaunchActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(launchIntent);
     }
 
-    public void showLogin(Context context) {
-        context.startActivity(LoginActivity.newIntent(context));
+    @NonNull
+    public Intent getLogInIntent() {
+        return LoginActivity.newIntent();
     }
 
-    public void showRegistration(Activity sourceActivity) {
-        Intent launchIntent = new Intent(sourceActivity, RegisterActivity.class);
-        sourceActivity.startActivity(launchIntent);
+    @NonNull
+    public Intent getRegisterIntent() {
+        return RegisterActivity.newIntent();
     }
 
     public void showMyCourses(Activity sourceActivity) {
         sourceActivity.startActivity(MyCoursesListActivity.newIntent());
-
-        // let login screens be ended
-        Intent loginIntent = new Intent();
-        loginIntent.setAction(AppConstants.USER_LOG_IN);
-        sourceActivity.sendBroadcast(loginIntent);
     }
 
     public void showCourseDashboardTabs(Activity activity, Config config, EnrolledCoursesResponse model,
@@ -258,9 +256,7 @@ public class Router {
      * or programmatically
      */
     public void forceLogout(Context context, ISegment segment, NotificationDelegate delegate) {
-        PrefManager pref = new PrefManager(context, PrefManager.Pref.LOGIN);
-        pref.clearAuth();
-        pref.put(PrefManager.Key.TRANSCRIPT_LANGUAGE, "none");
+        MainApplication.getEnvironment(context).getLoginPrefs().clear();
 
         EventBus.getDefault().post(new LogoutEvent());
 
@@ -270,7 +266,6 @@ public class Router {
         delegate.unsubscribeAll();
 
         showLaunchScreen(context);
-        showLogin(context);
     }
 
     public void showHandouts(Activity activity, EnrolledCoursesResponse courseData) {
@@ -305,7 +300,19 @@ public class Router {
         if (config.getCourseDiscoveryConfig().isWebviewCourseDiscoveryEnabled()) {
             findCoursesIntent = new Intent(context, WebViewFindCoursesActivity.class);
         } else {
-            findCoursesIntent =  NativeFindCoursesActivity.newIntent(context);
+            findCoursesIntent = NativeFindCoursesActivity.newIntent(context);
+        }
+        //Add this flag as multiple activities need to be created
+        findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        context.startActivity(findCoursesIntent);
+    }
+
+    public void showExploreSubjects(@NonNull Context context) {
+        final Intent findCoursesIntent;
+        if (config.getCourseDiscoveryConfig().isWebviewCourseDiscoveryEnabled()) {
+            findCoursesIntent = new Intent(context, WebViewExploreSubjectsActivity.class);
+        } else {
+            throw new RuntimeException("'Explore Subjects' is not implemented for native course discovery");
         }
         //Add this flag as multiple activities need to be created
         findCoursesIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);

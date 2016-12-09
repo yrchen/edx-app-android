@@ -1,13 +1,18 @@
 package tw.openedu.android.test.module;
 
+import com.google.inject.Injector;
+
 import tw.openedu.android.model.VideoModel;
+import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.model.db.DownloadEntry;
 import tw.openedu.android.model.db.DownloadEntry.DownloadedState;
 import tw.openedu.android.model.db.DownloadEntry.WatchedState;
 import tw.openedu.android.module.db.DataCallback;
 import tw.openedu.android.module.db.IDatabase;
 import tw.openedu.android.module.db.impl.DatabaseFactory;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.test.BaseTestCase;
+
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;
 
@@ -20,13 +25,24 @@ public class DbTests extends BaseTestCase {
     final Object lock = new Object();
     private IDatabase db;
     private final String username = "unittest";
+    private LoginPrefs loginPrefs;
+
+    @Override
+    protected void inject(Injector injector) throws Exception {
+        super.inject(injector);
+        loginPrefs = injector.getInstance(LoginPrefs.class);
+    }
 
     @Override
     public void setUp() throws Exception {
         super.setUp();
         db = DatabaseFactory.getInstance( DatabaseFactory.TYPE_DATABASE_NATIVE, RuntimeEnvironment
                 .application );
-        db.setUserName(username);
+
+        // Our database makes use of the authenticated user's username, so we must mock it.
+        final ProfileModel profileModel = new ProfileModel();
+        profileModel.username = username;
+        loginPrefs.storeUserProfile(profileModel);
     }
 
     @Override
@@ -48,7 +64,7 @@ public class DbTests extends BaseTestCase {
         assertTrue("Row Id must be non zero positive number", rowId > 0);
 
         VideoModel video = db.getVideoEntryByVideoId(videoId, null);
-        assertNotNull("Shoud have got one video object", video);
+        assertNotNull("Should have got one video object", video);
 
         Integer count = db.deleteVideoByVideoId(video, null);
         assertNotNull(count);

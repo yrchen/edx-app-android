@@ -1,43 +1,25 @@
 package tw.openedu.android.http;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import retrofit.RetrofitError;
+public class HttpResponseStatusException extends HttpException {
+    private final int statusCode;
+    @Nullable
+    private final String body;
 
-/**
- * Thrown when a Retrofit HTTP call returns an error code. Wraps
- * around a {@link RetrofitError} as a checked exception.
- */
-public class HttpResponseStatusException extends RetroHttpException {
-    /**
-     * Validate that the original {@link RetrofitError} is an HTTP error.
-     *
-     * @param cause The Retrofit exception to validate.
-     * @return The provided Retrofit exception if it's valid.
-     * @throws IllegalArgumentException if validation fails.
-     */
-    private static RetrofitError validate(@NonNull RetrofitError cause) {
-        if (cause.getKind() != RetrofitError.Kind.HTTP) {
-            throw new IllegalArgumentException();
-        }
-        return cause;
+    public HttpResponseStatusException(@NonNull Throwable cause, int statusCode, @Nullable String body) {
+        super(cause);
+        this.statusCode = statusCode;
+        this.body = body;
     }
 
-    /**
-     * Construct a new instance of {@link HttpResponseStatusException}
-     * wrapping the provided {@link RetrofitError}.
-     *
-     * @param cause The original Retrofit network exception.
-     */
-    public HttpResponseStatusException(@NonNull RetrofitError cause) {
-        super(validate(cause));
-    }
-
-    /**
-     * @return The HTTP error code that caused this
-     *         exception.
-     */
     public int getStatusCode() {
-        return getCause().getResponse().getStatus();
+        return statusCode;
+    }
+
+    @Nullable
+    public String getBody() {
+        return body;
     }
 }

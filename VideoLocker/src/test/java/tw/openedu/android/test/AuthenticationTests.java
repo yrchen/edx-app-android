@@ -1,6 +1,18 @@
 package tw.openedu.android.test;
 
 import com.google.gson.JsonObject;
+import com.google.inject.Injector;
+
+import tw.openedu.android.authentication.AuthResponse;
+import tw.openedu.android.http.OauthRefreshTokenAuthenticator;
+import tw.openedu.android.module.prefs.LoginPrefs;
+import tw.openedu.android.test.util.MockDataUtil;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.robolectric.annotation.Config;
+
+import java.io.IOException;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -9,16 +21,6 @@ import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-
-import tw.openedu.android.http.OauthRefreshTokenAuthenticator;
-import tw.openedu.android.module.prefs.PrefManager;
-import tw.openedu.android.test.util.MockDataUtil;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.robolectric.annotation.Config;
-
-import java.io.IOException;
 
 import static tw.openedu.android.test.util.OkHttpTestUtil.defaultClient;
 import static org.junit.Assert.assertEquals;
@@ -34,12 +36,19 @@ public final class AuthenticationTests extends BaseTestCase {
 
     private OkHttpClient client = defaultClient();
 
+    private LoginPrefs loginPrefs;
+
     @Before
     public void setUp() throws Exception {
-        PrefManager pref = new PrefManager(context, PrefManager.Pref.LOGIN);
-        pref.put(PrefManager.Key.AUTH_JSON, MockDataUtil.getMockResponse("post_oauth2_access_token"));
         mockServer.setDispatcher(dispatcher);
         super.setUp();
+    }
+
+    @Override
+    protected void inject(Injector injector) throws Exception {
+        super.inject(injector);
+        loginPrefs = injector.getInstance(LoginPrefs.class);
+        loginPrefs.storeAuthTokenResponse(MockDataUtil.getMockResponse("post_oauth2_access_token", AuthResponse.class), LoginPrefs.AuthBackend.PASSWORD);
     }
 
     @Override
@@ -104,8 +113,7 @@ public final class AuthenticationTests extends BaseTestCase {
 
     @Test
     public void testAuthenticate_withoutRefreshToken() throws Exception {
-        PrefManager pref = new PrefManager(context, PrefManager.Pref.LOGIN);
-        pref.put(PrefManager.Key.AUTH_JSON, MockDataUtil.getMockResponse("post_oauth2_access_token_no_refresh_token"));
+        loginPrefs.storeAuthTokenResponse(MockDataUtil.getMockResponse("post_oauth2_access_token_no_refresh_token", AuthResponse.class), LoginPrefs.AuthBackend.PASSWORD);
 
         client = client.newBuilder()
                 .authenticator(new OauthRefreshTokenAuthenticator(context))

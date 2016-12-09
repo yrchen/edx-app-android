@@ -5,6 +5,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -19,14 +20,14 @@ import android.widget.TextView;
 
 import tw.openedu.android.BuildConfig;
 import tw.openedu.android.R;
-import tw.openedu.android.base.BaseFragmentActivity;
 import tw.openedu.android.authentication.AuthResponse;
+import tw.openedu.android.authentication.LoginAPI;
+import tw.openedu.android.base.BaseFragmentActivity;
 import tw.openedu.android.model.api.FormFieldMessageBody;
 import tw.openedu.android.model.api.ProfileModel;
-import tw.openedu.android.model.api.RegisterResponse;
 import tw.openedu.android.model.api.RegisterResponseFieldError;
 import tw.openedu.android.module.analytics.ISegment;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.registration.model.RegistrationAgreement;
 import tw.openedu.android.module.registration.model.RegistrationDescription;
 import tw.openedu.android.module.registration.model.RegistrationFieldType;
@@ -36,11 +37,14 @@ import tw.openedu.android.social.SocialFactory;
 import tw.openedu.android.social.SocialLoginDelegate;
 import tw.openedu.android.task.RegisterTask;
 import tw.openedu.android.task.Task;
-import tw.openedu.android.util.NetworkUtil;
 import tw.openedu.android.util.ResourceUtil;
+import tw.openedu.android.util.images.ErrorUtils;
+import tw.openedu.android.util.IntentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class RegisterActivity extends BaseFragmentActivity
         implements SocialLoginDelegate.MobileLoginCallback {
@@ -49,11 +53,17 @@ public class RegisterActivity extends BaseFragmentActivity
     private LinearLayout requiredFieldsLayout;
     private LinearLayout optionalFieldsLayout;
     private LinearLayout agreementLayout;
-    private LinearLayout registrationLayout;
     private TextView createAccountTv;
     private List<IRegistrationFieldView> mFieldViews = new ArrayList<>();
     private SocialLoginDelegate socialLoginDelegate;
 
+    @Inject
+    LoginPrefs loginPrefs;
+
+    @NonNull
+    public static Intent newIntent() {
+        return IntentFactory.newIntentForComponent(RegisterActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +72,7 @@ public class RegisterActivity extends BaseFragmentActivity
 
         environment.getSegment().trackScreenView(ISegment.Screens.LAUNCH_ACTIVITY);
 
-        socialLoginDelegate = new SocialLoginDelegate(this, savedInstanceState, this, environment.getConfig());
+        socialLoginDelegate = new SocialLoginDelegate(this, savedInstanceState, this, environment.getConfig(), loginPrefs);
 
         boolean isSocialEnabled = SocialFactory.isSocialFeatureEnabled(
                 getApplicationContext(), SocialFactory.SOCIAL_SOURCE_TYPE.TYPE_UNKNOWN, environment.getConfig());
@@ -125,16 +135,11 @@ public class RegisterActivity extends BaseFragmentActivity
             closeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //if user cancel the registration, do the clean up
-                    PrefManager pref = new PrefManager(RegisterActivity.this, PrefManager.Pref.LOGIN);
-                    pref.put(PrefManager.Key.AUTH_TOKEN_BACKEND, null);
-                    pref.put(PrefManager.Key.AUTH_TOKEN_SOCIAL, null);
-
+                    loginPrefs.clearSocialLoginToken();
                     finish();
                 }
             });
         }
-        registrationLayout = (LinearLayout) findViewById(R.id.registrationLayout);
 
         TextView customTitle = (TextView) findViewById(R.id.activity_title);
         if (customTitle != null) {
@@ -224,120 +229,92 @@ public class RegisterActivity extends BaseFragmentActivity
     }
 
     private void createAccount() {
-        if (NetworkUtil.isConnected(this)) {
-            ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
+        ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
 
-            boolean hasError = false;
-            // prepare query (POST body)
-            Bundle parameters = new Bundle();
-            for (IRegistrationFieldView v : mFieldViews) {
-                if (v.isValidInput()) {
-                    if (v.hasValue()) {
-                        // we submit the field only if it provides a value
-                        parameters.putString(v.getField().getName(), v.getCurrentValue().getAsString());
-                    }
-                } else {
-                    if (!hasError) {
-                        // this is the first input field with error, so focus on it
-                        scrollToView(scrollView, v.getView());
-                    }
-                    hasError = true;
+        boolean hasError = false;
+        // prepare query (POST body)
+        Bundle parameters = new Bundle();
+        for (IRegistrationFieldView v : mFieldViews) {
+            if (v.isValidInput()) {
+                if (v.hasValue()) {
+                    // we submit the field only if it provides a value
+                    parameters.putString(v.getField().getName(), v.getCurrentValue().getAsString());
                 }
+            } else {
+                if (!hasError) {
+                    // this is the first input field with error, so focus on it
+                    scrollToView(scrollView, v.getView());
+                }
+                hasError = true;
+            }
+        }
+
+        // set honor_code and terms_of_service to true
+        parameters.putString("honor_code", "true");
+        parameters.putString("terms_of_service", "true");
+
+        //set parameter required by social registration
+        final String access_token = loginPrefs.getSocialLoginAccessToken();
+        final String backstore = loginPrefs.getSocialLoginProvider();
+        boolean fromSocialNet = !TextUtils.isEmpty(access_token);
+        if (fromSocialNet) {
+            parameters.putString("access_token", access_token);
+            parameters.putString("provider", backstore);
+            parameters.putString("client_id", environment.getConfig().getOAuthClientId());
+        }
+
+
+        // do NOT proceed if validations are failed
+        if (hasError) {
+            return;
+        }
+
+        try {
+            //Send app version in create event
+            String versionName = BuildConfig.VERSION_NAME;
+            String appVersion = String.format("%s v%s", getString(R.string.android), versionName);
+
+            environment.getSegment().trackCreateAccountClicked(appVersion, backstore);
+        } catch (Exception e) {
+            logger.error(e);
+        }
+
+        showProgress();
+
+        final SocialFactory.SOCIAL_SOURCE_TYPE backsourceType = SocialFactory.SOCIAL_SOURCE_TYPE.fromString(backstore);
+        final RegisterTask task = new RegisterTask(this, parameters, access_token, backsourceType) {
+            @Override
+            public void onSuccess(AuthResponse auth) {
+                onUserLoginSuccess(auth.profile);
             }
 
-            // set honor_code and terms_of_service to true
-            parameters.putString("honor_code", "true");
-            parameters.putString("terms_of_service", "true");
-
-            //set parameter required by social registration
-            PrefManager pref = new PrefManager(this, PrefManager.Pref.LOGIN);
-            String access_token = pref.getString(PrefManager.Key.AUTH_TOKEN_SOCIAL);
-            String backstore = pref.getString(PrefManager.Key.AUTH_TOKEN_BACKEND);
-            boolean fromSocialNet = !TextUtils.isEmpty(access_token);
-            if (fromSocialNet) {
-                parameters.putString("access_token", access_token);
-                parameters.putString("provider", backstore);
-                parameters.putString("client_id", environment.getConfig().getOAuthClientId());
-            }
-
-
-            // do NOT proceed if validations are failed
-            if (hasError) {
-                return;
-            }
-
-            try {
-                //Send app version in create event
-                String versionName = BuildConfig.VERSION_NAME;
-                String appVersion = String.format("%s v%s", getString(R.string.android), versionName);
-
-                environment.getSegment().trackCreateAccountClicked(appVersion, backstore);
-            } catch (Exception e) {
-                logger.error(e);
-            }
-
-            showProgress();
-
-            SocialFactory.SOCIAL_SOURCE_TYPE backsourceType = SocialFactory.SOCIAL_SOURCE_TYPE.fromString(backstore);
-            RegisterTask task = new RegisterTask(this, parameters, access_token, backsourceType) {
-
-                @Override
-                public void onSuccess(RegisterResponse result) {
-                    if (result != null) {
-                        logger.debug("registration success=" + result.isSuccess());
-                        hideProgress();
-
-                        if (!result.isSuccess()) {
-                            FormFieldMessageBody messageBody = result.getMessageBody();
-                            // show general failure message if there wasn't any error for any of the input fields
-                            if (messageBody == null || messageBody.isEmpty()) {
-                                String errorMessage = result.getValue();
-                                if (errorMessage == null || errorMessage.isEmpty()) {
-                                    errorMessage = getString(R.string.sign_up_error);
-                                }
-                                RegisterActivity.this.showErrorMessage(null, errorMessage);
-                                return;
-                            }
-
-                            for (String key : messageBody.keySet()) {
-                                if (key == null)
-                                    continue;
-                                for (IRegistrationFieldView fieldView : mFieldViews) {
-                                    if (key.equalsIgnoreCase(fieldView.getField().getName())) {
-                                        List<RegisterResponseFieldError> error = messageBody.get(key);
-                                        showErrorOnField(error, fieldView);
-                                        break;
-                                    }
-                                }
-                            }
-
-                        } else {
-                            AuthResponse auth = getAuth();
-                            if (auth != null && auth.isSuccess()) {
-                                //in the future we will show different messages based on different registration
-                                //condition
-                                showProgress();
-                                environment.getRouter().showMyCourses(RegisterActivity.this);
-                                finish();
-                            } else {
-                                RegisterActivity.this.showErrorMessage(null, getString(R.string.sign_up_error));
+            @Override
+            public void onException(Exception ex) {
+                hideProgress();
+                if (ex instanceof LoginAPI.RegistrationException) {
+                    final FormFieldMessageBody messageBody = ((LoginAPI.RegistrationException) ex).getFormErrorBody();
+                    boolean fieldErrorShown = false;
+                    for (String key : messageBody.keySet()) {
+                        if (key == null)
+                            continue;
+                        for (IRegistrationFieldView fieldView : mFieldViews) {
+                            if (key.equalsIgnoreCase(fieldView.getField().getName())) {
+                                List<RegisterResponseFieldError> error = messageBody.get(key);
+                                showErrorOnField(error, fieldView);
+                                fieldErrorShown = true;
+                                break;
                             }
                         }
-                    } else {
-                        hideProgress();
+                    }
+                    if (fieldErrorShown) {
+                        // We are showing an error message on a visible form field.
+                        return; // Return here to avoid showing the generic error pop-up.
                     }
                 }
-
-                @Override
-                public void onException(Exception ex) {
-                    super.onException(ex);
-                    hideProgress();
-                }
-            };
-            task.execute();
-        } else {
-            RegisterActivity.this.showErrorMessage(getString(R.string.no_connectivity), getString(R.string.network_not_connected));
-        }
+                RegisterActivity.this.showErrorMessage(null, ErrorUtils.getErrorMessage(ex, RegisterActivity.this));
+            }
+        };
+        task.execute();
     }
 
     /**
@@ -463,9 +440,7 @@ public class RegisterActivity extends BaseFragmentActivity
                     populateFormField("name", name);
 
                     //Should we save the email here?
-                    PrefManager pref = new PrefManager(RegisterActivity.this, PrefManager.Pref.LOGIN);
-                    pref.put("email", email);
-                    pref.put(PrefManager.Key.TRANSCRIPT_LANGUAGE, "none");
+                    loginPrefs.setLastAuthenticatedEmail(email);
                 }
             }
         });
@@ -540,31 +515,16 @@ public class RegisterActivity extends BaseFragmentActivity
      *  callback if login to edx success using social access_token
      */
     public void onUserLoginSuccess(ProfileModel profile) {
-
-        PrefManager pref = new PrefManager(RegisterActivity.this, PrefManager.Pref.LOGIN);
-        environment.getSegment().identifyUser(profile.id.toString(), profile.email, "");
-
-        String backendKey = pref.getString(PrefManager.Key.SEGMENT_KEY_BACKEND);
-        if (backendKey != null) {
-            environment.getSegment().trackUserLogin(backendKey);
-        }
-
-
-        if (isActivityStarted()) {
-            // do NOT launch next screen if app minimized
-            showProgress();
-            environment.getRouter().showMyCourses(this);
-        }
-        // but finish this screen anyways as login is succeeded
+        setResult(RESULT_OK);
         finish();
     }
 
     /**
      * callback if login to edx failed using social access_token
-     *
-     * @param ex
      */
     public void onUserLoginFailure(Exception ex, String accessToken, String backend) {
+        // FIXME: We are assuming that if we get here, the accessToken is valid. That may not be the case!
+
         //we should redirect to current page.
         //do nothing
         //we need to add 1)access_token   2) provider 3) client_id
@@ -629,5 +589,4 @@ public class RegisterActivity extends BaseFragmentActivity
 
         return true;
     }
-
 }

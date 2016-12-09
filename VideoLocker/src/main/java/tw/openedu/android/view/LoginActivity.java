@@ -1,7 +1,5 @@
 package tw.openedu.android.view;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,19 +12,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 
+import com.google.inject.Inject;
+
 import tw.openedu.android.BuildConfig;
 import tw.openedu.android.R;
 import tw.openedu.android.authentication.AuthResponse;
 import tw.openedu.android.authentication.LoginTask;
 import tw.openedu.android.databinding.ActivityLoginBinding;
+import tw.openedu.android.exception.AuthException;
 import tw.openedu.android.exception.LoginErrorMessage;
 import tw.openedu.android.exception.LoginException;
-import tw.openedu.android.http.HttpResponseStatusException;
-import tw.openedu.android.http.RetroHttpException;
 import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.model.api.ResetPasswordResponse;
 import tw.openedu.android.module.analytics.ISegment;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.social.SocialFactory;
 import tw.openedu.android.social.SocialLoginDelegate;
 import tw.openedu.android.task.Task;
@@ -34,7 +33,7 @@ import tw.openedu.android.util.Config;
 import tw.openedu.android.util.NetworkUtil;
 import tw.openedu.android.util.ResourceUtil;
 import tw.openedu.android.util.ViewAnimationUtil;
-import tw.openedu.android.util.images.ErrorUtils;
+import tw.openedu.android.util.IntentFactory;
 import tw.openedu.android.view.dialog.ResetPasswordDialog;
 import tw.openedu.android.view.dialog.SimpleAlertDialog;
 import tw.openedu.android.view.dialog.SuccessDialogFragment;
@@ -53,12 +52,12 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
 
     private ActivityLoginBinding activityLoginBinding;
 
+    @Inject
+    LoginPrefs loginPrefs;
 
-    public static Intent newIntent(Context context) {
-        Intent launchIntent = new Intent(context, LoginActivity.class);
-        if (!(context instanceof Activity))
-            launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        return launchIntent;
+    @NonNull
+    public static Intent newIntent() {
+        return IntentFactory.newIntentForComponent(LoginActivity.class);
     }
 
     @NonNull
@@ -74,7 +73,7 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
     protected LoginPresenter.LoginViewInterface createView(@Nullable Bundle savedInstanceState) {
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         hideSoftKeypad();
-        socialLoginDelegate = new SocialLoginDelegate(this, savedInstanceState, this, environment.getConfig());
+        socialLoginDelegate = new SocialLoginDelegate(this, savedInstanceState, this, environment.getConfig(), environment.getLoginPrefs());
 
         activityLoginBinding.socialAuth.facebookButton.imgFacebook.setOnClickListener(
                 socialLoginDelegate.createSocialButtonClickHandler(
@@ -195,22 +194,8 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
         socialLoginDelegate.onActivityResult(requestCode, resultCode, data);
     }
 
-
-    protected void onResume() {
-        super.onResume();
-        PrefManager pm = new PrefManager(LoginActivity.this, PrefManager.Pref.LOGIN);
-        //MOB-1343 : app enter here when user in the login window and lock the screen
-        if (pm.getCurrentUserProfile() != null) {
-            Intent intent = new Intent(LoginActivity.this, MyCoursesListActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
     private void displayLastEmailId() {
-        PrefManager pref = new PrefManager(this, PrefManager.Pref.LOGIN);
-        String emailId = pref.getString("email");
-        activityLoginBinding.emailEt.setText(emailId);
+        activityLoginBinding.emailEt.setText(loginPrefs.getLastAuthenticatedEmail());
     }
 
     public void callServerForLogin() {
@@ -243,17 +228,22 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
             LoginTask logintask = new LoginTask(this, activityLoginBinding.emailEt.getText().toString().trim(),
                     activityLoginBinding.passwordEt.getText().toString()) {
                 @Override
-                public void onSuccess(AuthResponse result) {
+                public void onSuccess(@NonNull AuthResponse result) {
                     onUserLoginSuccess(result.profile);
                 }
 
                 @Override
                 public void onException(Exception ex) {
-                    onUserLoginFailure(ex, null, null);
+                    if (ex instanceof AuthException) {
+                        onUserLoginFailure(new LoginException(new LoginErrorMessage(
+                                getString(R.string.login_error),
+                                getString(R.string.login_failed))), null, null);
+                    } else {
+                        super.onException(ex);
+                    }
+                    tryToSetUIInteraction(true);
                 }
-
             };
-
             tryToSetUIInteraction(false);
             logintask.setProgressDialog(activityLoginBinding.progress.progressIndicator);
             logintask.execute();
@@ -361,15 +351,6 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
                 getString(R.string.network_not_connected), false);
     }
 
-    private void myCourseScreen() {
-        if (isActivityStarted()) {
-            // do NOT launch next screen if app minimized
-            environment.getRouter().showMyCourses(this);
-            // but finish this screen anyways as login is succeeded
-            finish();
-        }
-    }
-
     private void clearDialogs() {
         if (resetDialog != null) {
             resetDialog.dismiss();
@@ -395,44 +376,24 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
     }
 
     public void onUserLoginSuccess(ProfileModel profile) {
-
-        // save this email id
-        PrefManager pref = new PrefManager(this, PrefManager.Pref.LOGIN);
-        pref.put("email", activityLoginBinding.emailEt.getText().toString().trim());
-
-        pref.put(PrefManager.Key.TRANSCRIPT_LANGUAGE, "none");
-
-        environment.getSegment().identifyUser(profile.id.toString(), profile.email,
-                activityLoginBinding.emailEt.getText().toString().trim());
-
-        String backendKey = pref.getString(PrefManager.Key.SEGMENT_KEY_BACKEND);
-        if (backendKey != null) {
-            environment.getSegment().trackUserLogin(backendKey);
-        }
-
-        //segIO.trackDeviceDetails();
-        environment.getNotificationDelegate().resubscribeAll();
-
-        myCourseScreen();
+        setResult(RESULT_OK);
+        finish();
     }
 
     public void onUserLoginFailure(Exception ex, String accessToken, String backend) {
         tryToSetUIInteraction(true);
 
 
-        if (ex instanceof LoginException) {
+        // handle if this is a LoginException
+        if (ex != null && ex instanceof LoginException) {
             LoginErrorMessage error = (((LoginException) ex).getLoginErrorMessage());
 
             showErrorMessage(
                     error.getMessageLine1(),
                     (error.getMessageLine2() != null) ?
                             error.getMessageLine2() : getString(R.string.login_failed));
-        } else if (ex instanceof HttpResponseStatusException &&
-                ((HttpResponseStatusException) ex).getStatusCode() == 401) {
-            showErrorMessage(getString(R.string.login_error), getString(R.string.login_failed));
-        } else if (ex instanceof RetroHttpException) {
-            showErrorMessage("", ErrorUtils.getErrorMessage(ex, this));
         } else {
+            showErrorMessage(getString(R.string.login_error), getString(R.string.error_unknown));
             logger.error(ex);
         }
     }
@@ -463,5 +424,4 @@ public class LoginActivity extends PresenterActivity<LoginPresenter, LoginPresen
 
         return true;
     }
-
 }

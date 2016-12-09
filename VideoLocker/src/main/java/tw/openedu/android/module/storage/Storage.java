@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.interfaces.SectionItemInterface;
 import tw.openedu.android.logger.Logger;
 import tw.openedu.android.model.VideoModel;
@@ -27,6 +27,7 @@ import tw.openedu.android.module.db.DatabaseModelFactory;
 import tw.openedu.android.module.db.IDatabase;
 import tw.openedu.android.module.db.impl.DatabaseFactory;
 import tw.openedu.android.module.download.IDownloadManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.services.ServiceManager;
 import tw.openedu.android.user.UserAPI;
@@ -55,6 +56,8 @@ public class Storage implements IStorage {
     private UserPrefs pref;
     @Inject
     private Config config;
+    @Inject
+    private LoginPrefs loginPrefs;
     @Inject
     ServiceManager serviceManager;
     @Inject UserAPI api;
@@ -267,7 +270,7 @@ public class Storage implements IStorage {
 
     @Override
     @NonNull
-    public ArrayList<EnrolledCoursesResponse> getDownloadedCoursesWithVideoCountAndSize() throws RetroHttpException {
+    public ArrayList<EnrolledCoursesResponse> getDownloadedCoursesWithVideoCountAndSize() throws HttpException {
         ArrayList<EnrolledCoursesResponse> downloadedCourseList = new ArrayList<>();
 
         String username = getUsername();
@@ -301,7 +304,7 @@ public class Storage implements IStorage {
 
     @Override
     @NonNull
-    public ArrayList<SectionItemInterface> getRecentDownloadedVideosList() throws RetroHttpException {
+    public ArrayList<SectionItemInterface> getRecentDownloadedVideosList() throws HttpException {
         ArrayList<SectionItemInterface> recentVideolist = new ArrayList<>();
 
         String username = getUsername();
@@ -475,8 +478,7 @@ public class Storage implements IStorage {
                 @Override
                 public void run() {
                     try {
-                        UserPrefs userprefs = new UserPrefs(context);
-                        ProfileModel profile = userprefs.getProfile();
+                        ProfileModel profile = loginPrefs.getCurrentUserProfile();
                         if (profile == null) {
                             // user no logged in
                             return;

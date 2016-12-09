@@ -220,6 +220,18 @@ public abstract class BaseFragmentActivity extends BaseAppActivity
         }
     }
 
+    /**
+     * Call this function if you do not want to allow
+     * opening/showing the drawer(Navigation Fragment) on swiping left to right
+     */
+    protected void blockDrawerFromOpening(){
+        DrawerLayout drawerLayout = (DrawerLayout)
+                findViewById(R.id.drawer_layout);
+        if (drawerLayout != null) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
+    }
+
     //Closing the Navigation Drawer
     public void closeDrawer() {
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -494,14 +506,6 @@ public abstract class BaseFragmentActivity extends BaseAppActivity
      * This method is called after {@link #onOnline()} method.
      */
     protected void onConnectedToWifi() {
-    }
-
-    /**
-     * Returns user's profile.
-     */
-    protected ProfileModel getProfile() {
-        PrefManager prefManager = new PrefManager(this, PrefManager.Pref.LOGIN);
-        return prefManager.getCurrentUserProfile();
     }
 
     /**

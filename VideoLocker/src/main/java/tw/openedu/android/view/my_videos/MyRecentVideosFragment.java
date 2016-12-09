@@ -27,12 +27,12 @@ import tw.openedu.android.core.IEdxEnvironment;
 import tw.openedu.android.interfaces.NetworkSubject;
 import tw.openedu.android.interfaces.SectionItemInterface;
 import tw.openedu.android.logger.Logger;
-import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.model.api.TranscriptModel;
 import tw.openedu.android.model.api.VideoResponseModel;
 import tw.openedu.android.model.db.DownloadEntry;
 import tw.openedu.android.module.analytics.ISegment;
 import tw.openedu.android.module.db.DataCallback;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.module.storage.DownloadCompletedEvent;
 import tw.openedu.android.module.storage.DownloadedVideoDeletedEvent;
@@ -68,6 +68,9 @@ public class MyRecentVideosFragment extends BaseFragment implements IPlayerEvent
     private CompoundButton.OnCheckedChangeListener deleteCheckBoxChangeListener;
     private final Logger logger = new Logger(getClass().getName());
     private GetRecentDownloadedVideosTask getRecentDownloadedVideosTask;
+
+    @Inject
+    LoginPrefs loginPrefs;
 
     @Inject
     protected IEdxEnvironment environment;
@@ -277,7 +280,7 @@ public class MyRecentVideosFragment extends BaseFragment implements IPlayerEvent
 
         Context context = getContext();
         String prefName = PrefManager.getPrefNameForLastAccessedBy(
-                getProfile().username, videoModel.eid);
+                loginPrefs.getUsername(), videoModel.eid);
         PrefManager prefManager = new PrefManager(context, prefName);
         VideoResponseModel vrm;
         try {
@@ -703,14 +706,6 @@ public class MyRecentVideosFragment extends BaseFragment implements IPlayerEvent
             logger.error(ex);
         }
     };
-
-    /**
-     * @return User's profile.
-     */
-    protected ProfileModel getProfile() {
-        PrefManager prefManager = new PrefManager(getActivity(), PrefManager.Pref.LOGIN);
-        return prefManager.getCurrentUserProfile();
-    }
 
     public void onEventMainThread(DownloadCompletedEvent e) {
         addToRecentAdapter();

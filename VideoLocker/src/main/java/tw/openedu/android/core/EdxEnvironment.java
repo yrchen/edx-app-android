@@ -1,6 +1,9 @@
 package tw.openedu.android.core;
 
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -9,6 +12,7 @@ import tw.openedu.android.module.analytics.ISegment;
 import tw.openedu.android.module.db.IDatabase;
 import tw.openedu.android.module.download.IDownloadManager;
 import tw.openedu.android.module.notification.NotificationDelegate;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.module.storage.IStorage;
 import tw.openedu.android.services.ServiceManager;
@@ -16,6 +20,7 @@ import tw.openedu.android.util.Config;
 import tw.openedu.android.view.Router;
 
 import de.greenrobot.event.EventBus;
+import roboguice.RoboGuice;
 
 @Singleton
 public class EdxEnvironment implements IEdxEnvironment {
@@ -31,6 +36,9 @@ public class EdxEnvironment implements IEdxEnvironment {
 
     @Inject
     UserPrefs userPrefs;
+
+    @Inject
+    LoginPrefs loginPrefs;
 
     @Inject
     ISegment segment;
@@ -66,6 +74,11 @@ public class EdxEnvironment implements IEdxEnvironment {
     @Override
     public UserPrefs getUserPrefs() {
         return userPrefs;
+    }
+
+    @Override
+    public LoginPrefs getLoginPrefs() {
+        return loginPrefs;
     }
 
     @Override

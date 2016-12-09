@@ -1,13 +1,12 @@
 package tw.openedu.android.base;
 
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
 import com.crashlytics.android.answers.Answers;
@@ -21,15 +20,13 @@ import com.newrelic.agent.android.NewRelic;
 import tw.openedu.android.BuildConfig;
 import tw.openedu.android.R;
 import tw.openedu.android.core.EdxDefaultModule;
+import tw.openedu.android.core.IEdxEnvironment;
 import tw.openedu.android.logger.Logger;
-import tw.openedu.android.module.analytics.ISegment;
-import tw.openedu.android.module.notification.NotificationDelegate;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.module.storage.IStorage;
 import tw.openedu.android.receivers.NetworkConnectivityReceiver;
 import tw.openedu.android.util.Config;
 import tw.openedu.android.util.NetworkUtil;
-import tw.openedu.android.view.Router;
 
 import javax.inject.Inject;
 
@@ -71,8 +68,6 @@ public abstract class MainApplication extends MultiDexApplication {
      */
     private void init() {
         application = this;
-        registerActivityLifecycleCallbacks(new MyActivityLifecycleCallbacks());
-
         injector = RoboGuice.getOrCreateBaseApplicationInjector((Application) this, RoboGuice.DEFAULT_STAGE,
                 (Module) RoboGuice.newDefaultRoboModule(this), (Module) new EdxDefaultModule(this));
 
@@ -117,17 +112,6 @@ public abstract class MainApplication extends MultiDexApplication {
         );
     }
 
-    /**
-     * callback when application is launched from background or from a cold launch,
-     */
-    public void onApplicationLaunchedFromBackground() {
-        logger.debug("onApplicationLaunchedFromBackground");
-        PrefManager pref = new PrefManager(this, PrefManager.Pref.LOGIN);
-        if (pref.hasAuthTokenSocialCookie()) {
-            injector.getInstance(Router.class).forceLogout(this, injector.getInstance(ISegment.class), injector.getInstance(NotificationDelegate.class));
-        }
-    }
-
     private boolean needVersionUpgrade(Context context) {
         boolean needVersionUpgrade = false;
         PrefManager.AppInfoPrefManager pmanager = new PrefManager.AppInfoPrefManager(context);
@@ -151,38 +135,8 @@ public abstract class MainApplication extends MultiDexApplication {
         return injector;
     }
 
-    private final class MyActivityLifecycleCallbacks
-            implements Application.ActivityLifecycleCallbacks {
-
-        Activity prevPausedOne;
-
-        public void onActivityCreated(Activity activity, Bundle bundle) {
-
-        }
-
-        public void onActivityDestroyed(Activity activity) {
-
-        }
-
-        public void onActivityPaused(Activity activity) {
-            prevPausedOne = activity;
-        }
-
-        public void onActivityResumed(Activity activity) {
-            if (null == prevPausedOne || prevPausedOne == activity) {
-                //application launched from background,
-                onApplicationLaunchedFromBackground();
-            }
-        }
-
-        public void onActivitySaveInstanceState(Activity activity,
-                                                Bundle outState) {
-        }
-
-        public void onActivityStarted(Activity activity) {
-        }
-
-        public void onActivityStopped(Activity activity) {
-        }
+    @NonNull
+    public static IEdxEnvironment getEnvironment(@NonNull Context context) {
+        return RoboGuice.getInjector(context.getApplicationContext()).getInstance(IEdxEnvironment.class);
     }
 }

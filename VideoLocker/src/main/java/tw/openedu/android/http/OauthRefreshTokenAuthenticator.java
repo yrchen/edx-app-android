@@ -2,9 +2,8 @@ package tw.openedu.android.http;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.jakewharton.retrofit.Ok3Client;
 
@@ -12,7 +11,7 @@ import tw.openedu.android.authentication.LoginService;
 
 import tw.openedu.android.authentication.AuthResponse;
 import tw.openedu.android.logger.Logger;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.util.Config;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,10 +37,16 @@ public class OauthRefreshTokenAuthenticator implements Authenticator {
 
     private final Logger logger = new Logger(getClass().getName());
     private final static String TOKEN_EXPIRED_ERROR_MESSAGE = "token_expired";
+    private final static String TOKEN_NONEXISTENT_ERROR_MESSAGE = "token_nonexistent";
+    private final static String TOKEN_INVALID_GRANT_ERROR_MESSAGE = "invalid_grant";
     private Context context;
 
     @Inject
     Config config;
+
+    @Inject
+    LoginPrefs loginPrefs;
+
 
     public OauthRefreshTokenAuthenticator(Context context) {
         this.context = context;
@@ -49,32 +54,46 @@ public class OauthRefreshTokenAuthenticator implements Authenticator {
     }
 
     @Override
-    public Request authenticate(Route route, final Response response) throws IOException {
+    public synchronized Request authenticate(Route route, final Response response) throws IOException {
         logger.warn(response.toString());
 
-        if (!isTokenExpired(response.peekBody(200).string())) {
+        final AuthResponse currentAuth = loginPrefs.getCurrentAuth();
+        if (null == currentAuth || null == currentAuth.refresh_token) {
             return null;
         }
 
-        PrefManager pref = new PrefManager(context, PrefManager.Pref.LOGIN);
+        String errorCode = getErrorCode(response.peekBody(200).string());
 
-        if (pref.getCurrentAuth().refresh_token == null) {
-            return null;
+        if (errorCode != null) {
+            switch (errorCode) {
+                case TOKEN_EXPIRED_ERROR_MESSAGE:
+                    final AuthResponse refreshedAuth;
+                    try {
+                        refreshedAuth = refreshAccessToken(currentAuth);
+                    } catch (HttpException e) {
+                        return null;
+                    }
+                    return response.request().newBuilder()
+                            .header("Authorization", refreshedAuth.token_type + " " + refreshedAuth.access_token)
+                            .build();
+                case TOKEN_NONEXISTENT_ERROR_MESSAGE:
+                case TOKEN_INVALID_GRANT_ERROR_MESSAGE:
+                    // Retry request with the current access_token if the original access_token used in
+                    // request does not match the current access_token. This case can occur when
+                    // asynchronous calls are made and are attempting to refresh the access_token where
+                    // one call succeeds but the other fails. https://github.com/edx/edx-app-android/pull/834
+                    if (!response.request().headers().get("Authorization").split(" ")[1].equals(currentAuth.access_token)) {
+                        return response.request().newBuilder()
+                                .header("Authorization", currentAuth.token_type + " " + currentAuth.access_token)
+                                .build();
+                    }
+            }
         }
-
-        try {
-            refreshAccessToken(pref);
-        } catch (HttpConnectivityException e) {
-            throw e.getRealCause();
-        } catch (RetroHttpException e) {
-            return null;
-        }
-        return response.request().newBuilder()
-                .header("Authorization", pref.getCurrentAuth().token_type + " " + pref.getCurrentAuth().access_token)
-                .build();
+        return null;
     }
 
-    private void refreshAccessToken(@NonNull PrefManager pref) throws RetroHttpException {
+    @NonNull
+    private AuthResponse refreshAccessToken(AuthResponse currentAuth) throws HttpException {
         OkHttpClient client = OkHttpUtil.getClient(context);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setClient(new Ok3Client(client))
@@ -84,21 +103,19 @@ public class OauthRefreshTokenAuthenticator implements Authenticator {
 
         AuthResponse refreshTokenResponse;
         refreshTokenResponse = loginService.refreshAccessToken(
-                "refresh_token", config.getOAuthClientId(), pref.getCurrentAuth().refresh_token);
-        Gson gson = new GsonBuilder().create();
-        pref.put(PrefManager.Key.AUTH_JSON, gson.toJson(refreshTokenResponse));
+                "refresh_token", config.getOAuthClientId(), currentAuth.refresh_token);
+        loginPrefs.storeRefreshTokenResponse(refreshTokenResponse);
+        return refreshTokenResponse;
     }
 
-    /**
-     * Checks the if the error_code in the response body is the token_expired error code.
-     */
-    private boolean isTokenExpired(String responseBody) {
+    @Nullable
+    private String getErrorCode(String responseBody) {
         try {
             JSONObject jsonObj = new JSONObject(responseBody);
-            String errorCode = jsonObj.getString("error_code");
-            return errorCode.equals(TOKEN_EXPIRED_ERROR_MESSAGE);
+            return jsonObj.getString("error_code");
         } catch (JSONException ex) {
-            return false;
+            logger.warn("Unable to get error_code from 401 response");
+            return null;
         }
     }
 }

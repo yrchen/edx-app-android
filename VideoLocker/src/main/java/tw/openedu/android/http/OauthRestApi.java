@@ -1,14 +1,20 @@
 package tw.openedu.android.http;
 
 import tw.openedu.android.http.model.EnrollmentRequestBody;
+import tw.openedu.android.http.serialization.ShareCourseResult;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
 import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.model.api.SyncLastAccessedSubsectionResponse;
 import tw.openedu.android.model.api.VideoResponseModel;
+import tw.openedu.android.model.json.CreateGroupResponse;
+import tw.openedu.android.model.json.SuccessResponse;
+import tw.openedu.android.social.SocialMember;
 
 import java.util.List;
 
 import retrofit.http.Body;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
@@ -24,14 +30,6 @@ import static tw.openedu.android.http.ApiConstants.*;
 public interface OauthRestApi {
 
     /* GET calls */
-
-    /**
-     * Returns user's basic profile information for current active session.
-     * @return
-     * @throws Exception
-     */
-    @GET(URL_MY_USER_INFO)
-    ProfileModel getProfile();
 
     @GET(URL_VIDEO_OUTLINE)
     List<VideoResponseModel> getCourseHierarchy(@Path(COURSE_ID) String courseId);

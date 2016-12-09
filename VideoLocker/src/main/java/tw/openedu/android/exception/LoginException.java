@@ -1,8 +1,5 @@
 package tw.openedu.android.exception;
 
-/**
- * Created by rohan on 1/12/15.
- */
 public class LoginException extends Exception {
 
     private LoginErrorMessage loginErrorMessage;

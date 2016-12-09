@@ -7,6 +7,7 @@
 
 package tw.openedu.android.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import com.joanzapata.iconify.widget.IconImageView;
 
 import org.apache.http.protocol.HTTP;
+
 import tw.openedu.android.R;
 import tw.openedu.android.core.IEdxEnvironment;
 import tw.openedu.android.course.CourseDetail;
@@ -50,6 +52,8 @@ import roboguice.inject.InjectExtra;
 
 
 public class CourseDetailFragment extends BaseFragment {
+
+    private static final int LOG_IN_REQUEST_CODE = 42;
 
     @Nullable
     private GetCourseDetailTask getCourseDetailTask;
@@ -305,10 +309,22 @@ public class CourseDetailFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOG_IN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            enrollInCourse();
+        }
+    }
+
     /**
      * Enroll in a course, Then open the course dashboard of the enrolled course.
      */
     public void enrollInCourse() {
+        if (null == environment.getLoginPrefs().getUsername()) {
+            startActivityForResult(environment.getRouter().getRegisterIntent(), LOG_IN_REQUEST_CODE);
+            return;
+        }
         environment.getSegment().trackEnrollClicked(courseDetail.course_id, emailOptIn);
         EnrollForCourseTask enrollForCourseTask = new EnrollForCourseTask(getActivity(),
                 courseDetail.course_id, emailOptIn) {

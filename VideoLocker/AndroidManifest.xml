@@ -39,7 +39,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="${supportsRtl}"
-        android:icon="@drawable/app_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:name="tw.openedu.android.base.RuntimeApplication" >
@@ -62,14 +62,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+	<activity
+            android:name="tw.openedu.android.view.DiscoveryLaunchActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name="tw.openedu.android.view.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"
-            android:configChanges="keyboardHidden|orientation"
-            >
+            android:configChanges="keyboardHidden|orientation" >
         </activity>
 
         <activity
@@ -158,6 +163,12 @@
         <activity
             android:name="tw.openedu.android.view.WebViewFindCoursesActivity"
             android:label="@string/find_courses_title"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="tw.openedu.android.view.WebViewExploreSubjectsActivity"
+            android:label="@string/launch_explore_subjects"
             android:screenOrientation="portrait">
         </activity>
 

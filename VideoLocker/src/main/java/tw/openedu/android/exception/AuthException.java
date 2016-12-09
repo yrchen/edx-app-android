@@ -1,17 +1,13 @@
 package tw.openedu.android.exception;
 
-import tw.openedu.android.model.api.AuthErrorResponse;
+import android.support.annotation.NonNull;
 
 public class AuthException extends Exception {
-
-    private AuthErrorResponse authResponseObject;
-
-    public AuthException(AuthErrorResponse res) {
-        this.authResponseObject = res;
+    public AuthException(@NonNull String message) {
+        super(message);
     }
 
-    @Override
-    public String getMessage() {
-        return authResponseObject.detail;
+    public AuthException(@NonNull Throwable cause) {
+        super(cause);
     }
 }

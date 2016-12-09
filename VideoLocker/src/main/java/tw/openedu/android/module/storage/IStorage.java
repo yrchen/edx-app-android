@@ -2,7 +2,7 @@ package tw.openedu.android.module.storage;
 
 import android.support.annotation.NonNull;
 
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.interfaces.SectionItemInterface;
 import tw.openedu.android.model.VideoModel;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
@@ -97,14 +97,14 @@ public interface IStorage {
      * videos and no videos downloaded in the course
      * @return
      */
-    @NonNull ArrayList<EnrolledCoursesResponse> getDownloadedCoursesWithVideoCountAndSize() throws RetroHttpException;
+    @NonNull ArrayList<EnrolledCoursesResponse> getDownloadedCoursesWithVideoCountAndSize() throws HttpException;
 
     /**
      * Returns list of all recently downloaded videos list
      * The list contains local videos with only course header sorted based on Downloaded Date.
      * @return
      */
-    @NonNull ArrayList<SectionItemInterface> getRecentDownloadedVideosList() throws RetroHttpException;
+    @NonNull ArrayList<SectionItemInterface> getRecentDownloadedVideosList() throws HttpException;
 
     /**
      * This DownloadEntry model is fetched and returned from the db

@@ -42,6 +42,12 @@
 
             </RelativeLayout>
 
+            <fragment
+                android:name="tw.openedu.android.view.LogInSignUpFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="tw.openedu.android.view.LogInSignUpFragment" />
+
         </LinearLayout>
 
         <TextView

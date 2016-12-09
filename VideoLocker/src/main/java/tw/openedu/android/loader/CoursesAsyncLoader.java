@@ -6,10 +6,10 @@ import android.support.v4.content.AsyncTaskLoader;
 import com.google.inject.Inject;
 
 import tw.openedu.android.core.IEdxEnvironment;
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
 import tw.openedu.android.model.api.ProfileModel;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.user.UserAPI;
 
 import java.util.List;
@@ -29,6 +29,9 @@ public class CoursesAsyncLoader extends AsyncTaskLoader<AsyncTaskResult<List<Enr
     @Inject
     UserAPI api;
 
+    @Inject
+    LoginPrefs loginPrefs;
+
     public CoursesAsyncLoader(Context context) {
         super(context);
         this.context = context;
@@ -37,9 +40,7 @@ public class CoursesAsyncLoader extends AsyncTaskLoader<AsyncTaskResult<List<Enr
 
     @Override
     public AsyncTaskResult<List<EnrolledCoursesResponse>> loadInBackground() {
-
-        PrefManager pref = new PrefManager(context, PrefManager.Pref.LOGIN);
-        ProfileModel profile = pref.getCurrentUserProfile();
+        ProfileModel profile = loginPrefs.getCurrentUserProfile();
         List<EnrolledCoursesResponse> enrolledCoursesResponse = null;
 
         AsyncTaskResult<List<EnrolledCoursesResponse>> result = new AsyncTaskResult<>();
@@ -51,7 +52,7 @@ public class CoursesAsyncLoader extends AsyncTaskLoader<AsyncTaskResult<List<Enr
                 environment.getNotificationDelegate().checkCourseEnrollment(enrolledCoursesResponse);
             }
 
-        } catch (RetroHttpException exception) {
+        } catch (HttpException exception) {
             result.setEx(exception);
         }
 

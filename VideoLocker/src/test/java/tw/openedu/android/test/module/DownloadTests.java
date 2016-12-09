@@ -1,10 +1,12 @@
 package tw.openedu.android.test.module;
 
+import tw.openedu.android.base.MainApplication;
 import tw.openedu.android.model.download.NativeDownloadModel;
 import tw.openedu.android.module.download.DownloadFactory;
 import tw.openedu.android.module.download.IDownloadManager;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.test.BaseTestCase;
+
 import org.junit.Test;
 import org.robolectric.RuntimeEnvironment;
 
@@ -26,7 +28,7 @@ public class DownloadTests extends BaseTestCase {
     public void testAddDownload() throws Exception {
         File dir = null;
         try {
-           dir = new UserPrefs(RuntimeEnvironment.application).getDownloadFolder();
+           dir = new UserPrefs(RuntimeEnvironment.application, MainApplication.getEnvironment(RuntimeEnvironment.application).getLoginPrefs()).getDownloadFolder();
         }catch (Exception ex){
             // it happens in CI environment and we should skip the test.
             print( "dir is null, it happens in CI environment and we should skip the test.");

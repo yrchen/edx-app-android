@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.jakewharton.retrofit.Ok3Client;
 
 import tw.openedu.android.http.OkHttpUtil;
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.model.Page;
 import tw.openedu.android.model.PaginationData;
 import tw.openedu.android.profiles.BadgeAssertion;
@@ -38,7 +38,7 @@ public class UserApiTest extends BaseTestCase {
     }
 
     @Test
-    public void testApiReturnsResult() throws RetroHttpException {
+    public void testApiReturnsResult() throws HttpException {
         MockWebServer server = new MockWebServer();
 
         RestAdapter restAdapter = new RestAdapter.Builder()

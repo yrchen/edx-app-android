@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import com.google.inject.Inject;
 
 import tw.openedu.android.R;
+import tw.openedu.android.base.MainApplication;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.view.dialog.IDialogCallback;
 import tw.openedu.android.view.dialog.NetworkCheckDialogFragment;
@@ -39,7 +40,7 @@ public class MediaConsentUtils {
             case ConnectivityManager.TYPE_ETHERNET:
                 return true;
             default:
-                return !new UserPrefs(context).isDownloadOverWifiOnly() ||
+                return !MainApplication.getEnvironment(context).getUserPrefs().isDownloadOverWifiOnly() ||
                         NetworkUtil.isOnZeroRatedNetwork(context, config);
         }
     }

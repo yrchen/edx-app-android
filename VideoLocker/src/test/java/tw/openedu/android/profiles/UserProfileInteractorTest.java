@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import tw.openedu.android.event.AccountDataLoadedEvent;
 import tw.openedu.android.event.ProfilePhotoUpdatedEvent;
-import tw.openedu.android.http.RetroHttpException;
+import tw.openedu.android.http.HttpException;
 import tw.openedu.android.model.api.ProfileModel;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.test.BaseTest;
@@ -14,6 +14,7 @@ import tw.openedu.android.user.LanguageProficiency;
 import tw.openedu.android.user.ProfileImage;
 import tw.openedu.android.user.UserAPI;
 import tw.openedu.android.util.observer.Observer;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -312,7 +313,7 @@ public class UserProfileInteractorTest extends BaseTest {
         when(account.getProfileImage()).thenReturn(mock(ProfileImage.class));
         try {
             when(userAPI.getAccount(ProfileValues.USERNAME)).thenReturn(account);
-        } catch (RetroHttpException e) {
+        } catch (HttpException e) {
             throw new RuntimeException(e);
         }
         return account;

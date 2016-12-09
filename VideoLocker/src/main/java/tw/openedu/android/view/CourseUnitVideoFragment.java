@@ -33,6 +33,7 @@ import tw.openedu.android.model.course.VideoBlockModel;
 import tw.openedu.android.model.db.DownloadEntry;
 import tw.openedu.android.module.db.DataCallback;
 import tw.openedu.android.module.db.impl.DatabaseFactory;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.player.IPlayerEventCallback;
 import tw.openedu.android.player.PlayerFragment;
@@ -80,6 +81,9 @@ public class CourseUnitVideoFragment extends CourseUnitFragment
 
     @Inject
     TranscriptManager transcriptManager;
+
+    @Inject
+    LoginPrefs loginPrefs;
 
 
     /**
@@ -730,15 +734,6 @@ public class CourseUnitVideoFragment extends CourseUnitFragment
             logger.error(ex);
         }
     };
-
-    /**
-     * Returns user's profile.
-     * @return
-     */
-    protected ProfileModel getProfile() {
-        PrefManager prefManager = new PrefManager(getActivity(), PrefManager.Pref.LOGIN);
-        return prefManager.getCurrentUserProfile();
-    }
 
     /**
      * mostly the orientation changes.

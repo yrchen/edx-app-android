@@ -6,6 +6,7 @@ import tw.openedu.android.module.analytics.ISegment;
 import tw.openedu.android.module.db.IDatabase;
 import tw.openedu.android.module.download.IDownloadManager;
 import tw.openedu.android.module.notification.NotificationDelegate;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.UserPrefs;
 import tw.openedu.android.module.storage.IStorage;
 import tw.openedu.android.services.ServiceManager;
@@ -24,6 +25,8 @@ public interface IEdxEnvironment {
     IDownloadManager getDownloadManager();
 
     UserPrefs getUserPrefs();
+
+    LoginPrefs getLoginPrefs();
 
     ISegment getSegment();
 

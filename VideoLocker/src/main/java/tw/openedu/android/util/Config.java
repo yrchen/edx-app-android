@@ -47,10 +47,6 @@ public class Config {
     private static final String PUSH_NOTIFICATIONS_FLAG = "PUSH_NOTIFICATIONS";
     private static final String WHITE_LIST_OF_DOMAINS = "WHITE_LIST_OF_DOMAINS";
 
-    private static final String TEST_ACCOUNT = "TEST_ACCOUNT";
-    private static final String TEST_ACCOUNT_NAME = "NAME";
-    private static final String TEST_ACCOUNT_PASSWORD = "PASSWORD";
-
     // Features
     private static final String USER_PROFILES_ENABLED = "USER_PROFILES_ENABLED";
     private static final String DISCUSSIONS_ENABLED = "DISCUSSIONS_ENABLED";
@@ -59,6 +55,7 @@ public class Config {
     private static final String BADGES_ENABLED = "BADGES_ENABLED";
     private static final String SERVER_SIDE_CHANGED_THREAD = "SERVER_SIDE_CHANGED_THREAD";
     private static final String END_TO_END_TEST = "END_TO_END_TEST";
+    private static final String NEW_LOGISTRATION_ENABLED = "NEW_LOGISTRATION_ENABLED";
 
     public static class ZeroRatingConfig {
         @SerializedName("ENABLED")
@@ -109,22 +106,29 @@ public class Config {
             }
         }
 
+        public WebViewConfig getWebViewConfig() {
+            return mWebViewConfig;
+        }
+
         public String getCourseSearchUrl() {
-            return mWebViewConfig.getCourseSearchUrl();
+            return getWebViewConfig().getCourseSearchUrl();
         }
 
         public String getCourseInfoUrlTemplate() {
-            return mWebViewConfig.getCourseInfoUrlTemplate();
+            return getWebViewConfig().getCourseInfoUrlTemplate();
         }
 
         public boolean isWebCourseSearchEnabled() {
-            return mWebViewConfig.isWebCourseSearchEnabled();
+            return getWebViewConfig().isWebCourseSearchEnabled();
         }
     }
 
     public static class WebViewConfig {
         @SerializedName("COURSE_SEARCH_URL")
         private String mSearchUrl;
+
+        @SerializedName("EXPLORE_SUBJECTS_URL")
+        private String mExploreSubjectsUrl;
 
         @SerializedName("COURSE_INFO_URL_TEMPLATE")
         private String mCourseInfoUrlTemplate;
@@ -134,6 +138,10 @@ public class Config {
 
         public String getCourseSearchUrl() {
             return mSearchUrl;
+        }
+
+        public String getExploreSubjectsUrl() {
+            return mExploreSubjectsUrl;
         }
 
         public String getCourseInfoUrlTemplate() {
@@ -232,22 +240,6 @@ public class Config {
 
         public String getNewRelicKey() {
             return mNewRelicKey;
-        }
-    }
-
-    public static class TestAccountConfig {
-        @SerializedName("NAME")
-        private String mName;
-
-        @SerializedName("PASSWORD")
-        private String mPassword;
-
-        public String getName() {
-            return mName;
-        }
-
-        public String getPassword() {
-            return mPassword;
         }
     }
 
@@ -389,6 +381,10 @@ public class Config {
         return getBoolean(PUSH_NOTIFICATIONS_FLAG, false);
     }
 
+    public boolean isNewLogistrationEnabled() {
+        return getBoolean(NEW_LOGISTRATION_ENABLED, false);
+    }
+
     /**
      * Empty or no config returns false.
      * Otherwise, returns the value from the config.
@@ -457,11 +453,6 @@ public class Config {
     @NonNull
     public SegmentConfig getSegmentConfig() {
         return getObjectOrNewInstance(SEGMENT_IO, SegmentConfig.class);
-    }
-
-    @NonNull
-    public TestAccountConfig getTestAccountConfig() {
-        return getObjectOrNewInstance(TEST_ACCOUNT, TestAccountConfig.class);
     }
 
     @NonNull

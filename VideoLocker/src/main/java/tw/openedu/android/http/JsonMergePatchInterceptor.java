@@ -1,6 +1,7 @@
 package tw.openedu.android.http;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;

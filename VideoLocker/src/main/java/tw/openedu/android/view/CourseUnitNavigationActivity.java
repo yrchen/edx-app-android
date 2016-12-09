@@ -18,6 +18,7 @@ import tw.openedu.android.logger.Logger;
 import tw.openedu.android.model.course.BlockType;
 import tw.openedu.android.model.course.CourseComponent;
 import tw.openedu.android.module.analytics.ISegment;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.services.ViewPagerDownloadManager;
 import tw.openedu.android.view.adapters.CourseUnitPagerAdapter;
@@ -27,6 +28,8 @@ import tw.openedu.android.view.custom.DisableableViewPager;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import roboguice.inject.InjectView;
 
@@ -52,6 +55,9 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements 
     private TextView mNextUnitLbl;
     @InjectView(R.id.prev_unit_title)
     private TextView mPreviousUnitLbl;
+
+    @Inject
+    LoginPrefs loginPrefs;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,8 +154,8 @@ public class CourseUnitNavigationActivity extends CourseBaseActivity implements 
         courseComponentId = selectedUnit.getId();
         environment.getDatabase().updateAccess(null, selectedUnit.getId(), true);
 
-        String prefName = PrefManager.getPrefNameForLastAccessedBy(getProfile()
-            .username, selectedUnit.getCourseId());
+        String prefName = PrefManager.getPrefNameForLastAccessedBy(
+                loginPrefs.getUsername(), selectedUnit.getCourseId());
         final PrefManager prefManager = new PrefManager(MainApplication.instance(), prefName);
         prefManager.putLastAccessedSubsection(this.selectedUnit.getId(), false);
         Intent resultData = new Intent();

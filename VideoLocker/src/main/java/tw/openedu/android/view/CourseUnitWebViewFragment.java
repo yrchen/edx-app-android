@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.inject.Inject;
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
@@ -23,9 +24,9 @@ import tw.openedu.android.R;
 import tw.openedu.android.event.NetworkConnectivityChangeEvent;
 import tw.openedu.android.event.SessionIdRefreshEvent;
 import tw.openedu.android.logger.Logger;
-import tw.openedu.android.authentication.AuthResponse;
 import tw.openedu.android.model.course.CourseComponent;
 import tw.openedu.android.model.course.HtmlBlockModel;
+import tw.openedu.android.module.prefs.LoginPrefs;
 import tw.openedu.android.module.prefs.PrefManager;
 import tw.openedu.android.services.EdxCookieManager;
 import tw.openedu.android.services.ViewPagerDownloadManager;
@@ -55,6 +56,9 @@ public class CourseUnitWebViewFragment extends CourseUnitFragment {
 
     @InjectView(R.id.content_unavailable_error_text)
     private TextView errorTextView;
+
+    @Inject
+    private LoginPrefs loginPrefs;
 
     public static CourseUnitWebViewFragment newInstance(HtmlBlockModel unit) {
         CourseUnitWebViewFragment f = new CourseUnitWebViewFragment();
@@ -245,17 +249,10 @@ public class CourseUnitWebViewFragment extends CourseUnitFragment {
         showLoadingProgress();
 
         if (unit != null) {
-            PrefManager pref = new PrefManager(getActivity(), PrefManager.Pref.LOGIN);
-            AuthResponse auth = pref.getCurrentAuth();
-            Map<String, String> map = new HashMap<String, String>();
-            if (auth == null || !auth.isSuccess()) {
-                // this might be a login with Facebook or Google
-                String token = pref.getString(PrefManager.Key.AUTH_TOKEN_SOCIAL);
-                if (token != null) {
-                    map.put("Authorization", token);
-                }
-            } else {
-                map.put("Authorization", String.format("%s %s", auth.token_type, auth.access_token));
+            Map<String, String> map = new HashMap<>();
+            final String token = loginPrefs.getAuthorizationHeader();
+            if (token != null) {
+                map.put("Authorization", token);
             }
 
             // Requery the session cookie if unavailable or expired if we are on

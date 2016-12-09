@@ -15,10 +15,12 @@ import tw.openedu.android.loader.AsyncTaskResult;
 import tw.openedu.android.loader.CoursesAsyncLoader;
 import tw.openedu.android.model.api.EnrolledCoursesResponse;
 import tw.openedu.android.module.analytics.ISegment;
-import tw.openedu.android.module.prefs.PrefManager;
+import tw.openedu.android.module.prefs.LoginPrefs;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 
@@ -28,6 +30,9 @@ public class MyCourseListTabFragment extends CourseListTabFragment {
 
     protected TextView noCourseText;
     private boolean refreshOnResume;
+
+    @Inject
+    LoginPrefs loginPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,8 +86,7 @@ public class MyCourseListTabFragment extends CourseListTabFragment {
         if (result.getEx() != null) {
             logger.error(result.getEx());
             if (result.getEx() instanceof AuthException) {
-                PrefManager prefs = new PrefManager(getActivity(), PrefManager.Pref.LOGIN);
-                prefs.clearAuth();
+                loginPrefs.clear();
                 getActivity().finish();
             } else if (result.getEx() instanceof HttpResponseStatusException &&
                     ((HttpResponseStatusException) result.getEx()).getStatusCode() == 401) {
