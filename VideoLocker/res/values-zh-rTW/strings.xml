@@ -449,7 +449,7 @@
   <!--Text shown while waiting for registration request-->
   <string name="creating_account_text">正在建立帳戶...</string>
   <!--Registration screen title-->
-  <string name="register_title">註冊</string>
+  <string name="register_title">註冊{platform_name}</string>
   <!--Text for successful registration with social token-->
   <string name="sign_up_with_facebook_ok">您已成功使用 Facebook 登入。</string>
   <string name="sign_up_with_google_ok">您已成功使用 Google 登入。</string>
