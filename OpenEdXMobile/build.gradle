@@ -355,10 +355,12 @@ android {
 
         if (project.hasProperty('RES_DIR')) {
             prod.res.srcDirs = [RES_DIR]
+            dev.res.srcDirs = [RES_DIR]
         }
 
         if (project.hasProperty('ASSETS')) {
             prod.assets.srcDirs = [ASSETS]
+            dev.assets.srcDirs = [ASSETS]
         }
 
         String sharedTestDir = 'src/sharedTest/java'
