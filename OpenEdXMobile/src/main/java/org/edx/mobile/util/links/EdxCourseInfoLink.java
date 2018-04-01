@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 public class EdxCourseInfoLink {
-    public static final String SCHEME = "edxapp";
+    public static final String SCHEME = "openedu";
     public static final String AUTHORITY = "course_info";
     public static final String PATH_ID_PARAMETER_NAME = "path_id";
     public static final String PATH_ID_COURSE_PREFIX = "course/";
