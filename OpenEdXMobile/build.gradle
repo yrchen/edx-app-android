@@ -136,17 +136,17 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'de.greenrobot:eventbus:2.4.1'
     compile 'com.squareup.phrase:phrase:1.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     /* Exclude dependencies defined statically at the top-
      * level, to prevent them from being resolved to the
      * latest version as a result of dynamic version
      * definitions in the transitive dependencies.
      */
-    compile ('com.squareup.retrofit2:retrofit:2.1.0') {
+    compile ('com.squareup.retrofit2:retrofit:2.3.0') {
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
-    compile ('com.squareup.retrofit2:converter-gson:2.1.0') {
+    compile ('com.squareup.retrofit2:converter-gson:2.3.0') {
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
         exclude group: 'com.google.code.gson', module: 'gson'
     }
@@ -209,8 +209,8 @@ dependencies {
     testCompile ('com.squareup.assertj:assertj-android-appcompat-v7:1.1.1') {
         exclude group: 'com.android.support'
     }
-    testCompile 'com.squareup.okhttp3:mockwebserver:3.0.1'
-    testCompile ('com.squareup.retrofit2:retrofit-mock:2.1.0') {
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.9.1'
+    testCompile ('com.squareup.retrofit2:retrofit-mock:2.3.0') {
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 

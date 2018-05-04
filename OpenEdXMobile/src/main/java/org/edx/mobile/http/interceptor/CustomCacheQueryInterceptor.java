@@ -20,8 +20,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.TlsVersion;
-import okhttp3.internal.http.CacheStrategy;
-import okhttp3.internal.http.HttpEngine;
+import okhttp3.internal.cache.CacheStrategy;
+import okhttp3.internal.http.HttpHeaders;
 import okhttp3.internal.http.HttpMethod;
 import roboguice.RoboGuice;
 
@@ -101,7 +101,7 @@ public class CustomCacheQueryInterceptor implements Interceptor {
                         response = response.newBuilder()
                                 .cacheResponse(cacheResponse)
                                 .build();
-                        if (HttpEngine.hasBody(response) &&
+                        if (HttpHeaders.hasBody(response) &&
                                 HttpMethod.invalidatesCache(request.method())) {
                             cacheManager.remove(urlString);
                         }
